@@ -1,44 +1,62 @@
 # Vorlesung "Einführung in KI-Verfahren" bei den BauIngs
 
-## Gerenderte Webseite
-[https://lu-kas.github.io/Test_KI_Vorlesung/](https://lu-kas.github.io/Test_KI_Vorlesung/)
-
-## Zeitplan (Lukas-zentrisch)
-
-- 06.11.: Kick-Off
-- 12.11.: 1. Vorlesung
-- 19.11.: 2. Vorlesung
-- 26.11.: Lukas nicht da (Experimente Berlin)
-- 03.12.: Lukas nicht da (Disputation Lund)
-- 10.12.: Lukas nicht da (Experimente Leipzig)
-- 17.12.: 3. Vorlesung
-- 07.01.: 4. Vorlesung (Lukas bei Disputation?)
-- 14.01.: 5. Vorlesung
-- 21.01.: 6. Vorlesung
-- 28.01.: 1. Praxistermin
-- 04.02.: 2. Praxistermin
-
 ## Planung der Vorlesungsinhalte
 
 1. Vorlesung
-  - Vortrag Einführung (30 Minuten)
-  - Setup Server / Skript (15 Minuten)
-  - Grundidee Perceptron, Python Implementierung, Training (45 Minuten)
+    - Vortrag Einführung (30 Minuten)
+        - Grundlagen KI-Verfahren (was gibt es und was kann man damit machen)
+        - Aktivierungfunktion
+        - Perceptron lernen
+        - Adaline Perceptron (Simone)
+        - Wie funktionieren Neuronale Netzwerke
+        - Was ist die Grundidee von CNN, wofür werden die eingesetzt
+        - Übersicht, was wird in der Vorlesung gemacht
+    - Setup Server / Skript (15 Minuten)
+    - Übungen
+        - Grundidee Perceptron, Python Implementierung, Training (45 Minuten)
+        - Beispiel Iris und Pinguine (45 Minuten)
+        - Beispiel aus den Ingenieurwissenschaften
+        - Perceptron von Hand programmieren
+        - Ausblick Perceptron von sklearn
 2. Vorlesung
-  - Einfaches NN mit NumPy
-  - Polynom "lernen"
-  - Daten erzeugen
-  - NN bauen
-  - Training
-  - Validierung, Visualisierung
-  - Variation von Freiheitsgraden
+    - Vortrag
+        - Wie macht man aus Perceptronen ein einfaches NN
+        - Backpropagation im NN
+    - Übungen (ohne KI Paket)
+        - Einfaches NN mit NumPy
+        - Polynom "lernen"
+        - Daten erzeugen
+        - NN bauen
+        - Training
+        - Validierung, Visualisierung
+        - Variation von Freiheitsgraden
+        - Overfitting/Underfitting
 3. Vorlesung
-  - Obiges Beispiel mit PyTorch (30 Minuten)
-  - Anfang Handschrifterkennung (Ziffern), Generierung von Daten
+    - Vortrag
+        - Übersicht Python KI Pakete
+        - SKlearn
+        - PyTorch
+        - TensorFlow
+    - Übungen 
+        - Beispiel aus (2) mit KI Paket (PyTorch)
+        - Beispiel Handschrifterkennung
+            - Bilddaten einlesen
+            - Bildbearbeitung mit Python
+            - Kamerastream mit OpenCV einlesen und in Bilder aufteilen (optional)
+            - Einschub: Gedankenexperiment wie generiert man am besten die Daten, so dass man dann am wenigsten Arbeit mit dem Einlesen und Labeln hat
+            - Daten erstellen (Zahlen schreiben)
+            - Daten labeln
+            - Trainingsdaten generieren
+            - Model aufbauen
+            - Model trainineren
+            - Model validieren 
+            - Hyperparameter tuning
 4. Vorlesung
-  - Implementierung der Handschrifterkennung (90 Minuten)
+    - Abschlussprojekt Waagendisplay auslesen
+    - Zeitreihe aus den Messungen erstellen
+  
 5. Vorlesung
-  - Testen Handschrifterkennung (90 Minuten)
+    - Backup Simone: Zeitreihenvorhersage
+  
 6. Vorlesung
-  - Puffer?
-  - Pix2Pix?
+  
