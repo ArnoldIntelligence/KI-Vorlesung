@@ -20,7 +20,7 @@ website:
           - text: "03 – Methoden"
             href: notebooks/03-methoden.ipynb
           - text: "04 – Anwendungen"
-            href: notebooks/04-anwendungen.ipynb
+            href: notebooks/04-ueberwachtes_lernen.ipynb
           - text: "05 – Fallstudie"
             href: notebooks/05-fallstudie.ipynb
           - text: "06 – Zusammenfassung"
