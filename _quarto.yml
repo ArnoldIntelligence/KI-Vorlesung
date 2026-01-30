@@ -5,7 +5,7 @@ project:
 site-url: https://lu-kas.github.io/Test_KI_Vorlesung/
 
 website:
-  title: "Vorlesung KI @ BauIng"
+  title: "Vorlesung KI"
   description: "6-teilige Vorlesungsreihe als Quarto Website"
   navbar:
     left:
@@ -16,11 +16,11 @@ website:
           - text: "01 – Einführung"
             href: notebooks/01-einleitung.ipynb
           - text: "02 – Grundlagen"
-            href: notebooks/02-grundlagen.ipynb
+            href: notebooks/02-perzeptron.ipynb
           - text: "03 – Methoden"
-            href: notebooks/03-methoden.ipynb
+            href: notebooks/03-einfacheNN.ipynb
           - text: "04 – Anwendungen"
-            href: notebooks/04-anwendungen.ipynb
+            href: notebooks/04-ueberwachtes_lernen.ipynb
           - text: "05 – Fallstudie"
             href: notebooks/05-fallstudie.ipynb
           - text: "06 – Zusammenfassung"
@@ -34,12 +34,12 @@ website:
       - index.qmd
       - text: "01 – Einführung"
         href: notebooks/01-einleitung.ipynb
-      - text: "02 – Grundlagen"
-        href: notebooks/02-grundlagen.ipynb
-      - text: "03 – Methoden"
-        href: notebooks/03-methoden.ipynb
-      - text: "04 – Anwendungen"
-        href: notebooks/04-anwendungen.ipynb
+      - text: "02 – Das Perzeptron"
+        href: notebooks/02-perzeptron.ipynb
+      - text: "03 – Einfache neuronale Netze"
+        href: notebooks/03-einfacheNN.ipynb
+      - text: "04 – Überwachtes Lernen"
+        href: notebooks/04-ueberwachtes_lernen.ipynb
       - text: "05 – Fallstudie"
         href: notebooks/05-fallstudie.ipynb
       - text: "06 – Zusammenfassung"
