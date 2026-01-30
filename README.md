@@ -1,4 +1,4 @@
-# Vorlesung "Einführung in KI-Verfahren" bei den BauIngs
+# Vorlesung "Einführung in KI-Verfahren" bei den BauIngs und den E-Techs
 
 ## Gerenderte Webseite
 [https://lu-kas.github.io/Test_KI_Vorlesung/](https://lu-kas.github.io/Test_KI_Vorlesung/)
