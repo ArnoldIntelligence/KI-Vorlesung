@@ -21,10 +21,12 @@ website:
             href: notebooks/03-einfacheNN.ipynb
           - text: "04 – Anwendungen"
             href: notebooks/04-ueberwachtes_lernen.ipynb
-          - text: "05 – Fallstudie"
-            href: notebooks/05-fallstudie.ipynb
-          - text: "06 – Zusammenfassung"
-            href: notebooks/06-zusammenfassung.ipynb
+          - text: "05 – Nicht Überwachtes Lernen"
+            href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
+          - text: "06 – Zeitreihen"
+            href: notebooks/06-zeitreihen.ipynb
+          - text: "07 – Zusammenfassung"
+            href: notebooks/07-zusammenfassung.ipynb
   sidebar:
     style: docked
     search: true
@@ -40,10 +42,12 @@ website:
         href: notebooks/03-einfacheNN.ipynb
       - text: "04 – Überwachtes Lernen"
         href: notebooks/04-ueberwachtes_lernen.ipynb
-      - text: "05 – Fallstudie"
-        href: notebooks/05-fallstudie.ipynb
-      - text: "06 – Zusammenfassung"
-        href: notebooks/06-zusammenfassung.ipynb
+      - text: "05 – Nicht Überwachtes Lernen"
+        href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
+      - text: "06 – Zeitreihen"
+        href: notebooks/06-zeitreihen.ipynb
+      - text: "07 – Zusammenfassung"
+        href: notebooks/07-zusammenfassung.ipynb
 
 format:
   html:

@@ -1,0 +1,34 @@
+# motor data with motor status
+# 1: ohne Last
+# 2: mit Getriebe
+# 3: mit Getriebe und Motor
+# 4: mit Wäscheklamer
+# Spannung in V  Stromaufnahme in mA    Motor status
+3   ,62  ,1  
+3.5 ,63  ,1
+4   ,65  ,1  
+4.5 ,67  ,1  
+5   ,68  ,1  
+5.5 ,70  ,1  
+6   ,71  ,1  
+3   ,80  ,2
+3.5 ,87  ,2
+4   ,92  ,2
+4.5 ,100 ,2
+5   ,104 ,2
+5.5 ,110 ,2
+6   ,130 ,2
+3   ,84  ,3
+3.5 ,91  ,3
+4   ,99  ,3
+4.5 ,105 ,3
+5   ,110 ,3
+5.5 ,120 ,3
+6   ,130 ,3
+3   ,75  ,4
+3.5 ,80  ,4  
+4   ,84  ,4
+4.5 ,87  ,4
+5   ,87  ,4
+5.5 ,89  ,4
+6   ,89  ,4

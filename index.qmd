@@ -1,11 +1,11 @@
 ---
-title: "Vorlesung KI @ BauIng"
+title: "Vorlesung KI"
 page-layout: article
 ---
 
 # Willkommen
 
-Diese Website bündelt die Inhalte der Vorlesung in **6 Einheiten**. Jede Einheit ist als Jupyter-Notebook eingebunden.
+Diese Website bündelt die Inhalte der Vorlesung in **5 Einheiten**. Jede Einheit ist als Jupyter-Notebook eingebunden.
 
 ::: callout-tip
 Nutze die Suche in der linken Sidebar, um schnell zu Themen zu springen.
@@ -18,8 +18,9 @@ Nutze die Suche in der linken Sidebar, um schnell zu Themen zu springen.
 
 ## Einheiten
 1. [Einführung](notebooks/01-einleitung.ipynb)  
-2. [Grundlagen](notebooks/02-grundlagen.ipynb)  
-3. [Methoden](notebooks/03-methoden.ipynb)  
-4. [Anwendungen](notebooks/04-anwendungen.ipynb)  
-5. [Fallstudie](notebooks/05-fallstudie.ipynb)  
-6. [Zusammenfassung](notebooks/06-zusammenfassung.ipynb)
+2. [Das Perzeptron](notebooks/02-perzeptron.ipynb)  
+3. [Einfache Neuronale Netze](notebooks/03-einfacheNN.ipynb)  
+4. [Überwachtes Lernen](notebooks/04-ueberwachtes_lernen.ipynb)  
+5. [Nicht überwachtes Lernen](notebooks/05-nicht_ueberwachtes_lernen.ipynb) 
+6. [Zeitreihen](notebooks/06-zeitreihen.ipynb)
+7. [Zusammenfassung](notebooks/07-zusammenfassung.ipynb)
