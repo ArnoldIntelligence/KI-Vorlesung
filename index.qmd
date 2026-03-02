@@ -23,4 +23,5 @@ Nutze die Suche in der linken Sidebar, um schnell zu Themen zu springen.
 4. [Überwachtes Lernen](notebooks/04-ueberwachtes_lernen.ipynb)  
 5. [Nicht überwachtes Lernen](notebooks/05-nicht_ueberwachtes_lernen.ipynb) 
 6. [Zeitreihen](notebooks/06-zeitreihen.ipynb)
-7. [Zusammenfassung](notebooks/07-zusammenfassung.ipynb)
+7. [Reinforced Learning](notebooks/07-reinforced_learning.ipynb)
+8. [Zusammenfassung](notebooks/08-zusammenfassung.ipynb)

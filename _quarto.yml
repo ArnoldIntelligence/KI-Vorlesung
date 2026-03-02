@@ -25,8 +25,10 @@ website:
             href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
           - text: "06 – Zeitreihen"
             href: notebooks/06-zeitreihen.ipynb
-          - text: "07 – Zusammenfassung"
-            href: notebooks/07-zusammenfassung.ipynb
+          - text: "07 – Reinforced Learning"
+            href: notebooks/07-reinforced_learning.ipynb
+          - text: "08 – Zusammenfassung"
+            href: notebooks/08-zusammenfassung.ipynb
   sidebar:
     style: docked
     search: true
@@ -46,8 +48,10 @@ website:
         href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
       - text: "06 – Zeitreihen"
         href: notebooks/06-zeitreihen.ipynb
-      - text: "07 – Zusammenfassung"
-        href: notebooks/07-zusammenfassung.ipynb
+      - text: "07 – Reinforced Learning"
+        href: notebooks/07-reinforced_learning.ipynb
+      - text: "08 – Zusammenfassung"
+        href: notebooks/08-zusammenfassung.ipynb
 
 format:
   html:
