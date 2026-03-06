@@ -23,12 +23,14 @@ website:
             href: notebooks/04-ueberwachtes_lernen.ipynb
           - text: "05 – Nicht Überwachtes Lernen"
             href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
-          - text: "06 – Zeitreihen"
-            href: notebooks/06-zeitreihen.ipynb
+          - text: "06 – CNN"
+            href: notebooks/06-cnn.ipynb
           - text: "07 – Reinforced Learning"
             href: notebooks/07-reinforced_learning.ipynb
-          - text: "08 – Zusammenfassung"
-            href: notebooks/08-zusammenfassung.ipynb
+          - text: "08 – Zeitreihen"
+            href: notebooks/08-zeitreihen.ipynb           
+          - text: "09 – Zusammenfassung"
+            href: notebooks/09-zusammenfassung.ipynb
   sidebar:
     style: docked
     search: true
@@ -46,12 +48,14 @@ website:
         href: notebooks/04-ueberwachtes_lernen.ipynb
       - text: "05 – Nicht Überwachtes Lernen"
         href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
-      - text: "06 – Zeitreihen"
-        href: notebooks/06-zeitreihen.ipynb
+      - text: "06 – CNN"
+        href: notebooks/06-cnn.ipynb
       - text: "07 – Reinforced Learning"
         href: notebooks/07-reinforced_learning.ipynb
-      - text: "08 – Zusammenfassung"
-        href: notebooks/08-zusammenfassung.ipynb
+      - text: "08 – Zeitreihen"
+        href: notebooks/08-zeitreihen.ipynb           
+      - text: "09 – Zusammenfassung"
+        href: notebooks/09-zusammenfassung.ipynb
 
 format:
   html:
