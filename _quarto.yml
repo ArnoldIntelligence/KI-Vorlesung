@@ -17,14 +17,14 @@ website:
             href: notebooks/01-einleitung.ipynb
           - text: "02 – Grundlagen"
             href: notebooks/02-perzeptron.ipynb
-          - text: "03 – Methoden"
-            href: notebooks/03-einfacheNN.ipynb
-          - text: "04 – Anwendungen"
-            href: notebooks/04-ueberwachtes_lernen.ipynb
-          - text: "05 – Nicht Überwachtes Lernen"
-            href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
-          - text: "06 – CNN"
-            href: notebooks/06-cnn.ipynb
+          - text: "03 – Überwachtes Lernen"
+            href: notebooks/03-ueberwachtes_lernen.ipynb
+          - text: "04 – Zahlen erkennen"
+            href: notebooks/04-zahlen_erkennen.ipynb
+          - text: "05 – CNN"
+            href: notebooks/05-cnn.ipynb           
+          - text: "06 – Nicht Überwachtes Lernen"
+            href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
           - text: "07 – Reinforced Learning"
             href: notebooks/07-reinforced_learning.ipynb
           - text: "08 – Zeitreihen"
@@ -40,16 +40,16 @@ website:
       - index.qmd
       - text: "01 – Einführung"
         href: notebooks/01-einleitung.ipynb
-      - text: "02 – Das Perzeptron"
+      - text: "02 – Grundlagen"
         href: notebooks/02-perzeptron.ipynb
-      - text: "03 – Einfache neuronale Netze"
-        href: notebooks/03-einfacheNN.ipynb
-      - text: "04 – Überwachtes Lernen"
-        href: notebooks/04-ueberwachtes_lernen.ipynb
-      - text: "05 – Nicht Überwachtes Lernen"
-        href: notebooks/05-nicht_ueberwachtes_lernen.ipynb
-      - text: "06 – CNN"
-        href: notebooks/06-cnn.ipynb
+      - text: "03 – Überwachtes Lernen"
+        href: notebooks/03-ueberwachtes_lernen.ipynb
+      - text: "04 – Zahlen erkennen"
+        href: notebooks/04-zahlen_erkennen.ipynb
+      - text: "05 – CNN"
+        href: notebooks/05-cnn.ipynb           
+      - text: "06 – Nicht Überwachtes Lernen"
+        href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
       - text: "07 – Reinforced Learning"
         href: notebooks/07-reinforced_learning.ipynb
       - text: "08 – Zeitreihen"
