@@ -132,22 +132,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="DQv3Polj5aDtc1j9F-QZ-38" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="Vergleich" vertex="1">
-          <mxGeometry height="30" width="80" x="560" y="460" as="geometry" />
+          <mxGeometry height="30" width="80" x="620" y="470" as="geometry" />
         </mxCell>
-        <mxCell id="DQv3Polj5aDtc1j9F-QZ-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="$$\vec{w}\cdot\vec{x} \text{ vs. } y$$" vertex="1">
-          <mxGeometry height="30" width="80" x="580" y="490" as="geometry" />
+        <mxCell id="DQv3Polj5aDtc1j9F-QZ-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="$$o = \phi \left( w\right) \text{ vs. } y$$" vertex="1">
+          <mxGeometry height="30" width="80" x="620" y="500" as="geometry" />
         </mxCell>
         <mxCell id="DQv3Polj5aDtc1j9F-QZ-40" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="Anpasung der zum Fehler beitragenden Gewichte um&amp;nbsp;" vertex="1">
-          <mxGeometry height="30" width="221" x="230" y="515" as="geometry" />
+          <mxGeometry height="30" width="300" x="210" y="485" as="geometry" />
         </mxCell>
-        <mxCell id="DQv3Polj5aDtc1j9F-QZ-41" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="$$\Delta \vec{w} = (\vec{w}\cdot\vec{x}-y)\cdot \alpha \cdot \vec{x}$$" vertex="1">
-          <mxGeometry height="30" width="210" x="230" y="570" as="geometry" />
+        <mxCell id="DQv3Polj5aDtc1j9F-QZ-41" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;fontColor=#FF0000;" value="$$\Delta \vec{w} = \left(\phi \left( w\right) - y \right) \cdot \frac{\partial \phi \left( w\right)}{\partial w}$$" vertex="1">
+          <mxGeometry height="30" width="230" x="245" y="555" as="geometry" />
         </mxCell>
         <mxCell id="wcpbXVQ_GKseRECYd75L-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontSize=20;" value="$$\alpha$$" vertex="1">
           <mxGeometry height="80" width="80" x="600" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="wcpbXVQ_GKseRECYd75L-4" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 20px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;$$o=\phi \left(\sum \right) = id \left(\sum \right)$$&lt;/span&gt;" vertex="1">
-          <mxGeometry height="50" width="280" x="340" y="140" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

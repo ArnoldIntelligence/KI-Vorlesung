@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Seite-1" id="jVPpJEdwYbNR6eyFBgY5">
+    <mxGraphModel dx="1018" dy="681" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-5" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=91;" value="" vertex="1">
+          <mxGeometry height="40" width="60" x="290.52052609624633" y="380.00447898343737" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-6" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=91;" value="" vertex="1">
+          <mxGeometry height="40" width="60" x="290.52052609624633" y="260.00447898343737" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="200" width="120" x="320" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-3" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=91;" value="" vertex="1">
+          <mxGeometry height="40" width="60" x="414" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-4" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=91;" value="" vertex="1">
+          <mxGeometry height="40" width="60" x="414.00052609624635" y="380.00447898343737" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-7" parent="1" style="shape=or;whiteSpace=wrap;html=1;rotation=-90;" value="" vertex="1">
+          <mxGeometry height="50" width="30" x="330" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-8" parent="1" style="shape=or;whiteSpace=wrap;html=1;rotation=-90;" value="" vertex="1">
+          <mxGeometry height="50" width="30" x="400" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Roboter&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="354" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;Ultraschall-Abstandssensoren&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="570" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-12" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="220" as="sourcePoint" />
+            <mxPoint x="450" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-13" parent="1" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;size=60;" value="" vertex="1">
+          <mxGeometry height="120" width="120" x="350.52" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;Hinderniss&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="600" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="g0B6q0PHGJ-Voy4XIJLc-15" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="560" y="140" as="sourcePoint" />
+            <mxPoint x="480" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
