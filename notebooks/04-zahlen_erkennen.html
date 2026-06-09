@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>04 Zahlenerkennung – Vorlesung KI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../notebooks/05-cnn.html" rel="next">
+<link href="../notebooks/03-ueberwachtes_lernen.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-27b4efb78d17f425a267faff4c303118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../assets/css/styles.scss">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Vorlesung KI</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Start</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-einheiten" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Einheiten</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-einheiten">    
+        <li>
+    <a class="dropdown-item" href="../notebooks/01-einleitung.html">
+ <span class="dropdown-text">01 – Einführung</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/02-perzeptron.html">
+ <span class="dropdown-text">02 – Grundlagen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/03-ueberwachtes_lernen.html">
+ <span class="dropdown-text">03 – Überwachtes Lernen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/04-zahlen_erkennen.html">
+ <span class="dropdown-text">04 – Zahlen erkennen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/05-cnn.html">
+ <span class="dropdown-text">05 – CNN</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/06-nicht_ueberwachtes_lernen.html">
+ <span class="dropdown-text">06 – Nicht Überwachtes Lernen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/07-reinforced_learning.html">
+ <span class="dropdown-text">07 – Reinforced Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/08-zeitreihen.html">
+ <span class="dropdown-text">08 – Zeitreihen</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../notebooks/09-zusammenfassung.html">
+ <span class="dropdown-text">09 – Zusammenfassung</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/04-zahlen_erkennen.html">04 – Zahlen erkennen</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorlesung KI</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01-einleitung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 – Einführung</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/02-perzeptron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 – Grundlagen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/03-ueberwachtes_lernen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 – Überwachtes Lernen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/04-zahlen_erkennen.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">04 – Zahlen erkennen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/05-cnn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 – CNN</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/06-nicht_ueberwachtes_lernen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06 – Nicht Überwachtes Lernen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/07-reinforced_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07 – Reinforced Learning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/08-zeitreihen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08 – Zeitreihen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/09-zusammenfassung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09 – Zusammenfassung</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#erkennung-von-zahlen" id="toc-erkennung-von-zahlen" class="nav-link active" data-scroll-target="#erkennung-von-zahlen"><span class="header-section-number">1</span> Erkennung von Zahlen</a>
+  <ul class="collapse">
+  <li><a href="#aufgabe-1-erstellen-von-trainingsdaten" id="toc-aufgabe-1-erstellen-von-trainingsdaten" class="nav-link" data-scroll-target="#aufgabe-1-erstellen-von-trainingsdaten"><span class="header-section-number">1.1</span> Aufgabe 1: Erstellen von Trainingsdaten</a></li>
+  </ul></li>
+  <li><a href="#einlesen-und-sortieren-der-trainingsdaten" id="toc-einlesen-und-sortieren-der-trainingsdaten" class="nav-link" data-scroll-target="#einlesen-und-sortieren-der-trainingsdaten"><span class="header-section-number">2</span> Einlesen und Sortieren der Trainingsdaten</a>
+  <ul class="collapse">
+  <li><a href="#hilfsfunktionen-definieren" id="toc-hilfsfunktionen-definieren" class="nav-link" data-scroll-target="#hilfsfunktionen-definieren"><span class="header-section-number">2.1</span> Hilfsfunktionen definieren</a></li>
+  <li><a href="#konturen-erkennen" id="toc-konturen-erkennen" class="nav-link" data-scroll-target="#konturen-erkennen"><span class="header-section-number">2.2</span> Konturen erkennen</a></li>
+  </ul></li>
+  <li><a href="#model-trainieren" id="toc-model-trainieren" class="nav-link" data-scroll-target="#model-trainieren"><span class="header-section-number">3</span> Model trainieren</a></li>
+  <li><a href="#abschlussprojekt-überwachtes-lernen-zahlenerkennung-einer-digitalen-waage" id="toc-abschlussprojekt-überwachtes-lernen-zahlenerkennung-einer-digitalen-waage" class="nav-link" data-scroll-target="#abschlussprojekt-überwachtes-lernen-zahlenerkennung-einer-digitalen-waage"><span class="header-section-number">4</span> Abschlussprojekt Überwachtes Lernen: Zahlenerkennung einer digitalen Waage</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">04 Zahlenerkennung</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="erkennung-von-zahlen" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Erkennung von Zahlen</h1>
+<p>Überwachtes Lernen wird im Folgenden anhand eines einfachen und anschaulichen Beispiels erläutert: der Erkennung handgeschriebener Ziffern. Zu diesem Zweck wird zunächst ein eigener Trainingsdatensatz aus handgeschriebenen Zahlen erstellt. Ausgangspunkt sind sortierte Bilddaten der Ziffern von 0 bis 9. Die einzelnen Ziffern werden aus dem Dokument extrahiert, den jeweiligen Zahlenklassen zugeordnet und in Arrays gespeichert. Um die Datenmenge überschaubar zu halten und den Rechenaufwand zu reduzieren, werden die Bilder der einzelnen Ziffern auf eine einheitliche Größe von 28 × 28 Pixeln skaliert. Für die eigentliche Bilderkennung werden nicht die Farbbilder selbst verwendet. Stattdessen werden die Farbkanäle zunächst in Graustufen umgewandelt und anschließend die Konturen der Ziffern extrahiert. Diese reduzierte und abstrahierte Darstellung dient schließlich als Eingabe für ein neuronales Netz, das mithilfe der zugehörigen Klassenlabels trainiert wird.</p>
+<figure style="text-align: center;" class="figure">
+<img src="Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert02.png" alt="Neuron" width="300" class="figure-img">
+<figcaption>
+Beispiel einer Handschriftprobe von sortierten Zahlen im Raum 0 bis 9
+</figcaption>
+</figure>
+<section id="aufgabe-1-erstellen-von-trainingsdaten" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="aufgabe-1-erstellen-von-trainingsdaten"><span class="header-section-number">1.1</span> Aufgabe 1: Erstellen von Trainingsdaten</h2>
+<p>Erstellen Sie ihren eigenen Satz von Trainingsdaten nach dem oben dargestellten Beispiel. Speichern Sie die Datei unter dem Namen ‘Zahlen_Handschrift_sortiertXX.png’ und senden Sie das Bild an die Kursleitung. Das XX ist dabei eine laufende Nummer (beginnend mit 15). Stimmen Sie sich bezüglich der Nummer mit der Kursleitung ab.</p>
+<p><em>Hinweis:</em></p>
+<p>Achten Sie beim Zahlen schreiben darauf, dass die Zahlen jeweils aus einer zusammenhängenden Linie bestehen. Lücken innerhalb einer Zahl machen das Erkennen der Konturen ungleich aufwändiger. Dies wäre eine schöne Erweiterung nach Abschluss der ersten Zahlenerkennung.</p>
+<p>Aus den gesammelten Daten kann nun der Trainingsdatensatz erstellt werden.</p>
+</section>
+</section>
+<section id="einlesen-und-sortieren-der-trainingsdaten" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Einlesen und Sortieren der Trainingsdaten</h1>
+<div id="e73ee531" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> glob <span class="im">import</span> glob</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktion zur numerischen Sortierung der Dateien</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_number(filename):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">int</span>(re.search(<span class="vs">r"_sortiert</span><span class="kw">(</span><span class="dv">\d</span><span class="op">+</span><span class="kw">)</span><span class="vs">"</span>, filename).group(<span class="dv">1</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Alle Files einleden, die mit Zahlen_Handschrift_sortiert beginnen und direkt darauf folgend eine Zahl im Namen haben.</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>liste_daten <span class="op">=</span> glob(<span class="st">'Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert*[0-9].png'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Liste numerisch sortieren und sortierte Liste ausgeben</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>liste_daten <span class="op">=</span> <span class="bu">sorted</span>(liste_daten, key<span class="op">=</span>extract_number)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> el <span class="kw">in</span> liste_daten:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(el)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert01.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert02.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert03.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert04.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert05.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert06.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert07.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert08.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert09.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert10.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert11.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert12.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert13.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png</code></pre>
+</div>
+</div>
+<p>Im nächsten Schritt werden die einzelnen Zahlen aus den Bildern herausgelesen.</p>
+<p>Dazu wir mit der zuvor erstellten Liste der Bilddateien jedes Bild</p>
+<ol type="1">
+<li>eingelesen,</li>
+<li>in ein Graustufenbild umgewandelt</li>
+<li>mit einem Gauß-Filter geglättet, um Bildrauschen zu reduzieren.</li>
+</ol>
+<p>Danach wird eine <a href="https://de.wikipedia.org/wiki/Schwellenwertverfahren">adaptive Schwellwertmethode</a> angewendet, um ein binäres Bild zu erzeugen, in dem die Ziffern klar vom Hintergrund getrennt sind.</p>
+<p>Anschließend werden die Konturen der Ziffern im Bild gesucht. Konturen mit zu kleiner Fläche oder zu geringer Höhe werden verworfen, um Störungen und Rauschen zu eliminieren. Für die verbleibenden Konturen werden rote Rechtecke in das Originalbild eingezeichnet, sodass die erkannten Ziffern visuell kontrolliert werden können.</p>
+<p>Die gültigen Konturen werden danach in einer festen Reihenfolge (von oben nach unten und von links nach rechts) sortiert. Für jede erkannte Ziffer wird der entsprechende Bildausschnitt (Region of Interest) ausgeschnitten, auf eine Größe von 28 × 28 Pixeln skaliert und in einer Liste gespeichert. Parallel dazu wird die Anzahl der erkannten Ziffern gezählt und zur Erzeugung der passenden Klassenlabels verwendet.</p>
+<p>Am Ende werden alle Bilddaten in ein NumPy-Array überführt und die zugehörigen Zielwerte in einem eindimensionalen Label-Array zusammengefasst, das für das Training eines überwachten Lernverfahrens genutzt werden kann.</p>
+<p>Zuvor werden hierzu zwei Hilfsfunktionen definiert, die Funktion <strong><code>imshow</code></strong> und die Funtion <strong><code>sort_contours_grid</code></strong>:</p>
+<p>Die Funktion <strong><code>imshow</code></strong> dient zur komfortablen Anzeige von Bildern innerhalb eines Notebooks. Sie überprüft zunächst, ob das Bild ein Farbbild im OpenCV-typischen BGR-Format ist, und wandelt es gegebenenfalls in das RGB-Format um, damit es mit Matplotlib korrekt dargestellt wird. Anschließend wird die Bildgröße dynamisch an das Seitenverhältnis angepasst, das Bild angezeigt, mit einem Titel versehen und die Achsen ausgeblendet. Dadurch lassen sich Bilder unabhängig von ihrer Auflösung übersichtlich visualisieren.</p>
+<p>Die Funktion <strong><code>sort_contours_grid</code></strong> sortiert eine Liste von OpenCV-Konturen in einer logischen Lese-Reihenfolge. Zunächst werden zu jeder Kontur die umschließenden Rechtecke bestimmt. Die Konturen werden dann zuerst nach ihrer vertikalen Position sortiert, sodass sie von oben nach unten angeordnet sind. Anschließend werden die Konturen anhand ihrer y-Koordinate zu Zeilen gruppiert, wobei der Parameter <code>row_height</code> bestimmt, ab welchem vertikalen Abstand eine neue Zeile beginnt. Innerhalb jeder Zeile werden die Konturen schließlich von links nach rechts sortiert.</p>
+<p>Das Ergebnis ist eine Liste von Konturen, die in der gleichen Reihenfolge angeordnet sind, wie ein Mensch sie beim Lesen eines Gitters oder Dokuments wahrnehmen würde, was insbesondere für die korrekte Zuordnung von Ziffern oder Zeichen zu ihren Labels wichtig ist.</p>
+<section id="hilfsfunktionen-definieren" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="hilfsfunktionen-definieren"><span class="header-section-number">2.1</span> Hilfsfunktionen definieren</h2>
+<div id="819a3753" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imshow(name, img, size<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cv2</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert BGR to RGB</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(img.shape) <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> img.shape[<span class="dv">2</span>] <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    h, w <span class="op">=</span> img.shape[:<span class="dv">2</span>]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> w <span class="op">/</span> h</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(size <span class="op">*</span> aspect, size))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    plt.imshow(img, cmap<span class="op">=</span><span class="st">'gray'</span> <span class="cf">if</span> <span class="bu">len</span>(img.shape) <span class="op">==</span> <span class="dv">2</span> <span class="cf">else</span> <span class="va">None</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    plt.title(name)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.show()</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># contours are not sorted, so sort them to assign the correct labels later</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sort_contours_grid(contours, row_height<span class="op">=</span><span class="dv">50</span>):</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract bounding boxes</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    bounding_boxes <span class="op">=</span> [cv2.boundingRect(c) <span class="cf">for</span> c <span class="kw">in</span> contours]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine contours with their boxes</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    contours_with_boxes <span class="op">=</span> <span class="bu">list</span>(<span class="bu">zip</span>(contours, bounding_boxes))</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First sort top-to-bottom by y</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    contours_with_boxes.sort(key<span class="op">=</span><span class="kw">lambda</span> b: b[<span class="dv">1</span>][<span class="dv">1</span>])  <span class="co"># b[1][1] = y</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Group contours into rows based on y</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> []</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    current_row <span class="op">=</span> []</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    last_y <span class="op">=</span> <span class="op">-</span>row_height</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c, (x, y, w, h) <span class="kw">in</span> contours_with_boxes:</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> y <span class="op">-</span> last_y <span class="op">&gt;</span> row_height:</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> current_row:</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                rows.append(current_row)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>            current_row <span class="op">=</span> [(c, (x, y, w, h))]</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>            last_y <span class="op">=</span> y</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>            current_row.append((c, (x, y, w, h)))</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> current_row:</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>        rows.append(current_row)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Now sort each row left to right</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    sorted_contours <span class="op">=</span> []</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> rows:</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>        row.sort(key<span class="op">=</span><span class="kw">lambda</span> b: b[<span class="dv">1</span>][<span class="dv">0</span>])  <span class="co"># sort by x</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        sorted_contours.extend([c <span class="cf">for</span> c, _ <span class="kw">in</span> row])</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sorted_contours</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="konturen-erkennen" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="konturen-erkennen"><span class="header-section-number">2.2</span> Konturen erkennen</h2>
+<div id="859fa37a" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>contour_height <span class="op">=</span> <span class="dv">23</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x_data_list <span class="op">=</span> []</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>response_list <span class="op">=</span> []</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Für die bessere Übersicht im Skript werden hier nur die ersten zwei Bilder ausgewertet. Wenn alle Bilder ausgewertet werden sollen, kommende Zeile auskommentieren und die alternative for-Schleife reinnehmen.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for im in liste_daten[:2]:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Alle Bilder auswerten</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> im <span class="kw">in</span> liste_daten:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(im)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> cv2.imread(im)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    gray <span class="op">=</span> cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    blur <span class="op">=</span> cv2.GaussianBlur(gray,(<span class="dv">5</span>,<span class="dv">5</span>),<span class="dv">0</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    thresh <span class="op">=</span> cv2.adaptiveThreshold(blur,<span class="dv">255</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">11</span>,<span class="dv">2</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find digits in image and create contours</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    contours, hierarchy <span class="op">=</span> cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    no_digits <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">15</span>))</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    plt.imshow(image, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    plt.title(im)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># jetzt rotes Viereck um jede Zahl zeichnen</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cnt <span class="kw">in</span> contours:</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> cv2.contourArea(cnt) <span class="op">&gt;</span> <span class="dv">50</span>:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            x, y, w, h <span class="op">=</span> cv2.boundingRect(cnt)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> h <span class="op">&gt;</span> contour_height:</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>                no_digits <span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                plt.gca().add_patch(plt.Rectangle((x, y), w, h, edgecolor<span class="op">=</span><span class="st">'red'</span>, facecolor<span class="op">=</span><span class="st">'none'</span>, linewidth<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Sortieren der Konturen von oben nach unten und links nach rechts</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> sort_contours_grid(contours)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cnt <span class="kw">in</span> contours:</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(cv2.contourArea(cnt))</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> cv2.contourArea(cnt) <span class="op">&gt;</span> <span class="dv">50</span>:</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            x, y, w, h <span class="op">=</span> cv2.boundingRect(cnt)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> h <span class="op">&gt;</span> contour_height:</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>                roi <span class="op">=</span> thresh[y:y<span class="op">+</span>h, x:x<span class="op">+</span>w]</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>                roismall <span class="op">=</span> cv2.resize(roi, (<span class="dv">28</span>, <span class="dv">28</span>))</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>                x_data_list.append(roismall)</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># now generate labels</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(no_digits, no_digits<span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create list of labels</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    list_of_digits <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> element <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(no_digits<span class="op">/</span><span class="dv">10</span>)):</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        response_list.append(list_of_digits)</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co">#finalize the data</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>x_data <span class="op">=</span> np.array(x_data_list)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> np.array(response_list)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> response.flatten()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert01.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert02.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert03.png
+210 21.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert04.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert05.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert06.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert07.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert08.png
+210 21.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert09.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert10.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert11.png
+210 21.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert12.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert13.png
+220 22.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png
+210 21.0</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-9.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-10.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-11.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-12.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-13.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-14.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-15.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Stichproben, ob die Bilder und Label passen:</p>
+<div id="252f6d92" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zahl ändern, um beliebige Schrift und Label-Kombination zu prüfen</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x_data <span class="op">=</span> np.array(x_data)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_data)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_data.shape)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.imshow(x_data[number], cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Label: </span><span class="sc">{</span>y_data[number]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[[  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  ...
+  [174 255 221 ...   0   0   0]
+  [ 53 255 255 ...   0   0   0]
+  [  0  48 165 ...   0   0   0]]
+
+ [[  0   0   0 ... 255 255 139]
+  [  0   0   0 ... 255 255 209]
+  [  0   0   0 ... 255 251  56]
+  ...
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]]
+
+ [[  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0 121 250 ...   0   0   0]
+  ...
+  [  0   0   0 ... 250 121   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]]
+
+ ...
+
+ [[ 91 255 255 ...   0   0   0]
+  [255 255 255 ...   0   0   0]
+  [200 255 255 ...   0   0   0]
+  ...
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]]
+
+ [[  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  ...
+  [255 255 255 ... 146   0   0]
+  [255 255 255 ...   0   0   0]
+  [  0  77 225 ...   0   0   0]]
+
+ [[  0   0   0 ...   0   0   0]
+  [  0   0   0 ...  83   0   0]
+  [  0   0   0 ... 141   0   0]
+  ...
+  [  0   0 141 ...   0   0   0]
+  [  0   0 141 ...   0   0   0]
+  [  0   0  28 ...   0   0   0]]]
+(3040, 28, 28)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="model-trainieren" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Model trainieren</h1>
+<p>Nun geht es ans Training des Models.</p>
+<p>Dazu werden die Inputdaten und Zielwerte zunächst gemeinsam zufällig gemischt, sodass die ursprüngliche Reihenfolge der Daten keine Rolle mehr spielt. Anschließend wird der Datensatz im Verhältnis 80 % zu 20 % in einen Trainings- und einen Testdatensatz aufgeteilt.</p>
+<p>Zum Schluss werden die Daten in einem gezippten Container-Format für mehrere NumPy-Arrays (einem .npz-Array) gespeichert. .npz ist ein kompaktes, effizientes Archivformat für mehrere NumPy-Arrays und eignet sich besonders für Trainings- und Testdaten in Machine-Learning-Anwendungen.</p>
+<div id="b88312a0" class="cell">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_array_randomly(x_arr, y_arr, train_ratio<span class="op">=</span><span class="fl">0.8</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> seed <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        np.random.seed(seed)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        x_arr.shape[<span class="dv">0</span>] <span class="op">==</span> y_arr.shape[<span class="dv">0</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'ja'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'shape of arrays does not match'</span>)   </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate shuffled indices</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.random.permutation(<span class="bu">len</span>(x_arr))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(x_arr) <span class="op">*</span> train_ratio)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    train_idx <span class="op">=</span> indices[:split_point]</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    test_idx <span class="op">=</span> indices[split_point:]</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    train_idy <span class="op">=</span> indices[:split_point]</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    test_idy <span class="op">=</span> indices[split_point:]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_arr[train_idx], x_arr[test_idx], y_arr[train_idx], y_arr[test_idx]</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> split_array_randomly(x_data, y_data)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_train.shape)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_test.shape)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train.shape)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_test.shape)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>np.savez(<span class="st">'output/handwrittendigits.npz'</span>, array1<span class="op">=</span>x_train, array2<span class="op">=</span>x_test, array3<span class="op">=</span>y_train, array4<span class="op">=</span>y_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>ja
+(2432, 28, 28)
+(608, 28, 28)
+(2432,)
+(608,)</code></pre>
+</div>
+</div>
+<p>Die Normalisierung der Bilddaten erfolgt, indem alle Pixelwerte durch 255 dividiert werden. Da Graustufenbilder Pixelintensitäten im Bereich von 0 bis 255 besitzen, werden die Werte durch diese Skalierung in den Bereich von 0 bis 1 überführt. Dadurch bleiben die relativen Helligkeitsunterschiede der Bilder erhalten, während die numerische Größenordnung der Eingabedaten deutlich reduziert wird.</p>
+<p>Diese Normalisierung ist wichtig, weil neuronale Netze mit kleinen, vergleichbaren Zahlenwerten effizienter und stabiler lernen. Große Eingangswerte können zu instabilen Gradienten und langsamem oder fehlerhaftem Training führen. Durch die Skalierung der Pixelwerte wird der Lernprozess beschleunigt, numerische Probleme vermieden und die Konvergenz des Modells verbessert.</p>
+<p>Das Model hat folgenden Aufbau</p>
+<figure style="text-align: center;" class="figure">
+<img src="Bilder/Skizze_NN.png" alt="NN" width="500" class="figure-img">
+<figcaption>
+Aufbau des Neuronalen Netzes zu Handschrifterkennung
+</figcaption>
+</figure>
+<p>Es folgt einem Aufbau, der sich für die Erkennung von Zahlen bewährt hat (P.Frey, D.Slate, Letter Recognition Using Holland-Style Adaptive Classifiers, Machine Learning, 6, 161-182 (1991)).</p>
+<p>Das mehrschichtiges Perzeptron also mit einer Eingabeschicht für 28 × 28 Pixel große Bilder, zwei versteckten Schichten mit ReLU-Aktivierungsfunktion und einer Ausgabeschicht mit zehn Neuronen und Softmax-Aktivierung definiert.</p>
+<p>Das Modell wird mit dem Adam-Optimierer und der Verlustfunktion für mehrklassige Klassifikation kompiliert und anschließend über mehrere Epochen (epochs=100 –&gt; 100 Epochen) trainiert, wobei ein Teil der Trainingsdaten (validation_split=0.3 –&gt; also 30%) zur Validierung verwendet wird. Der Trainingsverlauf wird anhand von Verlust und Genauigkeit mit matplotlib visualisiert. Nach dem Training wird das Modell mit einem separaten Testdatensatz evaluiert, um die Generalisierungsleistung zu überprüfen. Abschließend werden Klassenvorhersagen berechnet und in Form einer Konfusionsmatrix dargestellt, die zeigt, wie gut die einzelnen Ziffernklassen vom Modell unterschieden werden.</p>
+<div id="5f24a974" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the pixel values by dividing each pixel by 255 </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>x_train, x_test <span class="op">=</span> x_train <span class="op">/</span> <span class="fl">255.0</span>, x_test <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the 4-layer neural network</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> tf.keras.models.Sequential([</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Flatten(input_shape<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>)),  <span class="co"># 28x28 Pixel in Vektor konvertieren</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">'relu'</span>),  <span class="co"># Fully Connected Layer</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(<span class="dv">60</span>, activation<span class="op">=</span><span class="st">'relu'</span>),   <span class="co"># Fully Connected Layer</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>tf.keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">'softmax'</span>) <span class="co"># Fully Connected Layer</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model and set optimizer, loss function, and metrics</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Sollten wir hier für loss einfach MSE verwenden (weil wir es bisher auch gemacht haben?)</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># nur für mse</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> tf.keras.utils.to_categorical(y_train, <span class="dv">10</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> tf.keras.utils.to_categorical(y_test, <span class="dv">10</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'mse'</span>, metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, train or fit the model (with reduced output)</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>trained_model <span class="op">=</span> model.fit(x_train, y_train, validation_split<span class="op">=</span><span class="fl">0.3</span>, epochs<span class="op">=</span><span class="dv">100</span>, verbose<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize loss and accuracy history</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># log darstellen</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>plt.plot(trained_model.history[<span class="st">'loss'</span>], <span class="st">'r--'</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>plt.plot(trained_model.history[<span class="st">'accuracy'</span>], <span class="st">'b-'</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Training Loss'</span>, <span class="st">'Training Accuracy'</span>])</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epoch'</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percent'</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the result using the test set</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>evalResult <span class="op">=</span> model.evaluate(x_test, y_test, verbose<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Evaluation"</span>, evalResult)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>predicted <span class="op">=</span> model.predict(x_test)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>predicted_df <span class="op">=</span> pd.DataFrame(predicted)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Probabilities of all classes predicted from the model:"</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predicted_df.head(<span class="dv">10</span>))</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predicted class based on the highest probability:"</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>predicted_df.idxmax(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"===Confusion Matrix=="</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co">#confusion = tf.math.confusion_matrix(y_test, np.argmax(predicted, axis=1), num_classes=10)</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="co"># falls mse</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>confusion <span class="op">=</span> tf.math.confusion_matrix(np.argmax(y_test, axis<span class="op">=</span><span class="dv">1</span>),np.argmax(predicted, axis<span class="op">=</span><span class="dv">1</span>),num_classes<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>tf.<span class="bu">print</span>(confusion)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>tensor_values <span class="op">=</span> confusion.numpy()</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(tensor_values)</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/100</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>54/54 - 1s - 11ms/step - accuracy: 0.6481 - loss: 0.0482 - val_accuracy: 0.8247 - val_loss: 0.0259
+
+Epoch 2/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9154 - loss: 0.0144 - val_accuracy: 0.9000 - val_loss: 0.0157
+
+Epoch 3/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9559 - loss: 0.0081 - val_accuracy: 0.9151 - val_loss: 0.0129
+
+Epoch 4/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9724 - loss: 0.0050 - val_accuracy: 0.9192 - val_loss: 0.0125
+
+Epoch 5/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9853 - loss: 0.0030 - val_accuracy: 0.9384 - val_loss: 0.0108
+
+Epoch 6/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9888 - loss: 0.0021 - val_accuracy: 0.9370 - val_loss: 0.0095
+
+Epoch 7/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9935 - loss: 0.0015 - val_accuracy: 0.9329 - val_loss: 0.0107
+
+Epoch 8/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9947 - loss: 0.0011 - val_accuracy: 0.9329 - val_loss: 0.0099
+
+Epoch 9/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9965 - loss: 7.0565e-04 - val_accuracy: 0.9329 - val_loss: 0.0096
+
+Epoch 10/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9971 - loss: 5.8498e-04 - val_accuracy: 0.9329 - val_loss: 0.0096
+
+Epoch 11/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9976 - loss: 5.1092e-04 - val_accuracy: 0.9384 - val_loss: 0.0093
+
+Epoch 12/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9976 - loss: 4.5331e-04 - val_accuracy: 0.9370 - val_loss: 0.0091
+
+Epoch 13/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9971 - loss: 4.9298e-04 - val_accuracy: 0.9397 - val_loss: 0.0092
+
+Epoch 14/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.9948e-04 - val_accuracy: 0.9329 - val_loss: 0.0095
+
+Epoch 15/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.5088e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
+
+Epoch 16/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.2489e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
+
+Epoch 17/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.1652e-04 - val_accuracy: 0.9384 - val_loss: 0.0088
+
+Epoch 18/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.1285e-04 - val_accuracy: 0.9384 - val_loss: 0.0087
+
+Epoch 19/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0927e-04 - val_accuracy: 0.9384 - val_loss: 0.0088
+
+Epoch 20/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0647e-04 - val_accuracy: 0.9370 - val_loss: 0.0088
+
+Epoch 21/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0221e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
+
+Epoch 22/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 1.8965e-04 - val_accuracy: 0.9370 - val_loss: 0.0091
+
+Epoch 23/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.6077e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 24/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.4522e-04 - val_accuracy: 0.9370 - val_loss: 0.0086
+
+Epoch 25/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3426e-04 - val_accuracy: 0.9411 - val_loss: 0.0086
+
+Epoch 26/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3201e-04 - val_accuracy: 0.9411 - val_loss: 0.0085
+
+Epoch 27/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3080e-04 - val_accuracy: 0.9397 - val_loss: 0.0086
+
+Epoch 28/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2955e-04 - val_accuracy: 0.9397 - val_loss: 0.0086
+
+Epoch 29/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2854e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 30/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2769e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 31/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2699e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 32/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2634e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 33/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2581e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 34/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2526e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 35/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2481e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 36/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2445e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 37/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2402e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 38/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2368e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 39/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2334e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 40/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2306e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
+
+Epoch 41/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2286e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
+
+Epoch 42/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2249e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 43/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2227e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 44/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2201e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
+
+Epoch 45/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2179e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 46/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2158e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 47/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2140e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
+
+Epoch 48/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2124e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 49/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2106e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
+
+Epoch 50/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2089e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 51/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2075e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 52/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2061e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
+
+Epoch 53/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2049e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 54/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2035e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 55/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2023e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
+
+Epoch 56/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2011e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 57/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2001e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 58/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1991e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 59/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1981e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 60/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1972e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 61/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1963e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 62/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1956e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 63/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1947e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 64/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1940e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 65/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1932e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 66/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1926e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 67/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1919e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 68/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1913e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 69/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1907e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 70/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1901e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 71/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1895e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 72/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1890e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 73/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1886e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 74/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1881e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 75/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1875e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 76/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1871e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 77/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1867e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 78/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1862e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 79/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1859e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
+
+Epoch 80/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1855e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 81/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1851e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 82/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1848e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 83/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1844e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 84/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1841e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 85/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1838e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 86/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1835e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 87/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1833e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 88/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1830e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
+
+Epoch 89/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1827e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 90/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1825e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 91/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1823e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 92/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1820e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 93/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1818e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 94/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1815e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 95/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1813e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
+
+Epoch 96/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1811e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
+
+Epoch 97/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1809e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 98/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1807e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
+
+Epoch 99/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1805e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
+
+Epoch 100/100
+
+54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1804e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
+
+<span class="ansi-bold">19/19</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 510us/step - accuracy: 0.9408 - loss: 0.0094
+
+Evaluation [0.009433673694729805, 0.9407894611358643]
+
+<span class="ansi-bold">19/19</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 410us/step
+
+Probabilities of all classes predicted from the model:
+
+              0             1             2             3             4  \
+
+0  2.526843e-04  4.354239e-01  2.643513e-01  1.658910e-01  1.589445e-05   
+
+1  1.612345e-07  8.821746e-08  9.999872e-01  3.196846e-07  6.375690e-07   
+
+2  7.375176e-02  4.478063e-08  2.192372e-03  6.428381e-06  3.903753e-03   
+
+3  1.779804e-12  1.358636e-10  2.272538e-09  1.000000e+00  8.952478e-12   
+
+4  9.996637e-01  9.480694e-07  3.255459e-08  3.427941e-07  3.030497e-06   
+
+5  3.969459e-07  9.790200e-01  1.216492e-07  7.689033e-07  2.093297e-02   
+
+6  9.996408e-01  1.542300e-07  1.549465e-07  2.598439e-09  1.798020e-05   
+
+7  1.710401e-09  9.999719e-01  5.321231e-10  3.150909e-10  2.515290e-05   
+
+8  9.999930e-01  4.413643e-10  1.644773e-07  3.816119e-06  7.932149e-10   
+
+9  3.367884e-04  6.052625e-07  6.021576e-03  5.250574e-05  9.439963e-05   
+
+
+
+              5             6             7             8             9  
+
+0  2.124328e-03  1.975189e-06  5.524793e-05  8.778333e-03  1.231054e-01  
+
+1  2.672424e-06  1.227125e-07  2.446306e-08  8.536437e-06  1.823294e-07  
+
+2  5.799346e-04  8.753884e-01  2.267049e-06  4.413391e-02  4.123967e-05  
+
+3  8.434039e-09  2.721396e-14  3.404442e-10  1.678920e-10  1.414223e-08  
+
+4  2.513801e-04  7.513642e-05  3.333351e-07  2.882304e-06  2.331113e-06  
+
+5  5.485702e-08  8.245086e-07  2.943585e-05  1.870641e-06  1.351035e-05  
+
+6  5.787739e-07  3.388892e-04  1.475894e-09  1.258710e-06  2.293790e-07  
+
+7  1.060349e-11  6.937350e-09  2.291020e-06  1.631426e-08  7.322392e-07  
+
+8  1.972805e-06  1.296987e-09  1.238473e-08  9.523679e-07  7.753832e-09  
+
+9  2.088328e-04  1.147253e-06  9.913388e-01  1.614263e-03  3.310828e-04  
+
+Predicted class based on the highest probability:
+
+===Confusion Matrix==
+
+[[62 0 0 ... 0 0 0]
+
+ [0 61 1 ... 0 1 0]
+
+ [1 2 50 ... 0 0 0]
+
+ ...
+
+ [0 2 0 ... 60 0 0]
+
+ [0 0 0 ... 0 47 2]
+
+ [1 0 0 ... 0 1 60]]
+
+    0   1   2   3   4   5   6   7   8   9
+
+0  62   0   0   0   0   0   0   0   0   0
+
+1   0  61   1   0   0   0   0   0   1   0
+
+2   1   2  50   3   1   0   0   0   0   0
+
+3   0   0   2  62   0   1   0   1   1   0
+
+4   0   0   0   0  54   0   1   1   1   1
+
+5   0   0   0   0   0  56   1   0   1   0
+
+6   0   0   0   0   0   0  60   0   1   0
+
+7   0   2   0   0   2   0   0  60   0   0
+
+8   0   0   0   0   1   3   2   0  47   2
+
+9   1   0   0   1   0   0   0   0   1  60
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-7-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Die Grafik zeigt den Trainingsverlauf des neuronalen Netzes über die Epochen und stellt dar, wie sich Verlustfunktion und Klassifikationsgenauigkeit während des Lernprozesses entwickeln. Auf der x-Achse ist die Anzahl der Trainingsdurchläufe (Epochen) abgetragen, während die y-Achse den Wert der jeweiligen Kenngröße in logarithmischer Skalierung darstellt.</p>
+<p>Die rote, gestrichelte Kurve repräsentiert den Training Loss, also den Fehler des Modells auf den Trainingsdaten. Zu Beginn des Trainings ist der Fehler noch hoch, nimmt jedoch bereits nach wenigen Epochen stark ab. Im weiteren Verlauf sinkt der Loss kontinuierlich weiter und nähert sich sehr kleinen Werten an. Dies zeigt, dass das Modell die Trainingsdaten zunehmend besser approximiert und die Vorhersagen immer genauer werden.</p>
+<p>Die blaue, durchgezogene Kurve zeigt die Training Accuracy, also den Anteil korrekt klassifizierter Trainingsbeispiele. Bereits nach wenigen Epochen steigt die Genauigkeit stark an und erreicht nahezu 100 %. Anschließend bleibt sie über den restlichen Trainingsverlauf hinweg auf einem konstant hohen Niveau, was darauf hinweist, dass das Modell die Trainingsdaten sehr zuverlässig erkennt.</p>
+<figure style="text-align: center;" class="figure">
+<img src="Bilder/ConfusionMatrix_Numbers.png" alt="Konfusionsmatrix" width="500" class="figure-img">
+<figcaption>
+Konfusionsmatrix des trainierten Models zur Erkennung von Handgeschriebenen Zahlen.
+</figcaption>
+</figure>
+<p>Die Konfusionsmatrix gibt einen detaillierten Überblick darüber, wie gut das neuronale Netz die handgeschriebenen Ziffern im Testdatensatz erkennt. Dabei entsprechen die Zeilen den tatsächlichen Ziffernklassen (Ground Truth), während die Spalten die vom Modell vorhergesagten Klassen darstellen. Jeder Eintrag in der Matrix beschreibt, wie oft eine Ziffer einer bestimmten Klasse als eine andere – oder als die richtige – Klasse klassifiziert wurde.</p>
+<p>Die Werte auf der Hauptdiagonalen der Matrix stehen für korrekt erkannte Ziffern. Diese Diagonale dominiert deutlich, was zeigt, dass das Modell den Großteil der Testdaten richtig klassifiziert. So wurden beispielsweise alle vorhandenen Nullen korrekt als „0“ erkannt, und auch die meisten anderen Ziffern wie Einsen, Zweien, Siebenen oder Neunen wurden jeweils über 60-mal korrekt klassifiziert. Dies weist auf eine insgesamt sehr hohe Erkennungsgenauigkeit des Modells hin.</p>
+<p>Die <strong>Einträge außerhalb der Diagonalen</strong> kennzeichnen Fehlklassifikationen und machen sichtbar, bei welchen Ziffern das Modell Schwierigkeiten hat. So wurden einige Zweien fälschlicherweise als Achten erkannt, was auf ähnliche geschlossene oder geschwungene Formen in der Handschrift hindeuten kann. Ebenso zeigt die Matrix, dass Achten relativ häufig mit Sechsen verwechselt werden, da beide Ziffern in handgeschriebener Form ähnliche Rundungen aufweisen. Weitere, wenn auch seltene Verwechslungen treten beispielsweise zwischen Dreien und Siebenen auf, was auf ähnliche Strichführungen zurückzuführen sein kann.</p>
+<p>Die <strong>Zeilensummen</strong> der Matrix geben außerdem Auskunft über die Anzahl der Testbeispiele pro Klasse. Diese sind relativ gleichmäßig verteilt, sodass keine Ziffer im Testdatensatz stark über- oder unterrepräsentiert ist. Dadurch ist die Aussagekraft der Matrix besonders hoch.</p>
+<p>Insgesamt zeigt die Konfusionsmatrix nicht nur die hohe Gesamtleistung des neuronalen Netzes, sondern liefert auch wertvolle Informationen über die verbleibenden Fehler. Sie macht deutlich, welche Ziffern besonders zuverlässig erkannt werden und bei welchen Klassen aufgrund visueller Ähnlichkeiten noch Verbesserungen möglich sind, beispielsweise durch den Einsatz komplexerer Modelle oder zusätzlicher Trainingsdaten.</p>
+<p>Um das trainierte Netzwerk später auch auf anderen Computern nutzen zu können, lässt es sich praktischerweise speichern.</p>
+<div id="8a7bc8db" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code anzeigen</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_test), x_test.shape)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#now save the trained model for later use</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"output/my_model.keras"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="abschlussprojekt-überwachtes-lernen-zahlenerkennung-einer-digitalen-waage" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Abschlussprojekt Überwachtes Lernen: Zahlenerkennung einer digitalen Waage</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../notebooks/03-ueberwachtes_lernen.html" class="pagination-link" aria-label="03 – Überwachtes Lernen">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">03 – Überwachtes Lernen</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../notebooks/05-cnn.html" class="pagination-link" aria-label="05 – CNN">
+        <span class="nav-page-text">05 – CNN</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
