@@ -542,7 +542,11 @@ window.Quarto = {
 
 <section id="strategien-beim-nicht-überwachten-lernen" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Strategien beim nicht überwachten Lernen</h1>
-<p>Beim nicht überwachten Lernen ist das Ziel Muster, Strukturen oder Zusammenhänge in unbeschrifteten Daten erkennen. Hierzu werden verschiedene Statistische Methoden verwendet. Im Allgemeinen gibt es zwei grobe Hauptrichtungen: - Dimensionsreduktion - Clustering</p>
+<p>Beim nicht überwachten Lernen ist das Ziel Muster, Strukturen oder Zusammenhänge in unbeschrifteten Daten erkennen. Hierzu werden verschiedene Statistische Methoden verwendet. Im Allgemeinen gibt es zwei grobe Hauptrichtungen:</p>
+<ul>
+<li>Dimensionsreduktion</li>
+<li>Clustering</li>
+</ul>
 <section id="dimensionsreduktion" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="dimensionsreduktion"><span class="header-section-number">1.1</span> Dimensionsreduktion</h2>
 <p>Bei der Dimensionsreduktion werden Datensätzen unter Erhalt wesentlicher Informationen vereinfacht. Dies kann hilfreich sein, um Hauptunterscheidungsmerkmale zu definieren oder die Komplexität eines folgenden neuronalen Netzes zu reduzieren.</p>
@@ -568,7 +572,7 @@ window.Quarto = {
 <p>Die Hauptkomponentenanalyse (auch principal component analysis, PCA) rotiert das Koordinatensystem so, dass die Koordinaten des rotierten Systems in Richtung der Hauptachsen des Systems zeigen (Hauptachsentransformation). Zusätzlich werden die Koordinaten so verschoben, dass der Datenmittelpunkt auf dem Ursprung eines neuen Koordinatensystems zu liegen kommt. Die erste Achse des transformierten Systems in die Richtung, in der die Daten am stärksten streuen. Die zweite Achse zeigt orthogonal zur ersten Achse in Richtung der zweitgrößten Streuung, usw. (siehe auch <a href="https://de.wikipedia.org/wiki/Hauptkomponentenanalyse">https://de.wikipedia.org/wiki/Hauptkomponentenanalyse</a> ). Anders ausgedrückt zeigt die erste Achse in Richtung des Ergebnisses einer linearen Regression (genauer <a href="https://de.wikipedia.org/wiki/Deming-Regression">Deming-Regression</a>) durch die Daten.</p>
 <hr>
 <p><strong>Mathematisch gesehen bedeitet dies:</strong></p>
-<p>Ein Datensatz habe <span class="math inline">\(m\)</span> Feature und <span class="math inline">\(n\)</span> Messungen. Dann ist der i-te Datenpunkt ein Vektor $ ^m$</p>
+<p>Ein Datensatz habe <span class="math inline">\(m\)</span> Feature und <span class="math inline">\(n\)</span> Messungen. Dann ist der i-te Datenpunkt ein Vektor <span class="math inline">\(\in \mathbb{R}^m\)</span></p>
 <p>Sei <span class="math inline">\(\vec{X}_i \in \mathbb{R}^{m}\)</span> der Vektor aus den Werten der bestimmten Parametern (= eine Zeile im Datensatz)</p>
 <p><span class="math display">\[\vec{X}_i = \begin{pmatrix} x_{i1} \\ x_{i2} \\ ... \\ x_{im}\end{pmatrix}\]</span></p>
 <p>und <span class="math inline">\(\boldsymbol{X} \in \mathbb{R}^{n\times m}\)</span> die Matrix <span class="math display">\[\boldsymbol{X} = \begin{pmatrix} X_1^T \\ X_2^T \\ ... \\ X_n^T\end{pmatrix} = \begin{pmatrix} x_{11} &amp; x_{12} &amp; ... &amp; x_{1m} \\ x_{21} &amp; x_{22} &amp; ... &amp; x_{2m} \\ ... &amp; ...&amp; ...&amp; ...\\ x_{n1} &amp; x_{n2} &amp; ... &amp; x_{nm}  \end{pmatrix}\]</span></p>
