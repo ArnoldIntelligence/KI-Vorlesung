@@ -14,9 +14,9 @@
     - Setup Server / Skript (15 Minuten)
      
 2. Grundlagen
-        - Aktivierungfunktion
-        - Perceptron lernen
-        - Adaline Perceptron        
+    - Aktivierungfunktion
+    - Perceptron lernen
+    - Adaline Perceptron        
    
     - Übungen
         - Grundidee Perceptron, Python Implementierung, Training (45 Minuten)
