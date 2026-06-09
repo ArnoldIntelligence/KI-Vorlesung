@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,19 +68,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../notebooks/02-perzeptron.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-27b4efb78d17f425a267faff4c303118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-9f8d1a3f9077d069773561c0b70d20ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0123dc0089691b10079e54b56e55408b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9f8d1a3f9077d069773561c0b70d20ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -605,7 +604,7 @@ G(\boldsymbol{x},y)
 <div id="cc9073b6" class="cell" data-execution_count="50">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
@@ -645,7 +644,7 @@ G(\boldsymbol{x},y)
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.xlim([-3,3])</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylim([-3,3])</span></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -659,7 +658,7 @@ G(\boldsymbol{x},y)
 <div id="d4ade13a" class="cell" data-execution_count="51">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x0s <span class="op">=</span> [<span class="dv">4</span>]</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x0s <span class="op">=</span> [<span class="dv">4</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y0s <span class="op">=</span> [<span class="op">-</span><span class="fl">0.9</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.25</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -675,7 +674,7 @@ G(\boldsymbol{x},y)
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.imshow(f, extent<span class="op">=</span>[<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.scatter(x0s[<span class="dv">0</span>], y0s[<span class="dv">0</span>], marker<span class="op">=</span><span class="st">'x'</span>, s<span class="op">=</span><span class="dv">120</span>, c<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x0s, y0s, <span class="st">'o'</span>, ms<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'red'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x0s, y0s, <span class="st">'o'</span>, ms<span class="op">=</span><span class="dv">2</span>, color<span class="op">=</span><span class="st">'red'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -689,13 +688,13 @@ G(\boldsymbol{x},y)
 <div id="4dcc3a79" class="cell" data-execution_count="52">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x0s, label<span class="op">=</span><span class="st">'x'</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x0s, label<span class="op">=</span><span class="st">'x'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.plot(y0s, label<span class="op">=</span><span class="st">'y'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -732,7 +731,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <div id="49ed7ed7" class="cell" data-execution_count="53">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect Match</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect Match</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y = x1*3.4 + x2*0.7 - x3*2.3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Xtrain <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">4</span>], [<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>]]</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>Ytrain <span class="op">=</span> [<span class="fl">3.4</span><span class="op">+</span><span class="fl">1.4</span><span class="op">-</span><span class="fl">6.9</span>, <span class="fl">6.4</span><span class="op">-</span><span class="fl">2.1</span><span class="op">-</span><span class="fl">9.2</span>, <span class="fl">13.6</span><span class="op">+</span><span class="fl">1.4</span><span class="op">+</span><span class="dv">0</span>]</span>
@@ -757,7 +756,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    cw <span class="op">=</span> cw <span class="op">-</span> alpha<span class="op">*</span>cg</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    w_history.append(cw)</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>w_history <span class="op">=</span> np.array(w_history)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>w_history <span class="op">=</span> np.array(w_history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.0 -15.0 [0. 0. 0. 0.]
@@ -785,7 +784,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <div id="422daaf0" class="cell" data-execution_count="54">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f_history <span class="op">=</span> np.array([forward(cx, w) <span class="op">-</span> cy <span class="cf">for</span> w <span class="kw">in</span> w_history])</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f_history <span class="op">=</span> np.array([forward(cx, w) <span class="op">-</span> cy <span class="cf">for</span> w <span class="kw">in</span> w_history])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">5</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>sc <span class="op">=</span> plt.scatter(w_history[:, <span class="dv">0</span>], w_history[:, <span class="dv">1</span>], c<span class="op">=</span>f_history, s<span class="op">=</span><span class="dv">60</span>)</span>
@@ -798,7 +797,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="vs">r"Gewichtspfad im 2D-Raum </span><span class="kw">(</span><span class="dv">$</span><span class="vs">w_0</span><span class="dv">$</span><span class="vs"> vs</span><span class="dv">.</span><span class="vs"> </span><span class="dv">$</span><span class="vs">w_1</span><span class="dv">$</span><span class="kw">)</span><span class="vs">"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -817,7 +816,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <div id="a21f024e" class="cell" data-execution_count="56">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect Match</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect Match</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y = x1*3.4 + x2*0.7 - x3*2.3</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Xtrain <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">4</span>], [<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>]]</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Ytrain <span class="op">=</span> [<span class="fl">3.4</span><span class="op">+</span><span class="fl">1.4</span><span class="op">-</span><span class="fl">6.9</span>, <span class="fl">6.4</span><span class="op">-</span><span class="fl">2.1</span><span class="op">-</span><span class="fl">9.2</span>, <span class="fl">13.6</span><span class="op">+</span><span class="fl">1.4</span><span class="op">+</span><span class="dv">0</span>]</span>
@@ -843,7 +842,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    cw <span class="op">=</span> cw <span class="op">-</span> alpha<span class="op">*</span>cg</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    w_history.append(cw)</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>w_history <span class="op">=</span> np.array(w_history)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>w_history <span class="op">=</span> np.array(w_history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0. 0. 0.] [  2.1   4.9 -15. ] [0. 0. 0. 0.]
@@ -1058,12 +1057,12 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <h2 data-number="2.1" class="anchored" data-anchor-id="aufgabe-2-xor"><span class="header-section-number">2.1</span> Aufgabe 2: XOR</h2>
 <p>Stellen Sie die logische Funktion XOR durch AND, OR und NOT dar.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Lösung anzeigen
+Lösung anzeigen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1152,7 +1151,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <div id="654a9537" class="cell" data-execution_count="57">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Eingaben: 4 Punkte</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
@@ -1166,7 +1165,7 @@ E = \frac{1}{2}\left(y - \hat{y}\right)^2 = \frac{1}{2}\left(\boldsymbol{\hat{x}
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([[<span class="dv">0</span>], [<span class="dv">1</span>], [<span class="dv">1</span>], [<span class="dv">0</span>]], dtype<span class="op">=</span><span class="bu">float</span>)</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'X:'</span>, X)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'y:'</span>, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'y:'</span>, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>X: [[0. 0.]
@@ -1300,7 +1299,7 @@ o = \sigma\!\left(
 <div id="52efa812" class="cell" data-execution_count="58">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_id(z):</span>
@@ -1326,13 +1325,13 @@ o = \sigma\!\left(
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    cache <span class="op">=</span> (X1, z1, a1, h, z2, a2)    <span class="co"># Werte zwischenspeichern</span></span>
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a2, cache</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a2, cache</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="eb709433" class="cell" data-execution_count="59">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># forward-pass testen</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># forward-pass testen</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>WIH <span class="op">=</span> np.array([</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">10</span>,  <span class="dv">30</span>],   <span class="co"># Bias w0</span></span>
@@ -1354,7 +1353,7 @@ o = \sigma\!\left(
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>])</span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>y,_ <span class="op">=</span> predict(X, WIH, WHO)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[0.26895927]
@@ -1450,7 +1449,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <div id="1f4e01d0" class="cell" data-execution_count="60">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_dsigmoid(z):</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_dsigmoid(z):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>z))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>t)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1491,13 +1490,13 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> WIH, WHO, losses</span>
 <span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="e8482e89" class="cell" data-execution_count="61">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>],</span>
@@ -1518,7 +1517,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>plt.plot(losses)</span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'no of iteration'</span>)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'loss'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'loss'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 0.2224355363072268
@@ -1557,7 +1556,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <div id="d7112e0f" class="cell" data-execution_count="62">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot(X, y, WIH, WHO):</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot(X, y, WIH, WHO):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> y.ravel()</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1589,7 +1588,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
 <span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(cont)</span>
 <span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>plot(X, y, WIH, WHO)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>plot(X, y, WIH, WHO)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1606,7 +1605,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <div id="c91cc598" class="cell" data-execution_count="63">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f_id(z):</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z</span>
@@ -1679,13 +1678,13 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> WIH, WHO, losses</span>
 <span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="521ef79d" class="cell" data-execution_count="64">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="dv">0</span>],</span>
@@ -1702,7 +1701,7 @@ E &amp;= \frac{1}{2} \left( \hat{y} - o \right)^2 \\
 <span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>pred, _ <span class="op">=</span> predict(X, WIH, WHO)</span>
 <span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pred)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(losses[<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(losses[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 0.2478382373032334
@@ -1742,31 +1741,31 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 \]</span></p>
 <p>Im Wertebereich <span class="math inline">\(x \in [-2.5; 2.5]\)</span>.</p>
 <div id="9bb5b7c4" class="cell" data-execution_count="65">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notwendige Pakete importieren</span></span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notwendige Pakete importieren</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Definition der / des ‘wahren’ Funktion / Modells.</p>
 <div id="061d8671" class="cell" data-execution_count="66">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> true_fun(x):</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">2.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">1.0</span><span class="op">*</span>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> true_fun(x):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">2.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">1.0</span><span class="op">*</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Ziel ist es, diese Funktion anhand von Messdaten zu simulieren. Dabei wird angenommen, dass die oben definierte Funktion dem zugrunde liegenden „wahren“ Modell entspricht. In realen Messprozessen treten jedoch statistische Messfehler auf, sodass die beobachteten Daten von den tatsächlichen Funktionswerten abweichen.</p>
 <p>Um diesen Effekt nachzubilden, wird den Funktionswerten ein simuliertes Rauschen im Wertebereich hinzugefügt. Auf diese Weise entstehen realitätsnahe Datenpunkte, die die Unsicherheiten und Streuungen echter Messungen widerspiegeln.</p>
 <div id="f20bb3f6" class="cell" data-execution_count="68">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">300</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rng.uniform(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, size<span class="op">=</span>(N, <span class="dv">1</span>))</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> true_fun(X) <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="fl">0.8</span>, size<span class="op">=</span>(N, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> true_fun(X) <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="fl">0.8</span>, size<span class="op">=</span>(N, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="d819072f" class="cell" data-execution_count="70">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grafische Darstellung der Funktion</span></span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grafische Darstellung der Funktion</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X, Y, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X, Eingangswert"</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y, Modellwert"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1777,22 +1776,22 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 </div>
 <p>Wie bereits zuvor, werden die Daten in 80% Trainingsdaten und 20% Testdaten aufgeteilt.</p>
 <div id="b83f3656" class="cell" data-execution_count="71">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train/Test-Split</span></span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train/Test-Split</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>perm <span class="op">=</span> rng.permutation(N)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>split <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.8</span> <span class="op">*</span> N)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>Xtr, Ytr <span class="op">=</span> X[perm[:split]], Y[perm[:split]]</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>Xte, Yte <span class="op">=</span> X[perm[split:]], Y[perm[split:]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>Xte, Yte <span class="op">=</span> X[perm[split:]], Y[perm[split:]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="training" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="training"><span class="header-section-number">3.1</span> Training</h2>
 <p>Im Folgenden werden die Daten mit einem einfachen Netz traniert.</p>
 <div id="f724055f" class="cell" data-execution_count="72">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xtr, Ytr, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Trainingsdaten"</span>)</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xtr, Ytr, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Trainingsdaten"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xte, Yte, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Testdaten"</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X, Eingangswert"</span>)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y, Modellwert"</span>)</span>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1803,7 +1802,7 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 </div>
 <p>Für das Neuronale Netz werden wieder Hilfsfunktionen definiert, die die Aktivierungsfunktion und deren Ableitung darstellen. In diesem Fall soll es <span class="math inline">\(\tanh\)</span> sein. Als Kostenfunktion wird wieder der mittlere quadratische Fehler verwendet. Darum werden hier auch dieser und seine Ableitung als Hilfsfunktion definiert.</p>
 <div id="7b41845c" class="cell" data-execution_count="73">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(z): </span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(z): </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.tanh(z)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dtanh(z):</span>
@@ -1814,12 +1813,12 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> ((yhat <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mse_grad(yhat, y):</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Im nächsten Schritt wird das neuronale Netzwerk definiert. Hierzu wird eine eigene Klasse implementiert, die die Struktur und Funktionsweise des Netzes beschreibt.</p>
 <p>Die Klasse NN dient zur Definition eines neuronalen Netzwerks, bestehend aus einem Eingangslayer, zwei versteckten Layern sowie einem Ausgabelayer.</p>
 <div id="9f705270" class="cell" data-execution_count="74">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NN:</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NN:</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>        rng <span class="op">=</span> np.random.default_rng(seed)</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Glorot-Normal (gut für tanh)</span></span>
@@ -1876,10 +1875,10 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 <span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>, grads, lr):</span>
 <span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W1 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W1"</span>]<span class="op">;</span> <span class="va">self</span>.b1 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b1"</span>]</span>
 <span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W2 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W2"</span>]<span class="op">;</span> <span class="va">self</span>.b2 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b2"</span>]</span>
-<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W3"</span>]<span class="op">;</span> <span class="va">self</span>.b3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b3"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W3"</span>]<span class="op">;</span> <span class="va">self</span>.b3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b3"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="077c9dcc" class="cell" data-execution_count="75">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NN(in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>)</span>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NN(in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">800</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">0.03</span></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> <span class="dv">64</span></span>
@@ -1905,7 +1904,7 @@ f(x) = \frac{1}{2}x^3 - 2x^2 + x
 <span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    test_hist.append(mse(yhat_te, Yte))</span>
 <span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ep <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> ep <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss"> | MSE train </span><span class="sc">{</span>train_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss"> | MSE test </span><span class="sc">{</span>test_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss"> | MSE train </span><span class="sc">{</span>train_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss"> | MSE test </span><span class="sc">{</span>test_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch   1 | MSE train 16.8916 | MSE test 16.9912
 Epoch 100 | MSE train 0.9459 | MSE test 1.4135
@@ -1922,19 +1921,19 @@ Epoch 800 | MSE train 0.3901 | MSE test 0.4523</code></pre>
 <section id="test" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="test"><span class="header-section-number">3.2</span> Test</h2>
 <div id="9396c895" class="cell" data-execution_count="76">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Denormierte Vorhersagen auf Test</span></span>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Denormierte Vorhersagen auf Test</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>yhat_te_dn <span class="op">=</span> yhat_te</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>mse_test_dn <span class="op">=</span> mse(yhat_te_dn, Yte)</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ss_res <span class="op">=</span> <span class="bu">float</span>(((yhat_te_dn <span class="op">-</span> Yte) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>ss_tot <span class="op">=</span> <span class="bu">float</span>(((Yte <span class="op">-</span> Yte.mean()) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> <span class="fl">1.0</span> <span class="op">-</span> ss_res <span class="op">/</span> ss_tot</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Denormierte Test-MSE: </span><span class="sc">{</span>mse_test_dn<span class="sc">:.4f}</span><span class="ss"> | R^2: </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Denormierte Test-MSE: </span><span class="sc">{</span>mse_test_dn<span class="sc">:.4f}</span><span class="ss"> | R^2: </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Denormierte Test-MSE: 0.4523 | R^2: 0.972</code></pre>
 </div>
 </div>
 <div id="89d30d31" class="cell" data-execution_count="77">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit-Kurve gegen wahres Modell und Datenpunkte</span></span>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit-Kurve gegen wahres Modell und Datenpunkte</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>xgrid <span class="op">=</span> np.linspace(X.<span class="bu">min</span>()<span class="op">-</span><span class="fl">1.3</span>, X.<span class="bu">max</span>()<span class="op">+</span><span class="fl">1.3</span>, <span class="dv">400</span>, dtype<span class="op">=</span>np.float32).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>ygrid, _ <span class="op">=</span> model.forward(xgrid)</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1947,7 +1946,7 @@ Epoch 800 | MSE train 0.3901 | MSE test 0.4523</code></pre>
 <span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y"</span>)</span>
 <span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1977,7 +1976,7 @@ f(x) = 25x^3 - 100x^2 + 50x
 <p>Nach der Modellvorhersage müssen die zuvor skalierten Werte anschließend wieder in die ursprüngliche Skala zurücktransformiert werden, um interpretierbare Ergebnisse zu erhalten.</p>
 <p>Dies wird im Folgenden mit der sogenannten <a href="https://de.wikipedia.org/wiki/Standardisierung_(Statistik)">Standardisierung</a> anhand dieses Beispiels dargestellt.</p>
 <div id="3f50ebb4" class="cell" data-execution_count="80">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> true_fun(x):</span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> true_fun(x):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">25</span><span class="op">*</span>x<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="fl">100.0</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="fl">50.0</span><span class="op">*</span>x</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
@@ -1990,7 +1989,7 @@ f(x) = 25x^3 - 100x^2 + 50x
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>plt.scatter(X, Y, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X, Eingangswert"</span>)</span>
 <span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y, Modellwert"</span>)</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2000,7 +1999,7 @@ f(x) = 25x^3 - 100x^2 + 50x
 </div>
 </div>
 <div id="12b6468a" class="cell" data-execution_count="81">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train/Test-Split</span></span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train/Test-Split</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>perm <span class="op">=</span> rng.permutation(N)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>split <span class="op">=</span> <span class="bu">int</span>(<span class="fl">0.8</span> <span class="op">*</span> N)</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>Xtr, Ytr <span class="op">=</span> X[perm[:split]], Y[perm[:split]]</span>
@@ -2015,15 +2014,15 @@ f(x) = 25x^3 - 100x^2 + 50x
 <span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>Xs_tr <span class="op">=</span> (Xtr <span class="op">-</span> x_mean) <span class="op">/</span> x_std</span>
 <span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>Xs_te <span class="op">=</span> (Xte <span class="op">-</span> x_mean) <span class="op">/</span> x_std</span>
 <span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>Ys_tr <span class="op">=</span> (Ytr <span class="op">-</span> y_mean) <span class="op">/</span> y_std</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>Ys_te <span class="op">=</span> (Yte <span class="op">-</span> y_mean) <span class="op">/</span> y_std</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>Ys_te <span class="op">=</span> (Yte <span class="op">-</span> y_mean) <span class="op">/</span> y_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="e1430c76" class="cell" data-execution_count="82">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xs_tr, Ys_tr, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Trainingsdaten"</span>)</span>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xs_tr, Ys_tr, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Trainingsdaten"</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xs_te, Ys_te, s<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">"Testdaten"</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X, Eingangswert, normiert"</span>)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y, Modellwert, normiert"</span>)</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2033,7 +2032,7 @@ f(x) = 25x^3 - 100x^2 + 50x
 </div>
 </div>
 <div id="6eb6b319" class="cell" data-execution_count="83">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier werden wieder die auch schon zuvor verwendeten Hilfsfunktionen definiert</span></span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hier werden wieder die auch schon zuvor verwendeten Hilfsfunktionen definiert</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(z): </span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.tanh(z)</span>
@@ -2046,10 +2045,10 @@ f(x) = 25x^3 - 100x^2 + 50x
 <span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> ((yhat <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
 <span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mse_grad(yhat, y):</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="7770aec4" class="cell" data-execution_count="84">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erneut das neuronale Netz von zuvor nutzen</span></span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erneut das neuronale Netz von zuvor nutzen</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NN:</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>):</span>
@@ -2108,10 +2107,10 @@ f(x) = 25x^3 - 100x^2 + 50x
 <span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> step(<span class="va">self</span>, grads, lr):</span>
 <span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W1 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W1"</span>]<span class="op">;</span> <span class="va">self</span>.b1 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b1"</span>]</span>
 <span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W2 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W2"</span>]<span class="op">;</span> <span class="va">self</span>.b2 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b2"</span>]</span>
-<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W3"</span>]<span class="op">;</span> <span class="va">self</span>.b3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b3"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.W3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"W3"</span>]<span class="op">;</span> <span class="va">self</span>.b3 <span class="op">-=</span> lr <span class="op">*</span> grads[<span class="st">"b3"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="2998459d" class="cell" data-execution_count="85">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Training des Netzes</span></span>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Training des Netzes</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> NN(in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> <span class="dv">800</span></span>
@@ -2139,7 +2138,7 @@ f(x) = 25x^3 - 100x^2 + 50x
 <span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>    test_hist.append(mse(yhat_te, Ys_te))</span>
 <span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ep <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> ep <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss"> | MSE train </span><span class="sc">{</span>train_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss"> | MSE test </span><span class="sc">{</span>test_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>ep<span class="sc">:3d}</span><span class="ss"> | MSE train </span><span class="sc">{</span>train_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss"> | MSE test </span><span class="sc">{</span>test_hist[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch   1 | MSE train 0.3818 | MSE test 0.3695
 Epoch 100 | MSE train 0.1391 | MSE test 0.0981
@@ -2153,19 +2152,19 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 </div>
 </div>
 <div id="87bc7aeb" class="cell" data-execution_count="86">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Denormierte Vorhersagen auf Test</span></span>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Denormierte Vorhersagen auf Test</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>yhat_te_dn <span class="op">=</span> yhat_te <span class="op">*</span> y_std <span class="op">+</span> y_mean</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>mse_test_dn <span class="op">=</span> mse(yhat_te_dn, Yte)</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>ss_res <span class="op">=</span> <span class="bu">float</span>(((yhat_te_dn <span class="op">-</span> Yte) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>ss_tot <span class="op">=</span> <span class="bu">float</span>(((Yte <span class="op">-</span> Yte.mean()) <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>())</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> <span class="fl">1.0</span> <span class="op">-</span> ss_res <span class="op">/</span> ss_tot</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Denormierte Test-MSE: </span><span class="sc">{</span>mse_test_dn<span class="sc">:.4f}</span><span class="ss"> | R^2: </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Denormierte Test-MSE: </span><span class="sc">{</span>mse_test_dn<span class="sc">:.4f}</span><span class="ss"> | R^2: </span><span class="sc">{</span>r2<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Denormierte Test-MSE: 269.7455 | R^2: 0.993</code></pre>
 </div>
 </div>
 <div id="3fbf4c4e" class="cell" data-execution_count="87">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit-Kurve gegen wahres Modell und Datenpunkte</span></span>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit-Kurve gegen wahres Modell und Datenpunkte</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>xgrid <span class="op">=</span> np.linspace(X.<span class="bu">min</span>()<span class="op">-</span><span class="fl">1.3</span>, X.<span class="bu">max</span>()<span class="op">+</span><span class="fl">1.3</span>, <span class="dv">400</span>, dtype<span class="op">=</span>np.float32).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>xgrid_s <span class="op">=</span> (xgrid <span class="op">-</span> x_mean) <span class="op">/</span> x_std</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>ygrid_s, _ <span class="op">=</span> model.forward(xgrid_s)</span>
@@ -2180,7 +2179,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Y"</span>)</span>
 <span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2190,7 +2189,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 </div>
 </div>
 <div id="6e7dd020" class="cell" data-execution_count="88">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lernkurven (MSE auf skalierten Targets)</span></span>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lernkurven (MSE auf skalierten Targets)</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>fig, [ax1, ax2] <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>))</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>ax1.plot(train_hist, label<span class="op">=</span><span class="st">"Trainingsdaten"</span>)</span>
@@ -2210,7 +2209,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>ax2.grid()</span>
 <span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>ax2.set_yscale(<span class="st">'log'</span>)</span>
 <span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2232,7 +2231,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <section id="beispiel-mit-minmaxsscaler" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="beispiel-mit-minmaxsscaler"><span class="header-section-number">4.4</span> Beispiel mit MinMaxSscaler</h2>
 <div id="3a197bab" class="cell" data-execution_count="89">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2254,10 +2253,10 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Testdaten nur transformieren</span></span>
 <span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>Xte_scaled <span class="op">=</span> x_scaler.transform(Xte)</span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>Yte_scaled <span class="op">=</span> y_scaler.transform(Yte)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>Yte_scaled <span class="op">=</span> y_scaler.transform(Yte)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="bfe09f8f" class="cell" data-execution_count="90">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grafische Darstellung der Original und skalierten Daten</span></span>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#grafische Darstellung der Original und skalierten Daten</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2282,7 +2281,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid()</span>
 <span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2292,10 +2291,10 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 </div>
 </div>
 <div id="44356817" class="cell" data-execution_count="91">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rücktransformation</span></span>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rücktransformation</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>Y_pred_scaled <span class="op">=</span> Yte_scaled  <span class="co"># beziehungsweise model.predict(Xte_scaled)</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>Y_pred <span class="op">=</span> y_scaler.inverse_transform(Y_pred_scaled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>Y_pred <span class="op">=</span> y_scaler.inverse_transform(Y_pred_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-7-minmaxscaler" class="level2" data-number="4.5">
@@ -2311,7 +2310,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <h2 data-number="5.1" class="anchored" data-anchor-id="aufgabe-8-polynom-fitten"><span class="header-section-number">5.1</span> Aufgabe 8: Polynom fitten</h2>
 <p>In der Datei <a href="Daten/UeberwachtesLernen/messwerte.txt">messwerte.txt</a> finden Sie 15 Messwerte entsprechend einer leicht verrauschten Normalverteilung. Nutzen Sie <code>numpy.polyfit</code>, um Polynome an die Messwerte zu fitten. Erstellen Sie Fits von Grad 1 bis zur Interpolation bei Grad 14 und plotten Sie diese.</p>
 <div id="1654749b" class="cell" data-execution_count="92">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.loadtxt(<span class="st">'Daten/UeberwachtesLernen/messwerte.txt'</span>)</span>
@@ -2333,7 +2332,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
 <span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
 <span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    plt.grid()<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    plt.grid()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2357,7 +2356,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <div id="e97b4855" class="cell">
 <details class="code-fold">
 <summary>Bekanntes NN und Aktivierungsfunktionen anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die NN-Klasse wird hier erneut definiert, damit die Aufgaben unabhängig ausführbar sind</span></span>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die NN-Klasse wird hier erneut definiert, damit die Aufgaben unabhängig ausführbar sind</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NN:</span>
 <span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>):</span>
@@ -2424,13 +2423,13 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> ((yhat <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
 <span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mse_grad(yhat, y):</span>
-<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="e1e522b1" class="cell" data-execution_count="94">
 <details class="code-fold">
 <summary>Lösung anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">42</span>)</span>
@@ -2493,7 +2492,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb52-61"><a href="#cb52-61" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
 <span id="cb52-62"><a href="#cb52-62" aria-hidden="true" tabindex="-1"></a>    ax.grid()</span>
 <span id="cb52-63"><a href="#cb52-63" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Aufgabe 8 (a): Overfitting – Training-Loss sinkt, Test-Loss steigt'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb52-64"><a href="#cb52-64" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb52-64"><a href="#cb52-64" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2513,7 +2512,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <div id="bcce596c" class="cell">
 <details class="code-fold">
 <summary>Bekanntes NN und Aktivierungsfunktionen anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die NN-Klasse wird hier erneut definiert, damit die Aufgaben unabhängig ausführbar sind</span></span>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Die NN-Klasse wird hier erneut definiert, damit die Aufgaben unabhängig ausführbar sind</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NN:</span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>):</span>
@@ -2580,7 +2579,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> ((yhat <span class="op">-</span> y) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
 <span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mse_grad(yhat, y):</span>
-<span id="cb53-68"><a href="#cb53-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb53-68"><a href="#cb53-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (yhat <span class="op">-</span> y) <span class="op">/</span> y.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2594,10 +2593,10 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <li>Definieren Sie eine Variable l2</li>
 <li>Addieren Sie im Code nach der Berechnung des Gradienten in folgender Weise den Strafterm:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> l2 <span class="op">&gt;</span> <span class="fl">0.0</span>:</span>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> l2 <span class="op">&gt;</span> <span class="fl">0.0</span>:</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    dW3 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W3</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    dW2 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W2</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    dW1 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Trainieren Sie das Netz aus Aufgabe (a) (2000 Epochen, 15 Punkte) mit verschiedenen Werten:
 <ul>
@@ -2626,7 +2625,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <div id="b983b84f" class="cell" data-execution_count="117">
 <details class="code-fold">
 <summary>Um Dropout erweitertes Netz</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NNDropout(NN):</span>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NNDropout(NN):</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_dim<span class="op">=</span><span class="dv">1</span>, h1<span class="op">=</span><span class="dv">20</span>, h2<span class="op">=</span><span class="dv">20</span>, seed<span class="op">=</span><span class="dv">1</span>, dropout_rate<span class="op">=</span><span class="fl">0.0</span>):</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(in_dim, h1, h2, seed)</span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dropout_rate <span class="op">=</span> dropout_rate</span>
@@ -2674,13 +2673,13 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb55-46"><a href="#cb55-46" aria-hidden="true" tabindex="-1"></a>            dW2 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W2</span>
 <span id="cb55-47"><a href="#cb55-47" aria-hidden="true" tabindex="-1"></a>            dW1 <span class="op">+=</span> l2 <span class="op">*</span> <span class="va">self</span>.W1</span>
 <span id="cb55-48"><a href="#cb55-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-49"><a href="#cb55-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"W1"</span>: dW1, <span class="st">"b1"</span>: db1, <span class="st">"W2"</span>: dW2, <span class="st">"b2"</span>: db2, <span class="st">"W3"</span>: dW3, <span class="st">"b3"</span>: db3}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb55-49"><a href="#cb55-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"W1"</span>: dW1, <span class="st">"b1"</span>: db1, <span class="st">"W2"</span>: dW2, <span class="st">"b2"</span>: db2, <span class="st">"W3"</span>: dW3, <span class="st">"b3"</span>: db3}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="4bad686b" class="cell" data-execution_count="118">
 <details class="code-fold">
 <summary>Lösung anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dropout_values <span class="op">=</span> [<span class="fl">0.0</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>]</span>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>dropout_values <span class="op">=</span> [<span class="fl">0.0</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>epochs_d <span class="op">=</span> <span class="dv">2000</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>lr_d     <span class="op">=</span> <span class="fl">0.05</span></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2711,7 +2710,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
 <span id="cb56-29"><a href="#cb56-29" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
 <span id="cb56-30"><a href="#cb56-30" aria-hidden="true" tabindex="-1"></a>    ax.grid()</span>
 <span id="cb56-31"><a href="#cb56-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb56-32"><a href="#cb56-32" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2792,14 +2791,13 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -2814,7 +2812,7 @@ Epoch 800 | MSE train 0.0035 | MSE test 0.0034</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ArnoldIntelligence\.github\.io\/KI-Vorlesung\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

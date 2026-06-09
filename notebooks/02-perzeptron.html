@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,19 +68,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../notebooks/01-einleitung.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-27b4efb78d17f425a267faff4c303118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-9e05abaf0c4d7ef785fecc2ac9f6505e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-9f8d1a3f9077d069773561c0b70d20ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0123dc0089691b10079e54b56e55408b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9f8d1a3f9077d069773561c0b70d20ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -606,7 +605,7 @@ Aufbau einer Nervenzelle. (CC BY-SA 4.0, https://commons.wikimedia.org/w/index.p
 <div id="82a197c8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Wertebereich definieren</span></span>
@@ -630,7 +629,7 @@ Aufbau einer Nervenzelle. (CC BY-SA 4.0, https://commons.wikimedia.org/w/index.p
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Ausgabe'</span>)</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>plt.yticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.2</span>, <span class="fl">1.2</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Aktivierungsfunktion $</span><span class="er">\</span><span class="st">phi$"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Aktivierungsfunktion $</span><span class="er">\</span><span class="st">phi$"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -656,12 +655,12 @@ Roboter mit zwei Sensoren
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="wertetabelle"><span class="header-section-number">1.1.1</span> Wertetabelle</h3>
 <p>Stellen Sie die dazugehöhrende Wertetabelle auf!</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Lösung aufklappen
+Lösung aufklappen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -711,12 +710,12 @@ Roboter mit zwei Sensoren
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="forward-berechnung"><span class="header-section-number">1.1.2</span> Forward-Berechnung</h3>
 <p>Beschreiben Sie die Eingangsdaten in Matrixdarstellung <span class="math inline">\(\mathbf{X}\)</span> und die gewünschten Ausgabedaten <span class="math inline">\(\boldsymbol{y}\)</span> nach Wertetabelle. Bestimmen Sie passende Gewichte , so dass eine Gerade die Daten nach gewünschtem Ergebnis trennt.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Lösung aufklappen
+Lösung aufklappen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -737,7 +736,7 @@ Roboter mit zwei Sensoren
 <div id="2c2af873" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 3-dimensionaler Input = Bias-Neuron, Sensor links, Sensor rechts</span></span>
@@ -782,7 +781,7 @@ Roboter mit zwei Sensoren
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gesamtfehler</span>
 <span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>gesamtfehler <span class="op">=</span> perceptron_eval(X,y)</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Gesamtfehler = </span><span class="sc">%1d</span><span class="st">"</span> <span class="op">%</span> (gesamtfehler))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Gesamtfehler = </span><span class="sc">%1d</span><span class="st">"</span> <span class="op">%</span> (gesamtfehler))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sensor L = 1
@@ -796,7 +795,7 @@ Gesamtfehler = 0</code></pre>
 <div id="ced3bfd4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> ListedColormap</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -829,7 +828,7 @@ Gesamtfehler = 0</code></pre>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">1.1</span>])</span>
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">1.1</span>])</span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Bilder/roboter.png'</span>, dpi <span class="op">=</span> <span class="dv">300</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'Bilder/roboter.png'</span>, dpi <span class="op">=</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -848,7 +847,7 @@ Gesamtfehler = 0</code></pre>
 <div id="0e9813e4" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Lösung anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mathematik</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mathematik</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -894,7 +893,7 @@ Gesamtfehler = 0</code></pre>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gesamtfehler</span>
 <span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>gesamtfehler <span class="op">=</span> perceptron_eval(X,y)</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Gesamtfehler = </span><span class="sc">%1d</span><span class="st">"</span> <span class="op">%</span> (gesamtfehler))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Gesamtfehler = </span><span class="sc">%1d</span><span class="st">"</span> <span class="op">%</span> (gesamtfehler))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Messung 1 = 1, Messung 2 = 1, Messung 3 = 1, gewünschtes Ergebnis =1, errechnetes Ergebnis = 1, Fehler = 0
@@ -904,7 +903,7 @@ Gesamtfehler = 0</code></pre>
 <div id="6610d8de" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Lösung anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.colors <span class="im">import</span> ListedColormap</span>
@@ -939,7 +938,7 @@ Gesamtfehler = 0</code></pre>
 <span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>), np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>))</span>
 <span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>zz <span class="op">=</span> <span class="dv">2</span> <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> np.ones_like(xx)<span class="op">-</span> xx <span class="op">-</span> yy  <span class="co"># Eine horizontale Trennebene bei z=0.5</span></span>
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(xx, yy, zz, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)  <span class="co"># Halbtransparente Trennebene</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(xx, yy, zz, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)  <span class="co"># Halbtransparente Trennebene</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -970,12 +969,12 @@ Lernen beim klassischen Perzeptrons
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="wertetabelle-1"><span class="header-section-number">2.1.1</span> Wertetabelle</h3>
 <p>Fertigen Sie eine Tabelle an, aus der ersichtlich ist, ob eine Kombination von Anwesenheiten auf der Leitstelle OK (1) oder nicht OK (0) ist.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Lösung anzeigen
+Lösung anzeigen
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1139,7 +1138,7 @@ Lernen beim klassischen Perzeptrons
 <div id="c4514e72" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Choice wählt eine zufällige Zeile aus einem Array</span></span>
@@ -1170,7 +1169,7 @@ Lernen beim klassischen Perzeptrons
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Anpassung der Gewichte, immer in Schritten +- 1</span></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        w <span class="op">+=</span> error<span class="op">*</span>x</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1180,7 +1179,7 @@ Lernen beim klassischen Perzeptrons
 <div id="523c0880" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## definiere Trainingsdaten: Liste mit Tupeln aus je Inputdaten</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## definiere Trainingsdaten: Liste mit Tupeln aus je Inputdaten</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Array mit Bias-neuron, Herr Meier, Frau Müller, Herr Koslowski, Frau Schmidt</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">## und gewünschtem Ergebnis</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1209,7 +1208,7 @@ Lernen beim klassischen Perzeptrons
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plt.hlines(<span class="fl">0.6</span>,<span class="dv">0</span>,<span class="dv">16</span>)</span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1226,7 +1225,7 @@ Lernen beim klassischen Perzeptrons
 <div id="29f18da2" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">##Startgewichte wählen, könnte man auch zufällig beispielsweise mit np.random.seed(5) machen</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">##Startgewichte wählen, könnte man auch zufällig beispielsweise mit np.random.seed(5) machen</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.ones(<span class="dv">5</span>)<span class="op">/</span><span class="dv">10</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#np.random.seed(30)</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#w = np.random.rand(5) </span></span>
@@ -1240,7 +1239,7 @@ Lernen beim klassischen Perzeptrons
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Die Gewichte nach Training der Daten sind: "</span>, weights[<span class="bu">len</span>(weights)<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Der Gesamtfehler nach Training ist: "</span>, errors[<span class="bu">len</span>(errors)<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Der Gesamtfehler nach Training ist: "</span>, errors[<span class="bu">len</span>(errors)<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1279,7 +1278,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="893dee1f" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  <span class="co">##The choice() method returns a randomly selected element from the specified sequence.</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1315,7 +1314,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Petal Width'</span>)</span>
 <span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Iris Petal Length vs. Width'</span>)</span>
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>ax2.scatter(np.array(petal_length), np.array(petal_width), color <span class="op">=</span> colors)</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1331,7 +1330,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="5fb1c1cb" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  <span class="co">##The choice() method returns a randomly selected element from the specified sequence.</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1355,7 +1354,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        petal_length.append(<span class="bu">float</span>(words[<span class="dv">2</span>]))</span>
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        petal_width.append(<span class="bu">float</span>(words[<span class="dv">3</span>]))</span>
 <span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        colors.append(iris_colors[words[<span class="dv">4</span>]])</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        colors_values.append(<span class="bu">int</span>(iris_colors_values[words[<span class="dv">4</span>]]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        colors_values.append(<span class="bu">int</span>(iris_colors_values[words[<span class="dv">4</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="aufgabe-2a-iris-arten" class="level3" data-number="2.2.1">
@@ -1365,7 +1364,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="16d42946" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>heaviside <span class="op">=</span> <span class="kw">lambda</span> x:<span class="dv">0</span> <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>heaviside <span class="op">=</span> <span class="kw">lambda</span> x:<span class="dv">0</span> <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit(iterations, training_data_set, w):</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    errors <span class="op">=</span> []</span>
@@ -1388,14 +1387,14 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Anpassung der Gewichte, immer in Schritten +- 1</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        w <span class="op">+=</span> error<span class="op">*</span>x</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Perzeptron trainineren und Trainingsverlauf darstellen</p>
 <div id="d3173992" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trainingsdatensatz erstellen</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trainingsdatensatz erstellen</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.ones(<span class="bu">len</span>(sepal_lengh))</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>input_data <span class="op">=</span> [np.array((bias[i], sepal_lengh[i], sepal_width[i])) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sepal_lengh))]</span>
@@ -1413,7 +1412,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>errors, weights <span class="op">=</span> fit(iterations, training_data_set, w)</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>plt.plot(errors)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Gewichte nach Training: '</span>, weights[<span class="bu">len</span>(weights)<span class="op">-</span><span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Gewichte nach Training: '</span>, weights[<span class="bu">len</span>(weights)<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Gewichte nach Training:  [-99.9  63.5 -81. ]</code></pre>
@@ -1430,7 +1429,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="ae021b3e" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> np.linspace(<span class="bu">min</span>(sepal_lengh), <span class="bu">max</span>(sepal_lengh), <span class="dv">100</span>)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> np.linspace(<span class="bu">min</span>(sepal_lengh), <span class="bu">max</span>(sepal_lengh), <span class="dv">100</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>w0, w1, w2 <span class="op">=</span> weights[<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> <span class="op">-</span>(w0 <span class="op">+</span> w1 <span class="op">*</span> x_vals) <span class="op">/</span> w2</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1441,7 +1440,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Iris Sepal Length vs. Width'</span>)</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.array(sepal_lengh), np.array(sepal_width), color <span class="op">=</span> colors, label <span class="op">=</span> <span class="st">"Iris Messungen"</span>)</span>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals, y_vals, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Trennlinie"</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1468,7 +1467,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="93a36cc0" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  </span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1538,7 +1537,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>ax4.set_xlabel(<span class="st">'bill_length_mm'</span>)</span>
 <span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>ax4.set_ylabel(<span class="st">'flipper_length_mm'</span>)</span>
 <span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>ax4.set_title(<span class="st">'Bill lengh vs. flipper length in Palmer Penguins, color = islands'</span>)</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>ax4.scatter(np.array(bill_length_mm), np.array(flipper_length_mm), color <span class="op">=</span> island)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>ax4.scatter(np.array(bill_length_mm), np.array(flipper_length_mm), color <span class="op">=</span> island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>"rowid","species","island","bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g","sex","year"
@@ -1558,7 +1557,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="14931e3d" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">## trainingsdatensatz erstellen</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">## trainingsdatensatz erstellen</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.ones(<span class="bu">len</span>(flipper_length_mm))</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>input_data <span class="op">=</span> [np.array((bias[i], flipper_length_mm[i], bill_depth_mm[i])) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(flipper_length_mm))]</span>
@@ -1584,7 +1583,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Bei Bedarf: Trainingsdatensatz ausgeben</span></span>
 <span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co">#for i in range(len(flipper_length_mm)):</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(training_data_set[i])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(training_data_set[i])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>Text(0, 0.5, 'bill_depth_mm')</code></pre>
@@ -1601,7 +1600,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="36ca2da6" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>heaviside <span class="op">=</span> <span class="kw">lambda</span> x:<span class="dv">0</span> <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>heaviside <span class="op">=</span> <span class="kw">lambda</span> x:<span class="dv">0</span> <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit(iterations, training_data_set, w):</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    errors <span class="op">=</span> []</span>
@@ -1624,14 +1623,14 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Anpassung der Gewichte, immer in Schritten +- 1</span></span>
 <span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        w <span class="op">+=</span> error<span class="op">*</span>x</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors,weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Perzeptron trainieren und Ergebnis ausgeben</p>
 <div id="50a89f1f" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">12</span>)</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">12</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">##Startgewichte</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.ones(<span class="dv">3</span>)<span class="op">/</span><span class="dv">10</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1655,7 +1654,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>          color <span class="op">=</span> color_new)</span>
 <span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'flipper_length_mm'</span>)</span>
 <span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'bill_depth_mm'</span>)</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>ax2.plot(x_vals, y_vals, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Trennlinie"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>ax2.plot(x_vals, y_vals, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Trennlinie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[  -33.9   117.1 -1442.9]</code></pre>
@@ -1770,7 +1769,7 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <div id="f4f1075b" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1862,7 +1861,7 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'output/weights_verbessertes_perzeptron1.csv'</span>, <span class="st">'w'</span>)</span>
 <span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(weights)):</span>
 <span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="bu">str</span>(weights[i][<span class="dv">0</span>]) <span class="op">+</span> <span class="st">','</span> <span class="op">+</span> <span class="bu">str</span>(weights[i][<span class="dv">1</span>]) <span class="op">+</span> <span class="st">','</span> <span class="op">+</span> <span class="bu">str</span>(weights[i][<span class="dv">2</span>]) <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[(array([1. , 1.4, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.7, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.4, 0.1]), -1), (array([1. , 1.1, 0.1]), -1), (array([1. , 1.2, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1.3, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.7, 0.3]), -1), (array([1. , 1.5, 0.3]), -1), (array([1. , 1.7, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1. , 0.2]), -1), (array([1. , 1.7, 0.5]), -1), (array([1. , 1.9, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.6, 0.4]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.2, 0.2]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.3, 0.3]), -1), (array([1. , 1.3, 0.3]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.6, 0.6]), -1), (array([1. , 1.9, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 4.7, 1.4]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.9, 1.5]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.6, 1.5]), 1), (array([1. , 4.5, 1.3]), 1), (array([1. , 4.7, 1.6]), 1), (array([1. , 3.3, 1. ]), 1), (array([1. , 4.6, 1.3]), 1), (array([1. , 3.9, 1.4]), 1), (array([1. , 3.5, 1. ]), 1), (array([1. , 4.2, 1.5]), 1), (array([1., 4., 1.]), 1), (array([1. , 4.7, 1.4]), 1), (array([1. , 3.6, 1.3]), 1), (array([1. , 4.4, 1.4]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.1, 1. ]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 3.9, 1.1]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.9, 1.5]), 1), (array([1. , 4.7, 1.2]), 1), (array([1. , 4.3, 1.3]), 1), (array([1. , 4.4, 1.4]), 1), (array([1. , 4.8, 1.4]), 1), (array([1. , 5. , 1.7]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 3.5, 1. ]), 1), (array([1. , 3.8, 1.1]), 1), (array([1. , 3.7, 1. ]), 1), (array([1. , 3.9, 1.2]), 1), (array([1. , 5.1, 1.6]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.5, 1.6]), 1), (array([1. , 4.7, 1.5]), 1), (array([1. , 4.4, 1.3]), 1), (array([1. , 4.1, 1.3]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.4, 1.2]), 1), (array([1. , 4.6, 1.4]), 1), (array([1. , 4. , 1.2]), 1), (array([1. , 3.3, 1. ]), 1), (array([1. , 4.2, 1.3]), 1), (array([1. , 4.2, 1.2]), 1), (array([1. , 4.2, 1.3]), 1), (array([1. , 4.3, 1.3]), 1), (array([1. , 3. , 1.1]), 1), (array([1. , 4.1, 1.3]), 1), (array([1. , 6. , 2.5]), 1), (array([1. , 5.1, 1.9]), 1), (array([1. , 5.9, 2.1]), 1), (array([1. , 5.6, 1.8]), 1), (array([1. , 5.8, 2.2]), 1), (array([1. , 6.6, 2.1]), 1), (array([1. , 4.5, 1.7]), 1), (array([1. , 6.3, 1.8]), 1), (array([1. , 5.8, 1.8]), 1), (array([1. , 6.1, 2.5]), 1), (array([1. , 5.1, 2. ]), 1), (array([1. , 5.3, 1.9]), 1), (array([1. , 5.5, 2.1]), 1), (array([1., 5., 2.]), 1), (array([1. , 5.1, 2.4]), 1), (array([1. , 5.3, 2.3]), 1), (array([1. , 5.5, 1.8]), 1), (array([1. , 6.7, 2.2]), 1), (array([1. , 6.9, 2.3]), 1), (array([1. , 5. , 1.5]), 1), (array([1. , 5.7, 2.3]), 1), (array([1. , 4.9, 2. ]), 1), (array([1. , 6.7, 2. ]), 1), (array([1. , 4.9, 1.8]), 1), (array([1. , 5.7, 2.1]), 1), (array([1. , 6. , 1.8]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 4.9, 1.8]), 1), (array([1. , 5.6, 2.1]), 1), (array([1. , 5.8, 1.6]), 1), (array([1. , 6.1, 1.9]), 1), (array([1. , 6.4, 2. ]), 1), (array([1. , 5.6, 2.2]), 1), (array([1. , 5.1, 1.5]), 1), (array([1. , 5.6, 1.4]), 1), (array([1. , 6.1, 2.3]), 1), (array([1. , 5.6, 2.4]), 1), (array([1. , 5.5, 1.8]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 5.4, 2.1]), 1), (array([1. , 5.6, 2.4]), 1), (array([1. , 5.1, 2.3]), 1), (array([1. , 5.1, 1.9]), 1), (array([1. , 5.9, 2.3]), 1), (array([1. , 5.7, 2.5]), 1), (array([1. , 5.2, 2.3]), 1), (array([1. , 5. , 1.9]), 1), (array([1. , 5.2, 2. ]), 1), (array([1. , 5.4, 2.3]), 1), (array([1. , 5.1, 1.8]), 1)]</code></pre>
@@ -1883,7 +1882,7 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <div id="50290426" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  </span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1997,7 +1996,7 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <span id="cb27-112"><a href="#cb27-112" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">'output/weights_verbessertes_perzeptron1.csv'</span>, <span class="st">'w'</span>)</span>
 <span id="cb27-113"><a href="#cb27-113" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(weights)):</span>
 <span id="cb27-114"><a href="#cb27-114" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="bu">str</span>(weights[i][<span class="dv">0</span>]) <span class="op">+</span> <span class="st">','</span> <span class="op">+</span> <span class="bu">str</span>(weights[i][<span class="dv">1</span>]) <span class="op">+</span> <span class="st">','</span> <span class="op">+</span> <span class="bu">str</span>(weights[i][<span class="dv">2</span>]) <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-115"><a href="#cb27-115" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>"rowid","species","island","bill_length_mm","bill_depth_mm","flipper_length_mm","body_mass_g","sex","year"
@@ -2044,7 +2043,7 @@ Aufbau des modernen Perzeptrons
 <div id="a672071f" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">500</span>)</span>
@@ -2072,7 +2071,7 @@ Aufbau des modernen Perzeptrons
 <span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
 <span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -2089,7 +2088,7 @@ Aufbau des modernen Perzeptrons
 <div id="73185453" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  <span class="co">##The choice() method returns a randomly selected element from the specified sequence.</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2153,7 +2152,7 @@ Aufbau des modernen Perzeptrons
 <span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb30-63"><a href="#cb30-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-64"><a href="#cb30-64" aria-hidden="true" tabindex="-1"></a>ax1.legend(handles<span class="op">=</span>legend_elements)</span>
-<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a>ax2.legend(handles<span class="op">=</span>legend_elements)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a>ax2.legend(handles<span class="op">=</span>legend_elements)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[(array([1. , 5.1, 3.5]), -1), (array([1. , 4.9, 3. ]), -1), (array([1. , 4.7, 3.2]), -1), (array([1. , 4.6, 3.1]), -1), (array([1. , 5. , 3.6]), -1), (array([1. , 5.4, 3.9]), -1), (array([1. , 4.6, 3.4]), -1), (array([1. , 5. , 3.4]), -1), (array([1. , 4.4, 2.9]), -1), (array([1. , 4.9, 3.1]), -1), (array([1. , 5.4, 3.7]), -1), (array([1. , 4.8, 3.4]), -1), (array([1. , 4.8, 3. ]), -1), (array([1. , 4.3, 3. ]), -1), (array([1. , 5.8, 4. ]), -1), (array([1. , 5.7, 4.4]), -1), (array([1. , 5.4, 3.9]), -1), (array([1. , 5.1, 3.5]), -1), (array([1. , 5.7, 3.8]), -1), (array([1. , 5.1, 3.8]), -1), (array([1. , 5.4, 3.4]), -1), (array([1. , 5.1, 3.7]), -1), (array([1. , 4.6, 3.6]), -1), (array([1. , 5.1, 3.3]), -1), (array([1. , 4.8, 3.4]), -1), (array([1., 5., 3.]), -1), (array([1. , 5. , 3.4]), -1), (array([1. , 5.2, 3.5]), -1), (array([1. , 5.2, 3.4]), -1), (array([1. , 4.7, 3.2]), -1), (array([1. , 4.8, 3.1]), -1), (array([1. , 5.4, 3.4]), -1), (array([1. , 5.2, 4.1]), -1), (array([1. , 5.5, 4.2]), -1), (array([1. , 4.9, 3.1]), -1), (array([1. , 5. , 3.2]), -1), (array([1. , 5.5, 3.5]), -1), (array([1. , 4.9, 3.1]), -1), (array([1. , 4.4, 3. ]), -1), (array([1. , 5.1, 3.4]), -1), (array([1. , 5. , 3.5]), -1), (array([1. , 4.5, 2.3]), -1), (array([1. , 4.4, 3.2]), -1), (array([1. , 5. , 3.5]), -1), (array([1. , 5.1, 3.8]), -1), (array([1. , 4.8, 3. ]), -1), (array([1. , 5.1, 3.8]), -1), (array([1. , 4.6, 3.2]), -1), (array([1. , 5.3, 3.7]), -1), (array([1. , 5. , 3.3]), -1), (array([1. , 7. , 3.2]), 1), (array([1. , 6.4, 3.2]), 1), (array([1. , 6.9, 3.1]), 1), (array([1. , 5.5, 2.3]), 1), (array([1. , 6.5, 2.8]), 1), (array([1. , 5.7, 2.8]), 1), (array([1. , 6.3, 3.3]), 1), (array([1. , 4.9, 2.4]), 1), (array([1. , 6.6, 2.9]), 1), (array([1. , 5.2, 2.7]), 1), (array([1., 5., 2.]), 1), (array([1. , 5.9, 3. ]), 1), (array([1. , 6. , 2.2]), 1), (array([1. , 6.1, 2.9]), 1), (array([1. , 5.6, 2.9]), 1), (array([1. , 6.7, 3.1]), 1), (array([1. , 5.6, 3. ]), 1), (array([1. , 5.8, 2.7]), 1), (array([1. , 6.2, 2.2]), 1), (array([1. , 5.6, 2.5]), 1), (array([1. , 5.9, 3.2]), 1), (array([1. , 6.1, 2.8]), 1), (array([1. , 6.3, 2.5]), 1), (array([1. , 6.1, 2.8]), 1), (array([1. , 6.4, 2.9]), 1), (array([1. , 6.6, 3. ]), 1), (array([1. , 6.8, 2.8]), 1), (array([1. , 6.7, 3. ]), 1), (array([1. , 6. , 2.9]), 1), (array([1. , 5.7, 2.6]), 1), (array([1. , 5.5, 2.4]), 1), (array([1. , 5.5, 2.4]), 1), (array([1. , 5.8, 2.7]), 1), (array([1. , 6. , 2.7]), 1), (array([1. , 5.4, 3. ]), 1), (array([1. , 6. , 3.4]), 1), (array([1. , 6.7, 3.1]), 1), (array([1. , 6.3, 2.3]), 1), (array([1. , 5.6, 3. ]), 1), (array([1. , 5.5, 2.5]), 1), (array([1. , 5.5, 2.6]), 1), (array([1. , 6.1, 3. ]), 1), (array([1. , 5.8, 2.6]), 1), (array([1. , 5. , 2.3]), 1), (array([1. , 5.6, 2.7]), 1), (array([1. , 5.7, 3. ]), 1), (array([1. , 5.7, 2.9]), 1), (array([1. , 6.2, 2.9]), 1), (array([1. , 5.1, 2.5]), 1), (array([1. , 5.7, 2.8]), 1), (array([1. , 6.3, 3.3]), 1), (array([1. , 5.8, 2.7]), 1), (array([1. , 7.1, 3. ]), 1), (array([1. , 6.3, 2.9]), 1), (array([1. , 6.5, 3. ]), 1), (array([1. , 7.6, 3. ]), 1), (array([1. , 4.9, 2.5]), 1), (array([1. , 7.3, 2.9]), 1), (array([1. , 6.7, 2.5]), 1), (array([1. , 7.2, 3.6]), 1), (array([1. , 6.5, 3.2]), 1), (array([1. , 6.4, 2.7]), 1), (array([1. , 6.8, 3. ]), 1), (array([1. , 5.7, 2.5]), 1), (array([1. , 5.8, 2.8]), 1), (array([1. , 6.4, 3.2]), 1), (array([1. , 6.5, 3. ]), 1), (array([1. , 7.7, 3.8]), 1), (array([1. , 7.7, 2.6]), 1), (array([1. , 6. , 2.2]), 1), (array([1. , 6.9, 3.2]), 1), (array([1. , 5.6, 2.8]), 1), (array([1. , 7.7, 2.8]), 1), (array([1. , 6.3, 2.7]), 1), (array([1. , 6.7, 3.3]), 1), (array([1. , 7.2, 3.2]), 1), (array([1. , 6.2, 2.8]), 1), (array([1. , 6.1, 3. ]), 1), (array([1. , 6.4, 2.8]), 1), (array([1. , 7.2, 3. ]), 1), (array([1. , 7.4, 2.8]), 1), (array([1. , 7.9, 3.8]), 1), (array([1. , 6.4, 2.8]), 1), (array([1. , 6.3, 2.8]), 1), (array([1. , 6.1, 2.6]), 1), (array([1. , 7.7, 3. ]), 1), (array([1. , 6.3, 3.4]), 1), (array([1. , 6.4, 3.1]), 1), (array([1., 6., 3.]), 1), (array([1. , 6.9, 3.1]), 1), (array([1. , 6.7, 3.1]), 1), (array([1. , 6.9, 3.1]), 1), (array([1. , 5.8, 2.7]), 1), (array([1. , 6.8, 3.2]), 1), (array([1. , 6.7, 3.3]), 1), (array([1. , 6.7, 3. ]), 1), (array([1. , 6.3, 2.5]), 1), (array([1. , 6.5, 3. ]), 1), (array([1. , 6.2, 3.4]), 1), (array([1. , 5.9, 3. ]), 1)]
@@ -2268,7 +2267,7 @@ a = \tanh(z), \quad z = x \cdot w
 <div id="139d63fe" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2341,7 +2340,7 @@ a = \tanh(z), \quad z = x \cdot w
 <span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Finale Gewichte:"</span>, w)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Finale Gewichte:"</span>, w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Finale Gewichte: [-11.2906214    5.04876714  -5.0463563 ]</code></pre>
@@ -2557,14 +2556,13 @@ model = MLPClassifier(
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -2579,7 +2577,7 @@ model = MLPClassifier(
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ArnoldIntelligence\.github\.io\/KI-Vorlesung\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
