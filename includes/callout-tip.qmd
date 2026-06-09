@@ -1,0 +1,3 @@
+::: callout-tip
+Dies ist ein Tipp-Block, den du wiederverwenden kannst.
+:::

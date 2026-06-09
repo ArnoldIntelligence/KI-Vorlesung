@@ -1,0 +1,84 @@
+project:
+  type: website
+  output-dir: _site
+
+site-url: https://lu-kas.github.io/Test_KI_Vorlesung/
+
+website:
+  title: "Vorlesung KI"
+  description: "6-teilige Vorlesungsreihe als Quarto Website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Start
+      - text: Einheiten
+        menu:
+          - text: "01 – Einführung"
+            href: notebooks/01-einleitung.ipynb
+          - text: "02 – Grundlagen"
+            href: notebooks/02-perzeptron.ipynb
+          - text: "03 – Überwachtes Lernen"
+            href: notebooks/03-ueberwachtes_lernen.ipynb
+          - text: "04 – Zahlen erkennen"
+            href: notebooks/04-zahlen_erkennen.ipynb
+          - text: "05 – CNN"
+            href: notebooks/05-cnn.ipynb           
+          - text: "06 – Nicht Überwachtes Lernen"
+            href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
+          - text: "07 – Reinforced Learning"
+            href: notebooks/07-reinforced_learning.ipynb
+          - text: "08 – Zeitreihen"
+            href: notebooks/08-zeitreihen.ipynb           
+          - text: "09 – Zusammenfassung"
+            href: notebooks/09-zusammenfassung.ipynb
+  sidebar:
+    style: docked
+    search: true
+    collapse-level: 1
+    pinned: true
+    contents:
+      - index.qmd
+      - text: "01 – Einführung"
+        href: notebooks/01-einleitung.ipynb
+      - text: "02 – Grundlagen"
+        href: notebooks/02-perzeptron.ipynb
+      - text: "03 – Überwachtes Lernen"
+        href: notebooks/03-ueberwachtes_lernen.ipynb
+      - text: "04 – Zahlen erkennen"
+        href: notebooks/04-zahlen_erkennen.ipynb
+      - text: "05 – CNN"
+        href: notebooks/05-cnn.ipynb           
+      - text: "06 – Nicht Überwachtes Lernen"
+        href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
+      - text: "07 – Reinforced Learning"
+        href: notebooks/07-reinforced_learning.ipynb
+      - text: "08 – Zeitreihen"
+        href: notebooks/08-zeitreihen.ipynb           
+      - text: "09 – Zusammenfassung"
+        href: notebooks/09-zusammenfassung.ipynb
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: assets/css/styles.scss
+    toc: true
+    toc-depth: 3
+    page-navigation: true
+    code-copy: true
+    number-sections: true
+    fig-cap-location: bottom
+    tbl-cap-location: top
+
+execute:
+  freeze: true
+  echo: true
+  warning: false
+  message: false
+
+# metadata-files:
+#   - refs/references.bib
+#   - refs/csl-style.csl
+
+bibliography: refs/references.bib

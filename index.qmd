@@ -1,0 +1,28 @@
+---
+title: "Vorlesung KI"
+page-layout: article
+---
+
+# Willkommen
+
+Diese Website bündelt die Inhalte der Vorlesung in **5 Einheiten**. Jede Einheit ist als Jupyter-Notebook eingebunden.
+
+::: callout-tip
+Nutze die Suche in der linken Sidebar, um schnell zu Themen zu springen.
+:::
+
+## Aufbau
+- Interaktive Codeblöcke aus den Notebooks
+- Abbildungen und Tabellen mit automatischer Nummerierung
+- Literaturverwaltung über `references.bib`
+
+## Einheiten
+1. [Einführung](notebooks/01-einleitung.ipynb)  
+2. [Das Perzeptron](notebooks/02-perzeptron.ipynb)  
+3. [Überwachtes Lernen](notebooks/03-ueberwachtes_lernen.ipynb)  
+4. [Zahlen erkennen](notebooks/04-zahlen_erkennen.ipynb)  
+5. [CNN](notebooks/05-cnn.ipynb)  
+5. [Nicht überwachtes Lernen](notebooks/06-nicht_ueberwachtes_lernen.ipynb) 
+6. [Reinforced Learning](notebooks/07-reinforced_learning.ipynb)
+7. [Zeitreihen](notebooks/08-zeitreihen.ipynb)
+8. [Zusammenfassung](notebooks/09-zusammenfassung.ipynb)
