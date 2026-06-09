@@ -1,27 +1,31 @@
-# Vorlesung "Einführung in KI-Verfahren" bei den BauIngs und den E-Techs
+# Vorlesung "Einführung in KI-Verfahren"
 
 ## Gerenderte Webseite
-[https://lu-kas.github.io/Test_KI_Vorlesung/](https://lu-kas.github.io/Test_KI_Vorlesung/)
+[https://arnoldintelligence.github.io/KI-Vorlesung/)
 
 ## Planung der Vorlesungsinhalte
 
 1. Vorlesung
     - Vortrag Einführung (30 Minuten)
         - Grundlagen KI-Verfahren (was gibt es und was kann man damit machen)
-        - Aktivierungfunktion
-        - Perceptron lernen
-        - Adaline Perceptron (Simone)
+        - Übersicht, was wird in der Vorlesung gemacht
         - Wie funktionieren Neuronale Netzwerke
         - Was ist die Grundidee von CNN, wofür werden die eingesetzt
-        - Übersicht, was wird in der Vorlesung gemacht
     - Setup Server / Skript (15 Minuten)
+     
+2. Grundlagen
+    - Aktivierungfunktion
+    - Perceptron lernen
+    - Adaline Perceptron        
+   
     - Übungen
         - Grundidee Perceptron, Python Implementierung, Training (45 Minuten)
         - Beispiel Iris und Pinguine (45 Minuten)
         - Beispiel aus den Ingenieurwissenschaften
         - Perceptron von Hand programmieren
         - Ausblick Perceptron von sklearn
-2. Vorlesung
+          
+3. Einfache NN, überwachtes Lernen
     - Vortrag
         - Wie macht man aus Perceptronen ein einfaches NN
         - Backpropagation im NN
@@ -34,7 +38,8 @@
         - Validierung, Visualisierung
         - Variation von Freiheitsgraden
         - Overfitting/Underfitting
-3. Vorlesung
+          
+4. Zahlen erkennen - Projekt
     - Vortrag
         - Übersicht Python KI Pakete
         - SKlearn
@@ -45,7 +50,7 @@
         - Beispiel Handschrifterkennung
             - Bilddaten einlesen
             - Bildbearbeitung mit Python
-            - Kamerastream mit OpenCV einlesen und in Bilder aufteilen (optional)
+            - Kamerastream mit OpenCV einlesen und in Bilder aufteilen (Verweis auf BCD)
             - Einschub: Gedankenexperiment wie generiert man am besten die Daten, so dass man dann am wenigsten Arbeit mit dem Einlesen und Labeln hat
             - Daten erstellen (Zahlen schreiben)
             - Daten labeln
@@ -54,12 +59,13 @@
             - Model trainineren
             - Model validieren 
             - Hyperparameter tuning
-4. Vorlesung
+              
+5. CNN
     - Abschlussprojekt Waagendisplay auslesen
     - Zeitreihe aus den Messungen erstellen
   
-5. Vorlesung
+6. nicht überwachtes Lernen
     - Backup Simone: Zeitreihenvorhersage
   
-6. Vorlesung
+7. reinforced Learning
   
