@@ -5,16 +5,18 @@ page-layout: article
 
 # Willkommen
 
-Diese Website bündelt die Inhalte der Vorlesung in **5 Einheiten**. Jede Einheit ist als Jupyter-Notebook eingebunden.
+Dieses Skript bündelt die Inhalte der Vorlesung Machine Learning in Einheiten. 
+Die Einheiten enthalten neben erklärendem Text Code, welcher beispielsweise in Jupyter Notebooks kopiert und ausgeführt werden kann.
+Darüber hinaus gibt es zu jedem Kapitel passende Übungsaufgaben, sie selbstständig erarbeitet werden.
+
+Das Skript wurde mit (Quarto)[https://quarto.org/docs/get-started/hello/jupyter.html] geschrieben und ist als lebendes Skript zu verstehen, welches laufend erweitert wird.
+
 
 ::: callout-tip
-Nutze die Suche in der linken Sidebar, um schnell zu Themen zu springen.
+Mit dem Menü auf der Linken Seite kann man zwischen den einzelnen Einheiten hin- und herspringen.
+Das zu der Einheit gehörende Untermenü ist auf der rechten Seite zu sehen, die Unterkapitel klappen dabei dymanmisch auf.
 :::
 
-## Aufbau
-- Interaktive Codeblöcke aus den Notebooks
-- Abbildungen und Tabellen mit automatischer Nummerierung
-- Literaturverwaltung über `references.bib`
 
 ## Einheiten
 1. [Einführung](notebooks/01-einleitung.ipynb)  
