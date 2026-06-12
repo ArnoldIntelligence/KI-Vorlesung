@@ -701,11 +701,11 @@
     ]
   },
   {
-    "objectID": "notebooks/02-perzeptron.html#aufgabe-5",
-    "href": "notebooks/02-perzeptron.html#aufgabe-5",
+    "objectID": "notebooks/02-perzeptron.html#aufgabe-5-aktivierungsfunktion-variieren",
+    "href": "notebooks/02-perzeptron.html#aufgabe-5-aktivierungsfunktion-variieren",
     "title": "02 - Grundlagen: Das Perzeptron",
-    "section": "5.3 Aufgabe 5:",
-    "text": "5.3 Aufgabe 5:\nNutzen Sie alternative Aktivierungsfunktionen, wie sigmoid oder relu und berechnen Sie den Gradientenabstieg mit Hilfe der Kettenregel. Wie wirken sich diese auf das Ergebnis aus?",
+    "section": "5.3 Aufgabe 5: Aktivierungsfunktion variieren",
+    "text": "5.3 Aufgabe 5: Aktivierungsfunktion variieren\nNutzen Sie alternative Aktivierungsfunktionen, wie sigmoid oder relu und berechnen Sie den Gradientenabstieg mit Hilfe der Kettenregel. Wie wirken sich diese auf das Ergebnis aus?",
     "crumbs": [
       "Start",
       "02 – Grundlagen"
