@@ -602,7 +602,7 @@ Aufbau einer Nervenzelle. (CC BY-SA 4.0, https://commons.wikimedia.org/w/index.p
 <p>mit <span class="math inline">\(z = \boldsymbol{x} \cdot \boldsymbol{w}\)</span>.</p>
 <p>Im Folgenden werden Perceptronen zur Klassifizierung von Daten angewendet.</p>
 <p>Als Aktivierungsfunktion wird eine einfache Stufenfunktion verwendet (siehe folgende Darstellung).</p>
-<div id="82a197c8" class="cell" data-execution_count="4">
+<div id="82a197c8" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1334,7 +1334,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> random <span class="im">import</span> choice  <span class="co">##The choice() method returns a randomly selected element from the specified sequence.</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>sepal_lengh <span class="op">=</span> []</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>sepal_length <span class="op">=</span> []</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>sepal_width <span class="op">=</span> []</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>petal_length <span class="op">=</span> []</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>petal_width <span class="op">=</span> []</span>
@@ -1349,7 +1349,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(words) <span class="op">!=</span> <span class="dv">5</span>:</span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">#print(words)</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        sepal_lengh.append(<span class="bu">float</span>(words[<span class="dv">0</span>]))</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        sepal_length.append(<span class="bu">float</span>(words[<span class="dv">0</span>]))</span>
 <span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        sepal_width.append(<span class="bu">float</span>(words[<span class="dv">1</span>]))</span>
 <span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        petal_length.append(<span class="bu">float</span>(words[<span class="dv">2</span>]))</span>
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        petal_width.append(<span class="bu">float</span>(words[<span class="dv">3</span>]))</span>
@@ -1396,10 +1396,10 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trainingsdatensatz erstellen</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.ones(<span class="bu">len</span>(sepal_lengh))</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>input_data <span class="op">=</span> [np.array((bias[i], sepal_lengh[i], sepal_width[i])) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sepal_lengh))]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> np.ones(<span class="bu">len</span>(sepal_length))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>input_data <span class="op">=</span> [np.array((bias[i], sepal_length[i], sepal_width[i])) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sepal_length))]</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>training_data_set <span class="op">=</span> [(input_data[i], colors_values[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sepal_lengh))]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>training_data_set <span class="op">=</span> [(input_data[i], colors_values[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sepal_length))]</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Gewichte mit Trainingsdatensatz ermitteln</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -1415,7 +1415,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Gewichte nach Training: '</span>, weights[<span class="bu">len</span>(weights)<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Gewichte nach Training:  [-99.9  63.5 -81. ]</code></pre>
+<pre><code>Gewichte nach Training:  [-104.9   65.9  -83.5]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1429,13 +1429,13 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <div id="ae021b3e" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> np.linspace(<span class="bu">min</span>(sepal_lengh), <span class="bu">max</span>(sepal_lengh), <span class="dv">100</span>)</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> np.linspace(<span class="bu">min</span>(sepal_length), <span class="bu">max</span>(sepal_length), <span class="dv">100</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>w0, w1, w2 <span class="op">=</span> weights[<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> <span class="op">-</span>(w0 <span class="op">+</span> w1 <span class="op">*</span> x_vals) <span class="op">/</span> w2</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8'</span>)</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">5</span>))</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sepal Lengh'</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sepal Length'</span>)</span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Sepal Width'</span>)</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Iris Sepal Length vs. Width'</span>)</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.scatter(np.array(sepal_lengh), np.array(sepal_width), color <span class="op">=</span> colors, label <span class="op">=</span> <span class="st">"Iris Messungen"</span>)</span>
@@ -1657,7 +1657,7 @@ Der Gesamtfehler nach Training ist:  0</code></pre>
 <span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>ax2.plot(x_vals, y_vals, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Trennlinie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[  -33.9   117.1 -1442.9]</code></pre>
+<pre><code>[  -4.9   19.1 -234.9]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -1696,7 +1696,7 @@ Aufbau des Adaline-Perzeptrons
 <p>Nun kann die Stufenfunktion nicht meht als Aktivierungsfunktion verwendet werden, da sie nicht differenzierbar ist. Stattdessen wird beim Adaline Perzeptron ist die Aktivierungsfunktion einfach die Identität der linaren gewichteten Summe, also</p>
 <p><span class="math display">\[z = \boldsymbol{w}\cdot\boldsymbol{x}\]</span> <span class="math display">\[o = \phi(z) = id(z)\]</span></p>
 <p>Damit ist</p>
-<p><span class="math display">\[\Delta w = - \frac{\partial E}{\partial w} = -\frac{\partial \frac{1}{2} \left( y-o \right)^2}{\partial w} = -\frac{\partial \frac{1}{2} \left( y- \boldsymbol{w}\cdot \boldsymbol{x} \right)^2}{\partial w} \]</span> <span class="math display">\[ = -\frac{1}{2} 2 \boldsymbol{x} \left( y-o \right) = - \boldsymbol{x} \left( y-o \right)\]</span></p>
+<p><span class="math display">\[\Delta w = - \frac{\partial E}{\partial w} = -\frac{\partial \frac{1}{2} \left( y-o \right)^2}{\partial w} = -\frac{\partial \frac{1}{2} \left( y- \boldsymbol{w}\cdot \boldsymbol{x} \right)^2}{\partial w} \]</span> <span class="math display">\[ = \frac{1}{2} 2 \boldsymbol{x} \left( y-o \right) = \boldsymbol{x} \left( y-o \right)\]</span></p>
 <p>Die Ausgabefunktion kann dann wieder eine Stufenfunktion sein.</p>
 <section id="unterschied-zwischen-klassischem-perzeptron-und-adaline-perzeptron" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="unterschied-zwischen-klassischem-perzeptron-und-adaline-perzeptron"><span class="header-section-number">3.1</span> Unterschied zwischen klassischem Perzeptron und Adaline-Perzeptron</h2>
@@ -1866,10 +1866,27 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <div class="cell-output cell-output-stdout">
 <pre><code>[(array([1. , 1.4, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.7, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.4, 0.1]), -1), (array([1. , 1.1, 0.1]), -1), (array([1. , 1.2, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1.3, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.7, 0.3]), -1), (array([1. , 1.5, 0.3]), -1), (array([1. , 1.7, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1. , 0.2]), -1), (array([1. , 1.7, 0.5]), -1), (array([1. , 1.9, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.6, 0.4]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.5, 0.4]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.2, 0.2]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.1]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.3, 0.3]), -1), (array([1. , 1.3, 0.3]), -1), (array([1. , 1.3, 0.2]), -1), (array([1. , 1.6, 0.6]), -1), (array([1. , 1.9, 0.4]), -1), (array([1. , 1.4, 0.3]), -1), (array([1. , 1.6, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 1.5, 0.2]), -1), (array([1. , 1.4, 0.2]), -1), (array([1. , 4.7, 1.4]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.9, 1.5]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.6, 1.5]), 1), (array([1. , 4.5, 1.3]), 1), (array([1. , 4.7, 1.6]), 1), (array([1. , 3.3, 1. ]), 1), (array([1. , 4.6, 1.3]), 1), (array([1. , 3.9, 1.4]), 1), (array([1. , 3.5, 1. ]), 1), (array([1. , 4.2, 1.5]), 1), (array([1., 4., 1.]), 1), (array([1. , 4.7, 1.4]), 1), (array([1. , 3.6, 1.3]), 1), (array([1. , 4.4, 1.4]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.1, 1. ]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 3.9, 1.1]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.9, 1.5]), 1), (array([1. , 4.7, 1.2]), 1), (array([1. , 4.3, 1.3]), 1), (array([1. , 4.4, 1.4]), 1), (array([1. , 4.8, 1.4]), 1), (array([1. , 5. , 1.7]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 3.5, 1. ]), 1), (array([1. , 3.8, 1.1]), 1), (array([1. , 3.7, 1. ]), 1), (array([1. , 3.9, 1.2]), 1), (array([1. , 5.1, 1.6]), 1), (array([1. , 4.5, 1.5]), 1), (array([1. , 4.5, 1.6]), 1), (array([1. , 4.7, 1.5]), 1), (array([1. , 4.4, 1.3]), 1), (array([1. , 4.1, 1.3]), 1), (array([1. , 4. , 1.3]), 1), (array([1. , 4.4, 1.2]), 1), (array([1. , 4.6, 1.4]), 1), (array([1. , 4. , 1.2]), 1), (array([1. , 3.3, 1. ]), 1), (array([1. , 4.2, 1.3]), 1), (array([1. , 4.2, 1.2]), 1), (array([1. , 4.2, 1.3]), 1), (array([1. , 4.3, 1.3]), 1), (array([1. , 3. , 1.1]), 1), (array([1. , 4.1, 1.3]), 1), (array([1. , 6. , 2.5]), 1), (array([1. , 5.1, 1.9]), 1), (array([1. , 5.9, 2.1]), 1), (array([1. , 5.6, 1.8]), 1), (array([1. , 5.8, 2.2]), 1), (array([1. , 6.6, 2.1]), 1), (array([1. , 4.5, 1.7]), 1), (array([1. , 6.3, 1.8]), 1), (array([1. , 5.8, 1.8]), 1), (array([1. , 6.1, 2.5]), 1), (array([1. , 5.1, 2. ]), 1), (array([1. , 5.3, 1.9]), 1), (array([1. , 5.5, 2.1]), 1), (array([1., 5., 2.]), 1), (array([1. , 5.1, 2.4]), 1), (array([1. , 5.3, 2.3]), 1), (array([1. , 5.5, 1.8]), 1), (array([1. , 6.7, 2.2]), 1), (array([1. , 6.9, 2.3]), 1), (array([1. , 5. , 1.5]), 1), (array([1. , 5.7, 2.3]), 1), (array([1. , 4.9, 2. ]), 1), (array([1. , 6.7, 2. ]), 1), (array([1. , 4.9, 1.8]), 1), (array([1. , 5.7, 2.1]), 1), (array([1. , 6. , 1.8]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 4.9, 1.8]), 1), (array([1. , 5.6, 2.1]), 1), (array([1. , 5.8, 1.6]), 1), (array([1. , 6.1, 1.9]), 1), (array([1. , 6.4, 2. ]), 1), (array([1. , 5.6, 2.2]), 1), (array([1. , 5.1, 1.5]), 1), (array([1. , 5.6, 1.4]), 1), (array([1. , 6.1, 2.3]), 1), (array([1. , 5.6, 2.4]), 1), (array([1. , 5.5, 1.8]), 1), (array([1. , 4.8, 1.8]), 1), (array([1. , 5.4, 2.1]), 1), (array([1. , 5.6, 2.4]), 1), (array([1. , 5.1, 2.3]), 1), (array([1. , 5.1, 1.9]), 1), (array([1. , 5.9, 2.3]), 1), (array([1. , 5.7, 2.5]), 1), (array([1. , 5.2, 2.3]), 1), (array([1. , 5. , 1.9]), 1), (array([1. , 5.2, 2. ]), 1), (array([1. , 5.4, 2.3]), 1), (array([1. , 5.1, 1.8]), 1)]</code></pre>
 </div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 93</span>
+<span class="ansi-green-fg">     89</span> ax2.set_xlabel(<span class="ansi-yellow-fg">'sepal length'</span>)
+<span class="ansi-green-fg">     90</span> ax2.set_ylabel(<span class="ansi-yellow-fg">'sepal width'</span>)
+<span class="ansi-green-fg">     91</span> ax2.plot(x_vals, y_vals, color=<span class="ansi-yellow-fg">'black'</span>, linewidth=<span class="ansi-green-fg">2</span>, label=<span class="ansi-yellow-fg">"Trennlinie"</span>)
+<span class="ansi-green-fg">     92</span> 
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">93</span> file = open(<span class="ansi-yellow-fg">'output/weights_verbessertes_perzeptron1.csv'</span>, <span class="ansi-yellow-fg">'w'</span>)
+<span class="ansi-green-fg">     94</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> i <span style="font-weight:bold;color:rgb(0,135,0)">in</span> range(len(weights)):
+<span class="ansi-green-fg">     95</span>     file.write(str(weights[i][<span class="ansi-green-fg">0</span>]) + <span class="ansi-yellow-fg">','</span> + str(weights[i][<span class="ansi-green-fg">1</span>]) + <span class="ansi-yellow-fg">','</span> + str(weights[i][<span class="ansi-green-fg">2</span>]) + <span class="ansi-yellow-fg">'\n'</span>)
+<span class="ansi-green-fg">     96</span> file.close()
+
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: 'output/weights_verbessertes_perzeptron1.csv'</pre>
+</div>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02-perzeptron_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="02-perzeptron_files/figure-html/cell-20-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1879,7 +1896,7 @@ Es trifft eine Entscheidung anhand des Vorzeichens der linearen Funktion:</p>
 <h2 data-number="3.4" class="anchored" data-anchor-id="beispiel-5-adaline-mit-pinguinen"><span class="header-section-number">3.4</span> Beispiel 5: Adaline mit Pinguinen</h2>
 <p>Hier werden Pinguine verschiedener Inseln klassifiziert</p>
 <p>Torgersen und Dream –&gt; -1 Biscoe –&gt; 1</p>
-<div id="50290426" class="cell" data-execution_count="20">
+<div id="50290426" class="cell">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2040,7 +2057,7 @@ Aufbau des modernen Perzeptrons
 <li>ReLu: <span class="math inline">\(\phi(\boldsymbol{x}, \boldsymbol{w}) = max \left(0, \boldsymbol{w}\cdot\boldsymbol{x} \right)\)</span></li>
 <li>Sigmoid <span class="math inline">\(\phi(\boldsymbol{x}, \boldsymbol{w}) = \frac{1}{1+ e^{-\boldsymbol{w}\cdot\boldsymbol{x}}}\)</span></li>
 </ul>
-<div id="a672071f" class="cell" data-execution_count="21">
+<div id="a672071f" class="cell">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2085,7 +2102,7 @@ Aufbau des modernen Perzeptrons
 <section id="das-moderne-perzeptron-und-die-iris-daten" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="das-moderne-perzeptron-und-die-iris-daten"><span class="header-section-number">4.2</span> Das moderne Perzeptron und die Iris-Daten</h2>
 <p>Daten einlesen:</p>
-<div id="73185453" class="cell" data-execution_count="22">
+<div id="73185453" class="cell">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -2264,7 +2281,7 @@ a = \tanh(z), \quad z = x \cdot w
 \]</span></p>
 <p>Zusammenfassung der Vorgehensweise:</p>
 <p>Der Gradient gibt die Richtung an, in der die Gewichte angepasst werden müssen, um den Fehler zu minimieren. Durch Multiplikation mit einer Lernrate können die Gewichte schrittweise in Richtung des negativen Gradienten aktualisiert werden. Dieses Vorgehen wird iterativ für alle Trainingsdaten des Iris-Datensatzes wiederholt, bis das Modell eine ausreichend gute Approximation erreicht.</p>
-<div id="139d63fe" class="cell" data-execution_count="23">
+<div id="139d63fe" class="cell">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
