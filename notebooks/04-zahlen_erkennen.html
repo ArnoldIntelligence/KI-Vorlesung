@@ -506,7 +506,7 @@ Beispiel einer Handschriftprobe von sortierten Zahlen im Raum 0 bis 9
 </section>
 <section id="einlesen-und-sortieren-der-trainingsdaten" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Einlesen und Sortieren der Trainingsdaten</h1>
-<div id="e73ee531" class="cell" data-execution_count="1">
+<div id="e73ee531" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -541,7 +541,10 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert10.png
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert11.png
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert12.png
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert13.png
-Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png</code></pre>
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert15.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert16.png
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png</code></pre>
 </div>
 </div>
 <p>Im nächsten Schritt werden die einzelnen Zahlen aus den Bildern herausgelesen.</p>
@@ -561,7 +564,7 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png</code></pre>
 <p>Das Ergebnis ist eine Liste von Konturen, die in der gleichen Reihenfolge angeordnet sind, wie ein Mensch sie beim Lesen eines Gitters oder Dokuments wahrnehmen würde, was insbesondere für die korrekte Zuordnung von Ziffern oder Zeichen zu ihren Labels wichtig ist.</p>
 <section id="hilfsfunktionen-definieren" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="hilfsfunktionen-definieren"><span class="header-section-number">2.1</span> Hilfsfunktionen definieren</h2>
-<div id="819a3753" class="cell" data-execution_count="2">
+<div id="819a3753" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imshow(name, img, size<span class="op">=</span><span class="dv">8</span>):</span>
@@ -620,10 +623,10 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png</code></pre>
 </section>
 <section id="konturen-erkennen" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="konturen-erkennen"><span class="header-section-number">2.2</span> Konturen erkennen</h2>
-<div id="859fa37a" class="cell" data-execution_count="3">
+<div id="859fa37a" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>contour_height <span class="op">=</span> <span class="dv">23</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>contour_height <span class="op">=</span> <span class="dv">22</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x_data_list <span class="op">=</span> []</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>response_list <span class="op">=</span> []</span>
@@ -710,7 +713,13 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert12.png
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert13.png
 220 22.0
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png
-210 21.0</code></pre>
+210 21.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert15.png
+190 19.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert16.png
+200 20.0
+Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
+317 31.7</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -807,6 +816,27 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png
 <div>
 <figure class="figure">
 <p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-15.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-16.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-17.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-18.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
