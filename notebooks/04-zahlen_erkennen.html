@@ -506,7 +506,7 @@ Beispiel einer Handschriftprobe von sortierten Zahlen im Raum 0 bis 9
 </section>
 <section id="einlesen-und-sortieren-der-trainingsdaten" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Einlesen und Sortieren der Trainingsdaten</h1>
-<div id="e73ee531" class="cell" data-execution_count="2">
+<div id="e73ee531" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -564,7 +564,7 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png</code></pre>
 <p>Das Ergebnis ist eine Liste von Konturen, die in der gleichen Reihenfolge angeordnet sind, wie ein Mensch sie beim Lesen eines Gitters oder Dokuments wahrnehmen würde, was insbesondere für die korrekte Zuordnung von Ziffern oder Zeichen zu ihren Labels wichtig ist.</p>
 <section id="hilfsfunktionen-definieren" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="hilfsfunktionen-definieren"><span class="header-section-number">2.1</span> Hilfsfunktionen definieren</h2>
-<div id="819a3753" class="cell" data-execution_count="3">
+<div id="819a3753" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> imshow(name, img, size<span class="op">=</span><span class="dv">8</span>):</span>
@@ -623,7 +623,7 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png</code></pre>
 </section>
 <section id="konturen-erkennen" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="konturen-erkennen"><span class="header-section-number">2.2</span> Konturen erkennen</h2>
-<div id="859fa37a" class="cell" data-execution_count="5">
+<div id="859fa37a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>contour_height <span class="op">=</span> <span class="dv">22</span></span>
@@ -635,7 +635,7 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png</code></pre>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#for im in liste_daten[:2]:</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Alle Bilder auswerten</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> im <span class="kw">in</span> liste_daten:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> im <span class="kw">in</span> liste_daten[:<span class="op">-</span><span class="dv">1</span>]:</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(im)</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    image <span class="op">=</span> cv2.imread(im)</span>
@@ -717,9 +717,7 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert14.png
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert15.png
 190 19.0
 Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert16.png
-200 20.0
-Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
-317 31.7</code></pre>
+200 20.0</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -833,13 +831,6 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="04-zahlen_erkennen_files/figure-html/cell-4-output-18.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
 </div>
 <p>Stichproben, ob die Bilder und Label passen:</p>
 <div id="252f6d92" class="cell" data-execution_count="4">
@@ -859,12 +850,12 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
   [  0   0   0 ...   0   0   0]
   [  0   0   0 ...   0   0   0]
   ...
-  [174 255 221 ...   0   0   0]
+  [175 255 221 ...   0   0   0]
   [ 53 255 255 ...   0   0   0]
-  [  0  48 165 ...   0   0   0]]
+  [  0  49 165 ...   0   0   0]]
 
- [[  0   0   0 ... 255 255 139]
-  [  0   0   0 ... 255 255 209]
+ [[  0   0   0 ... 255 255 140]
+  [  0   0   0 ... 255 255 210]
   [  0   0   0 ... 255 251  56]
   ...
   [  0   0   0 ...   0   0   0]
@@ -873,17 +864,25 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
 
  [[  0   0   0 ...   0   0   0]
   [  0   0   0 ...   0   0   0]
-  [  0 121 250 ...   0   0   0]
+  [  0 120 250 ...   0   0   0]
   ...
-  [  0   0   0 ... 250 121   0]
+  [  0   0   0 ... 250 120   0]
   [  0   0   0 ...   0   0   0]
   [  0   0   0 ...   0   0   0]]
 
  ...
 
- [[ 91 255 255 ...   0   0   0]
+ [[ 38 233 255 ...   0   0   0]
   [255 255 255 ...   0   0   0]
-  [200 255 255 ...   0   0   0]
+  [ 19 231 255 ...   0   0   0]
+  ...
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]]
+
+ [[  0   0   0 ... 255 214   0]
+  [  0   0   0 ... 255 243 178]
+  [  0   0   0 ... 255 248 214]
   ...
   [  0   0   0 ...   0   0   0]
   [  0   0   0 ...   0   0   0]
@@ -893,18 +892,10 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
   [  0   0   0 ...   0   0   0]
   [  0   0   0 ...   0   0   0]
   ...
-  [255 255 255 ... 146   0   0]
-  [255 255 255 ...   0   0   0]
-  [  0  77 225 ...   0   0   0]]
-
- [[  0   0   0 ...   0   0   0]
-  [  0   0   0 ...  83   0   0]
-  [  0   0   0 ... 141   0   0]
-  ...
-  [  0   0 141 ...   0   0   0]
-  [  0   0 141 ...   0   0   0]
-  [  0   0  28 ...   0   0   0]]]
-(3040, 28, 28)</code></pre>
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]
+  [  0   0   0 ...   0   0   0]]]
+(3430, 28, 28)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -921,48 +912,51 @@ Daten/UeberwachtesLernen/Zahlen_Handschrift_sortiert17.png
 <p>Nun geht es ans Training des Models.</p>
 <p>Dazu werden die Inputdaten und Zielwerte zunächst gemeinsam zufällig gemischt, sodass die ursprüngliche Reihenfolge der Daten keine Rolle mehr spielt. Anschließend wird der Datensatz im Verhältnis 80 % zu 20 % in einen Trainings- und einen Testdatensatz aufgeteilt.</p>
 <p>Zum Schluss werden die Daten in einem gezippten Container-Format für mehrere NumPy-Arrays (einem .npz-Array) gespeichert. .npz ist ein kompaktes, effizientes Archivformat für mehrere NumPy-Arrays und eignet sich besonders für Trainings- und Testdaten in Machine-Learning-Anwendungen.</p>
-<div id="b88312a0" class="cell">
+<div id="b88312a0" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_array_randomly(x_arr, y_arr, train_ratio<span class="op">=</span><span class="fl">0.8</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> seed <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        np.random.seed(seed)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        x_arr.shape[<span class="dv">0</span>] <span class="op">==</span> y_arr.shape[<span class="dv">0</span>]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'ja'</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'shape of arrays does not match'</span>)   </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate shuffled indices</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.random.permutation(<span class="bu">len</span>(x_arr))</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(x_arr) <span class="op">*</span> train_ratio)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    train_idx <span class="op">=</span> indices[:split_point]</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    test_idx <span class="op">=</span> indices[split_point:]</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    train_idy <span class="op">=</span> indices[:split_point]</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    test_idy <span class="op">=</span> indices[split_point:]</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_arr[train_idx], x_arr[test_idx], y_arr[train_idx], y_arr[test_idx]</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> split_array_randomly(x_data, y_data)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_array_randomly(x_arr, y_arr, train_ratio<span class="op">=</span><span class="fl">0.8</span>, seed<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> seed <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        np.random.seed(seed)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>: </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        x_arr.shape[<span class="dv">0</span>] <span class="op">==</span> y_arr.shape[<span class="dv">0</span>]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'ja'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'shape of arrays does not match'</span>)   </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate shuffled indices</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> np.random.permutation(<span class="bu">len</span>(x_arr))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    split_point <span class="op">=</span> <span class="bu">int</span>(<span class="bu">len</span>(x_arr) <span class="op">*</span> train_ratio)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    train_idx <span class="op">=</span> indices[:split_point]</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    test_idx <span class="op">=</span> indices[split_point:]</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    train_idy <span class="op">=</span> indices[:split_point]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    test_idy <span class="op">=</span> indices[split_point:]</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x_arr[train_idx], x_arr[test_idx], y_arr[train_idx], y_arr[test_idx]</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> split_array_randomly(x_data, y_data)</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_train.shape)</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_test.shape)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train.shape)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_test.shape)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>np.savez(<span class="st">'output/handwrittendigits.npz'</span>, array1<span class="op">=</span>x_train, array2<span class="op">=</span>x_test, array3<span class="op">=</span>y_train, array4<span class="op">=</span>y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_train.shape)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_test.shape)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_train.shape)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_test.shape)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Zielordner anlegen, falls er noch nicht existiert</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">'output'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>np.savez(<span class="st">'output/handwrittendigits.npz'</span>, array1<span class="op">=</span>x_train, array2<span class="op">=</span>x_test, array3<span class="op">=</span>y_train, array4<span class="op">=</span>y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>ja
-(2432, 28, 28)
-(608, 28, 28)
-(2432,)
-(608,)</code></pre>
+(2744, 28, 28)
+(686, 28, 28)
+(2744,)
+(686,)</code></pre>
 </div>
 </div>
 <p>Die Normalisierung der Bilddaten erfolgt, indem alle Pixelwerte durch 255 dividiert werden. Da Graustufenbilder Pixelintensitäten im Bereich von 0 bis 255 besitzen, werden die Werte durch diese Skalierung in den Bereich von 0 bis 1 überführt. Dadurch bleiben die relativen Helligkeitsunterschiede der Bilder erhalten, während die numerische Größenordnung der Eingabedaten deutlich reduziert wird.</p>
@@ -1033,510 +1027,21 @@ Aufbau des Neuronalen Netzes zu Handschrifterkennung
 <span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(tensor_values)</span>
 <span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Epoch 1/100</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
+<div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
-<pre>54/54 - 1s - 11ms/step - accuracy: 0.6481 - loss: 0.0482 - val_accuracy: 0.8247 - val_loss: 0.0259
-
-Epoch 2/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9154 - loss: 0.0144 - val_accuracy: 0.9000 - val_loss: 0.0157
-
-Epoch 3/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9559 - loss: 0.0081 - val_accuracy: 0.9151 - val_loss: 0.0129
-
-Epoch 4/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9724 - loss: 0.0050 - val_accuracy: 0.9192 - val_loss: 0.0125
-
-Epoch 5/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9853 - loss: 0.0030 - val_accuracy: 0.9384 - val_loss: 0.0108
-
-Epoch 6/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9888 - loss: 0.0021 - val_accuracy: 0.9370 - val_loss: 0.0095
-
-Epoch 7/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9935 - loss: 0.0015 - val_accuracy: 0.9329 - val_loss: 0.0107
-
-Epoch 8/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9947 - loss: 0.0011 - val_accuracy: 0.9329 - val_loss: 0.0099
-
-Epoch 9/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9965 - loss: 7.0565e-04 - val_accuracy: 0.9329 - val_loss: 0.0096
-
-Epoch 10/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9971 - loss: 5.8498e-04 - val_accuracy: 0.9329 - val_loss: 0.0096
-
-Epoch 11/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9976 - loss: 5.1092e-04 - val_accuracy: 0.9384 - val_loss: 0.0093
-
-Epoch 12/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9976 - loss: 4.5331e-04 - val_accuracy: 0.9370 - val_loss: 0.0091
-
-Epoch 13/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9971 - loss: 4.9298e-04 - val_accuracy: 0.9397 - val_loss: 0.0092
-
-Epoch 14/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.9948e-04 - val_accuracy: 0.9329 - val_loss: 0.0095
-
-Epoch 15/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.5088e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
-
-Epoch 16/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.2489e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
-
-Epoch 17/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.1652e-04 - val_accuracy: 0.9384 - val_loss: 0.0088
-
-Epoch 18/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.1285e-04 - val_accuracy: 0.9384 - val_loss: 0.0087
-
-Epoch 19/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0927e-04 - val_accuracy: 0.9384 - val_loss: 0.0088
-
-Epoch 20/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0647e-04 - val_accuracy: 0.9370 - val_loss: 0.0088
-
-Epoch 21/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 2.0221e-04 - val_accuracy: 0.9397 - val_loss: 0.0088
-
-Epoch 22/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9988 - loss: 1.8965e-04 - val_accuracy: 0.9370 - val_loss: 0.0091
-
-Epoch 23/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.6077e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 24/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.4522e-04 - val_accuracy: 0.9370 - val_loss: 0.0086
-
-Epoch 25/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3426e-04 - val_accuracy: 0.9411 - val_loss: 0.0086
-
-Epoch 26/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3201e-04 - val_accuracy: 0.9411 - val_loss: 0.0085
-
-Epoch 27/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.3080e-04 - val_accuracy: 0.9397 - val_loss: 0.0086
-
-Epoch 28/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2955e-04 - val_accuracy: 0.9397 - val_loss: 0.0086
-
-Epoch 29/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2854e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 30/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2769e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 31/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2699e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 32/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2634e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 33/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2581e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 34/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2526e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 35/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2481e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 36/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2445e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 37/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2402e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 38/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2368e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 39/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2334e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 40/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2306e-04 - val_accuracy: 0.9397 - val_loss: 0.0085
-
-Epoch 41/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2286e-04 - val_accuracy: 0.9384 - val_loss: 0.0085
-
-Epoch 42/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2249e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 43/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2227e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 44/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2201e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
-
-Epoch 45/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2179e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 46/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2158e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 47/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2140e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
-
-Epoch 48/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2124e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 49/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2106e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
-
-Epoch 50/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2089e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 51/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2075e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 52/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2061e-04 - val_accuracy: 0.9384 - val_loss: 0.0084
-
-Epoch 53/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2049e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 54/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2035e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 55/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2023e-04 - val_accuracy: 0.9397 - val_loss: 0.0084
-
-Epoch 56/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2011e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 57/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.2001e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 58/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1991e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 59/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1981e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 60/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1972e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 61/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1963e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 62/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1956e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 63/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1947e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 64/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1940e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 65/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1932e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 66/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1926e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 67/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1919e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 68/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1913e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 69/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1907e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 70/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1901e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 71/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1895e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 72/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1890e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 73/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1886e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 74/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1881e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 75/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1875e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 76/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1871e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 77/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1867e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 78/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1862e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 79/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1859e-04 - val_accuracy: 0.9397 - val_loss: 0.0083
-
-Epoch 80/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1855e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 81/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1851e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 82/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1848e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 83/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1844e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 84/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1841e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 85/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1838e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 86/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1835e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 87/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1833e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 88/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1830e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
-
-Epoch 89/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1827e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 90/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1825e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 91/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1823e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 92/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1820e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 93/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1818e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 94/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1815e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 95/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1813e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
-
-Epoch 96/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1811e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
-
-Epoch 97/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1809e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 98/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1807e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
-
-Epoch 99/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1805e-04 - val_accuracy: 0.9397 - val_loss: 0.0082
-
-Epoch 100/100
-
-54/54 - 0s - 1ms/step - accuracy: 0.9994 - loss: 1.1804e-04 - val_accuracy: 0.9411 - val_loss: 0.0082
-
-<span class="ansi-bold">19/19</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 510us/step - accuracy: 0.9408 - loss: 0.0094
-
-Evaluation [0.009433673694729805, 0.9407894611358643]
-
-<span class="ansi-bold">19/19</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">0s</span> 410us/step
-
-Probabilities of all classes predicted from the model:
-
-              0             1             2             3             4  \
-
-0  2.526843e-04  4.354239e-01  2.643513e-01  1.658910e-01  1.589445e-05   
-
-1  1.612345e-07  8.821746e-08  9.999872e-01  3.196846e-07  6.375690e-07   
-
-2  7.375176e-02  4.478063e-08  2.192372e-03  6.428381e-06  3.903753e-03   
-
-3  1.779804e-12  1.358636e-10  2.272538e-09  1.000000e+00  8.952478e-12   
-
-4  9.996637e-01  9.480694e-07  3.255459e-08  3.427941e-07  3.030497e-06   
-
-5  3.969459e-07  9.790200e-01  1.216492e-07  7.689033e-07  2.093297e-02   
-
-6  9.996408e-01  1.542300e-07  1.549465e-07  2.598439e-09  1.798020e-05   
-
-7  1.710401e-09  9.999719e-01  5.321231e-10  3.150909e-10  2.515290e-05   
-
-8  9.999930e-01  4.413643e-10  1.644773e-07  3.816119e-06  7.932149e-10   
-
-9  3.367884e-04  6.052625e-07  6.021576e-03  5.250574e-05  9.439963e-05   
-
-
-
-              5             6             7             8             9  
-
-0  2.124328e-03  1.975189e-06  5.524793e-05  8.778333e-03  1.231054e-01  
-
-1  2.672424e-06  1.227125e-07  2.446306e-08  8.536437e-06  1.823294e-07  
-
-2  5.799346e-04  8.753884e-01  2.267049e-06  4.413391e-02  4.123967e-05  
-
-3  8.434039e-09  2.721396e-14  3.404442e-10  1.678920e-10  1.414223e-08  
-
-4  2.513801e-04  7.513642e-05  3.333351e-07  2.882304e-06  2.331113e-06  
-
-5  5.485702e-08  8.245086e-07  2.943585e-05  1.870641e-06  1.351035e-05  
-
-6  5.787739e-07  3.388892e-04  1.475894e-09  1.258710e-06  2.293790e-07  
-
-7  1.060349e-11  6.937350e-09  2.291020e-06  1.631426e-08  7.322392e-07  
-
-8  1.972805e-06  1.296987e-09  1.238473e-08  9.523679e-07  7.753832e-09  
-
-9  2.088328e-04  1.147253e-06  9.913388e-01  1.614263e-03  3.310828e-04  
-
-Predicted class based on the highest probability:
-
-===Confusion Matrix==
-
-[[62 0 0 ... 0 0 0]
-
- [0 61 1 ... 0 1 0]
-
- [1 2 50 ... 0 0 0]
-
- ...
-
- [0 2 0 ... 60 0 0]
-
- [0 0 0 ... 0 47 2]
-
- [1 0 0 ... 0 1 60]]
-
-    0   1   2   3   4   5   6   7   8   9
-
-0  62   0   0   0   0   0   0   0   0   0
-
-1   0  61   1   0   0   0   0   0   1   0
-
-2   1   2  50   3   1   0   0   0   0   0
-
-3   0   0   2  62   0   1   0   1   1   0
-
-4   0   0   0   0  54   0   1   1   1   1
-
-5   0   0   0   0   0  56   1   0   1   0
-
-6   0   0   0   0   0   0  60   0   1   0
-
-7   0   2   0   0   2   0   0  60   0   0
-
-8   0   0   0   0   1   3   2   0  47   2
-
-9   1   0   0   1   0   0   0   0   1  60
-</pre>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="04-zahlen_erkennen_files/figure-html/cell-7-output-3.png" class="img-fluid figure-img"></p>
-</figure>
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)">#| code-fold: true</span>
+<span class="ansi-green-fg">      2</span> <span style="font-style:italic;color:rgb(95,135,135)">#| code-summary: "Code anzeigen"</span>
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> tensorflow <span style="font-weight:bold;color:rgb(0,135,0)">as</span> tf
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span> pandas <span style="font-weight:bold;color:rgb(0,135,0)">as</span> pd
+<span class="ansi-green-fg">      6</span> 
+<span class="ansi-green-fg">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Normalize the pixel values by dividing each pixel by 255</span>
+<span class="ansi-green-fg">      8</span> x_train, x_test = x_train / <span class="ansi-green-fg">255.0</span>, x_test / <span class="ansi-green-fg">255.0</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'pandas'</pre>
 </div>
 </div>
 </div>
@@ -1555,13 +1060,16 @@ Konfusionsmatrix des trainierten Models zur Erkennung von Handgeschriebenen Zahl
 <p>Die <strong>Zeilensummen</strong> der Matrix geben außerdem Auskunft über die Anzahl der Testbeispiele pro Klasse. Diese sind relativ gleichmäßig verteilt, sodass keine Ziffer im Testdatensatz stark über- oder unterrepräsentiert ist. Dadurch ist die Aussagekraft der Matrix besonders hoch.</p>
 <p>Insgesamt zeigt die Konfusionsmatrix nicht nur die hohe Gesamtleistung des neuronalen Netzes, sondern liefert auch wertvolle Informationen über die verbleibenden Fehler. Sie macht deutlich, welche Ziffern besonders zuverlässig erkannt werden und bei welchen Klassen aufgrund visueller Ähnlichkeiten noch Verbesserungen möglich sind, beispielsweise durch den Einsatz komplexerer Modelle oder zusätzlicher Trainingsdaten.</p>
 <p>Um das trainierte Netzwerk später auch auf anderen Computern nutzen zu können, lässt es sich praktischerweise speichern.</p>
-<div id="8a7bc8db" class="cell" data-execution_count="7">
+<div id="8a7bc8db" class="cell">
 <details class="code-fold">
 <summary>Code anzeigen</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_test), x_test.shape)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#now save the trained model for later use</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"output/my_model.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x_test), x_test.shape)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#now save the trained model for later use</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">'output'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">"output/my_model.keras"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
