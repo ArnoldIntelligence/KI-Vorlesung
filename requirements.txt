@@ -2,3 +2,11 @@ jupyter
 numpy
 pandas
 matplotlib
+tqdm
+
+torch
+# for CUDA see: https://pytorch.org/get-started/locally/
+# e.g. (CUDA 13.2, Windows): pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu132 
+
+torchvision
+opencv-python

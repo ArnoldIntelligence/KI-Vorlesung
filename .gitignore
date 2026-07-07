@@ -3,3 +3,5 @@ _site
 **/*.quarto_ipynb
 .venv
 **/output/
+notebooks/Daten/ResNet/D-Fire
+notebooks/Daten/ResNet/models

@@ -22,7 +22,9 @@ website:
           - text: "04 – Zahlen erkennen"
             href: notebooks/04-zahlen_erkennen.ipynb
           - text: "05 – CNN"
-            href: notebooks/05-cnn.ipynb           
+            href: notebooks/05-cnn.ipynb  
+          - text: "05B – ResNet"
+            href: notebooks/05B-resnet.ipynb           
           - text: "06 – Nicht Überwachtes Lernen"
             href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
           - text: "07 – Reinforced Learning"
@@ -48,6 +50,8 @@ website:
         href: notebooks/04-zahlen_erkennen.ipynb
       - text: "05 – CNN"
         href: notebooks/05-cnn.ipynb           
+      - text: "05B – ResNet"
+        href: notebooks/05B-resnet.ipynb
       - text: "06 – Nicht Überwachtes Lernen"
         href: notebooks/06-nicht_ueberwachtes_lernen.ipynb
       - text: "07 – Reinforced Learning"
