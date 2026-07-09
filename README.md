@@ -66,7 +66,8 @@
     - ResNet mit Rauch und Feuer trainieren
   
 6. nicht überwachtes Lernen
-    - Backup Simone: Zeitreihenvorhersage
   
 7. reinforced Learning
+
+8. - Backup Simone: Zeitreihenvorhersage
   
