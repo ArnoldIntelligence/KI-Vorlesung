@@ -59,10 +59,11 @@
             - Model trainineren
             - Model validieren 
             - Hyperparameter tuning
+    - Abschlussprojekt Waagendisplay auslesen
               
 5. CNN
-    - Abschlussprojekt Waagendisplay auslesen
-    - Zeitreihe aus den Messungen erstellen
+    - CNNs verstehen
+    - ResNet mit Rauch und Feuer trainieren
   
 6. nicht überwachtes Lernen
     - Backup Simone: Zeitreihenvorhersage
