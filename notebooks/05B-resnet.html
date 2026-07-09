@@ -1880,7 +1880,9 @@ Aufgabe 3 — D-Fire Datensatz erkunden
 <p><code>torchvision</code> stellt ein fertiges <code>fasterrcnn_resnet50_fpn</code> bereit. Die einzige nötige Änderung ist der Box-Prediktor-Kopf, der Scores für unsere 2 Klassen (Rauch, Feuer) statt COCO Klassen ausgeben muss.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> torchvision.models.detection.fasterrcnn_resnet50_fpn(weights<span class="op">=</span><span class="st">"DEFAULT"</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>in_features <span class="op">=</span> model.roi_heads.box_predictor.cls_score.in_features</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>model.roi_heads.box_predictor <span class="op">=</span> FastRCNNPredictor(in_features, num_classes<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>model.roi_heads.box_predictor <span class="op">=</span> torchvision.models.detection.faster_rcnn.FastRCNNPredictor(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    in_features, num_classes<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Das Backbone behält seine vortrainierten Gewichte. Nur der neue <code>FastRCNNPredictor</code> startet von Grund auf.</p>
 </section>
 </section>
@@ -2036,7 +2038,7 @@ Aufgabe 7 — DataLoader-Setup
 </div>
 <div class="callout-body-container callout-body">
 <p>Verpacken Sie den Datensatz in einen <code>DataLoader</code>. Die Objektdetektion erfordert eine benutzerdefinierte <code>collate_fn</code>, da jedes Bild eine unterschiedliche Anzahl von Begrenzungsrahmen haben kann — sie können nicht wie Bilder in einen einzelnen Tensor gestapelt werden.</p>
-<p>Verwenden Sie für schnelle Iterationen eine Teilmenge von z.B. 2000 Trainingsbildern. Drucken Sie die Anzahl der Train-Batches und die Gesamtzahl der Val-Bilder aus.</p>
+<p>Verwenden Sie für schnelle Iterationen eine Teilmenge von z.B. 1000 Trainingsbildern. Drucken Sie die Anzahl der Train-Batches und die Gesamtzahl der Val-Bilder aus.</p>
 </div>
 </div>
 <div id="85362dc1" class="cell" data-execution_count="41">
