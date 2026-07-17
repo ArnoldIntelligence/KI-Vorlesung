@@ -2252,7 +2252,7 @@ Aufgabe 11 — Überanpassungs-Experiment
 <p>Welche Form erwarten Sie für Lauf A? Was sagt die Lücke zwischen Train- und Val-Verlust aus?</p>
 </div>
 </div>
-<div id="e70f93b8" class="cell" data-execution_count="16">
+<div id="e70f93b8" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2283,186 +2283,66 @@ Aufgabe 11 — Überanpassungs-Experiment
 <span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"=== Lauf A: 50 Bilder, 40 Epochen ==="</span>)</span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>hist_overfit <span class="op">=</span> run_experiment(n_train<span class="op">=</span><span class="dv">50</span>,   n_epochs<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a><span class="co"># hist_overfit = run_experiment(n_train=50,   n_epochs=40)</span></span>
 <span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== Lauf B: 2000 Bilder, 10 Epochen ==="</span>)</span>
 <span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a>hist_normal  <span class="op">=</span> run_experiment(n_train<span class="op">=</span><span class="dv">2000</span>, n_epochs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>=== Lauf A: 50 Bilder, 40 Epochen ===</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  1  train=0.438  val=0.466</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  2  train=0.328  val=0.289</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  3  train=0.215  val=0.253</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  4  train=0.193  val=0.233</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  5  train=0.179  val=0.224</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  6  train=0.172  val=0.222</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  7  train=0.174  val=0.223</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  8  train=0.171  val=0.218</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch  9  train=0.179  val=0.218</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 10  train=0.166  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 11  train=0.151  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 12  train=0.151  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 13  train=0.157  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 14  train=0.143  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 15  train=0.137  val=0.219</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 16  train=0.146  val=0.220</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 17  train=0.134  val=0.216</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 18  train=0.130  val=0.218</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 19  train=0.136  val=0.218</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 20  train=0.127  val=0.223</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 21  train=0.138  val=0.219</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 22  train=0.116  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 23  train=0.118  val=0.216</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 24  train=0.109  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 25  train=0.108  val=0.221</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 26  train=0.106  val=0.220</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 27  train=0.115  val=0.222</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 28  train=0.101  val=0.217</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 29  train=0.110  val=0.221</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 30  train=0.101  val=0.219</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 31  train=0.096  val=0.221</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 32  train=0.092  val=0.222</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 33  train=0.093  val=0.225</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 34  train=0.091  val=0.227</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 35  train=0.098  val=0.225</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 36  train=0.084  val=0.233</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 37  train=0.095  val=0.226</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 38  train=0.089  val=0.231</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 39  train=0.082  val=0.225</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  epoch 40  train=0.081  val=0.232
+<pre><code>=== Lauf A: 50 Bilder, 40 Epochen ===
 
 === Lauf B: 2000 Bilder, 10 Epochen ===</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  1  train=0.215  val=0.204</code></pre>
+<pre><code>  epoch  1  train=0.215  val=0.192</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  2  train=0.190  val=0.203</code></pre>
+<pre><code>  epoch  2  train=0.190  val=0.186</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  3  train=0.185  val=0.188</code></pre>
+<pre><code>  epoch  3  train=0.183  val=0.189</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  4  train=0.180  val=0.182</code></pre>
+<pre><code>  epoch  4  train=0.177  val=0.183</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  5  train=0.175  val=0.175</code></pre>
+<pre><code>  epoch  5  train=0.175  val=0.191</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  6  train=0.171  val=0.186</code></pre>
+<pre><code>  epoch  6  train=0.172  val=0.194</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  7  train=0.169  val=0.186</code></pre>
+<pre><code>  epoch  7  train=0.170  val=0.180</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  8  train=0.165  val=0.184</code></pre>
+<pre><code>  epoch  8  train=0.165  val=0.183</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch  9  train=0.164  val=0.190</code></pre>
+<pre><code>  epoch  9  train=0.163  val=0.184</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  epoch 10  train=0.161  val=0.189</code></pre>
+<pre><code>  epoch 10  train=0.160  val=0.176</code></pre>
 </div>
 </div>
-<div id="0c7a07cf" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, hist, title <span class="kw">in</span> <span class="bu">zip</span>(</span>
-<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>    axes,</span>
-<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>    [hist_overfit, hist_normal],</span>
-<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Lauf A — 50 Bilder (Überanpassung)"</span>, <span class="st">"Lauf B — 2 000 Bilder (normal)"</span>],</span>
-<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a>):</span>
-<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a>    epochs <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(hist[<span class="st">"train"</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a>    ax.plot(epochs, hist[<span class="st">"train"</span>], label<span class="op">=</span><span class="st">"Trainingsverlust"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a>    ax.plot(epochs, hist[<span class="st">"val"</span>],   label<span class="op">=</span><span class="st">"Validierungsverlust"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Epoche"</span>)</span>
-<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Verlust"</span>)</span>
-<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
-<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
-<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb92-17"><a href="#cb92-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb92-18"><a href="#cb92-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb92-19"><a href="#cb92-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0c7a07cf" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, hist, title <span class="kw">in</span> <span class="bu">zip</span>(</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    axes,</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    [hist_overfit, hist_normal],</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Lauf A — 50 Bilder (Überanpassung)"</span>, <span class="st">"Lauf B — 2 000 Bilder (normal)"</span>],</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    epochs <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(hist[<span class="st">"train"</span>]) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    ax.plot(epochs, hist[<span class="st">"train"</span>], label<span class="op">=</span><span class="st">"Trainingsverlust"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    ax.plot(epochs, hist[<span class="st">"val"</span>],   label<span class="op">=</span><span class="st">"Validierungsverlust"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Epoche"</span>)</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Verlust"</span>)</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>    ax.legend()</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2497,71 +2377,71 @@ Aufgabe 12 — Inferenzfunktion
 </div>
 </div>
 <div id="323c3b3b" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2 </span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>model.load_state_dict(torch.load(<span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>, map_location<span class="op">=</span>device))</span>
-<span id="cb93-4"><a href="#cb93-4" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>()</span>
-<span id="cb93-5"><a href="#cb93-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-6"><a href="#cb93-6" aria-hidden="true" tabindex="-1"></a>CLASS_NAMES <span class="op">=</span> {<span class="dv">1</span>: <span class="st">"smoke"</span>, <span class="dv">2</span>: <span class="st">"fire"</span>}</span>
-<span id="cb93-7"><a href="#cb93-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-8"><a href="#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="at">@torch.inference_mode</span>()</span>
-<span id="cb93-9"><a href="#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(model, img_path, device, score_thresh<span class="op">=</span><span class="fl">0.5</span>):</span>
-<span id="cb93-10"><a href="#cb93-10" aria-hidden="true" tabindex="-1"></a>    img    <span class="op">=</span> cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)</span>
-<span id="cb93-11"><a href="#cb93-11" aria-hidden="true" tabindex="-1"></a>    tensor <span class="op">=</span> torch.from_numpy(img).permute(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>).<span class="bu">float</span>() <span class="op">/</span> <span class="fl">255.0</span></span>
-<span id="cb93-12"><a href="#cb93-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-13"><a href="#cb93-13" aria-hidden="true" tabindex="-1"></a>    out  <span class="op">=</span> model([tensor.to(device)])[<span class="dv">0</span>]</span>
-<span id="cb93-14"><a href="#cb93-14" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> out[<span class="st">"scores"</span>] <span class="op">&gt;=</span> score_thresh</span>
-<span id="cb93-15"><a href="#cb93-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb93-16"><a href="#cb93-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
-<span id="cb93-17"><a href="#cb93-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"image"</span>:  img,</span>
-<span id="cb93-18"><a href="#cb93-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"boxes"</span>:  out[<span class="st">"boxes"</span>][keep].cpu(),</span>
-<span id="cb93-19"><a href="#cb93-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"labels"</span>: out[<span class="st">"labels"</span>][keep].cpu(),</span>
-<span id="cb93-20"><a href="#cb93-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"scores"</span>: out[<span class="st">"scores"</span>][keep].cpu(),</span>
-<span id="cb93-21"><a href="#cb93-21" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2 </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>model.load_state_dict(torch.load(<span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>, map_location<span class="op">=</span>device))</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">eval</span>()</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>CLASS_NAMES <span class="op">=</span> {<span class="dv">1</span>: <span class="st">"smoke"</span>, <span class="dv">2</span>: <span class="st">"fire"</span>}</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="at">@torch.inference_mode</span>()</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(model, img_path, device, score_thresh<span class="op">=</span><span class="fl">0.5</span>):</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    img    <span class="op">=</span> cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    tensor <span class="op">=</span> torch.from_numpy(img).permute(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>).<span class="bu">float</span>() <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    out  <span class="op">=</span> model([tensor.to(device)])[<span class="dv">0</span>]</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    keep <span class="op">=</span> out[<span class="st">"scores"</span>] <span class="op">&gt;=</span> score_thresh</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"image"</span>:  img,</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"boxes"</span>:  out[<span class="st">"boxes"</span>][keep].cpu(),</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"labels"</span>: out[<span class="st">"labels"</span>][keep].cpu(),</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"scores"</span>: out[<span class="st">"scores"</span>][keep].cpu(),</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-13-vorhersagen-visualisieren" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="aufgabe-13-vorhersagen-visualisieren"><span class="header-section-number">10.2</span> Aufgabe 13 — Vorhersagen visualisieren</h2>
 <div id="50fbc28c" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bereitgestelltes vortrainiertes D-FIRE-Modell laden</span></span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>dfire_full <span class="op">=</span> make_detector(num_classes<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>dfire_full.load_state_dict(</span>
-<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>    torch.load(<span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>, map_location<span class="op">=</span><span class="st">"cpu"</span>)</span>
-<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>dfire_full.<span class="bu">eval</span>()</span>
-<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a>dfire_paths <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"Daten/ResNet/Bild_??.jpeg"</span>))</span>
-<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>ncols <span class="op">=</span> <span class="bu">min</span>(<span class="dv">3</span>, <span class="bu">len</span>(dfire_paths))</span>
-<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>nrows <span class="op">=</span> (<span class="bu">len</span>(dfire_paths) <span class="op">+</span> ncols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> ncols</span>
-<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows, ncols, figsize<span class="op">=</span>(<span class="dv">5</span> <span class="op">*</span> ncols, <span class="dv">5</span> <span class="op">*</span> nrows), squeeze<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
-<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, path <span class="kw">in</span> <span class="bu">zip</span>(axes, dfire_paths):</span>
-<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> predict(dfire_full, path, torch.device(<span class="st">"cpu"</span>))</span>
-<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a>    ax.imshow(result[<span class="st">"image"</span>])</span>
-<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a>    ax.set_title(os.path.basename(path), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-21"><a href="#cb94-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> box, label, score <span class="kw">in</span> <span class="bu">zip</span>(result[<span class="st">"boxes"</span>], result[<span class="st">"labels"</span>], result[<span class="st">"scores"</span>]):</span>
-<span id="cb94-22"><a href="#cb94-22" aria-hidden="true" tabindex="-1"></a>        x1, y1, x2, y2 <span class="op">=</span> box.tolist()</span>
-<span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a>        cls   <span class="op">=</span> label.item()</span>
-<span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> CLASS_COLORS.get(cls, <span class="st">"white"</span>)</span>
-<span id="cb94-25"><a href="#cb94-25" aria-hidden="true" tabindex="-1"></a>        ax.add_patch(patches.Rectangle(</span>
-<span id="cb94-26"><a href="#cb94-26" aria-hidden="true" tabindex="-1"></a>            (x1, y1), x2 <span class="op">-</span> x1, y2 <span class="op">-</span> y1,</span>
-<span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a>            linewidth<span class="op">=</span><span class="dv">2</span>, edgecolor<span class="op">=</span>color, facecolor<span class="op">=</span><span class="st">"none"</span></span>
-<span id="cb94-28"><a href="#cb94-28" aria-hidden="true" tabindex="-1"></a>        ))</span>
-<span id="cb94-29"><a href="#cb94-29" aria-hidden="true" tabindex="-1"></a>        ax.text(x1, <span class="bu">max</span>(<span class="dv">0</span>, y1 <span class="op">-</span> <span class="dv">6</span>),</span>
-<span id="cb94-30"><a href="#cb94-30" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"</span><span class="sc">{</span>CLASS_NAMES[cls]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>,</span>
-<span id="cb94-31"><a href="#cb94-31" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>color, fontsize<span class="op">=</span><span class="dv">9</span>,</span>
-<span id="cb94-32"><a href="#cb94-32" aria-hidden="true" tabindex="-1"></a>                bbox<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="dv">2</span>))</span>
-<span id="cb94-33"><a href="#cb94-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-34"><a href="#cb94-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes[<span class="bu">len</span>(dfire_paths):]:</span>
-<span id="cb94-35"><a href="#cb94-35" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
-<span id="cb94-36"><a href="#cb94-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-37"><a href="#cb94-37" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Faster R-CNN (D-FIRE, vortrainiert) — Feuer- und Raucherkennung"</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
-<span id="cb94-38"><a href="#cb94-38" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb94-39"><a href="#cb94-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bereitgestelltes vortrainiertes D-FIRE-Modell laden</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>dfire_full <span class="op">=</span> make_detector(num_classes<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>dfire_full.load_state_dict(</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    torch.load(<span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>, map_location<span class="op">=</span><span class="st">"cpu"</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>dfire_full.<span class="bu">eval</span>()</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>dfire_paths <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">"Daten/ResNet/Bild_??.jpeg"</span>))</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>ncols <span class="op">=</span> <span class="bu">min</span>(<span class="dv">3</span>, <span class="bu">len</span>(dfire_paths))</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>nrows <span class="op">=</span> (<span class="bu">len</span>(dfire_paths) <span class="op">+</span> ncols <span class="op">-</span> <span class="dv">1</span>) <span class="op">//</span> ncols</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows, ncols, figsize<span class="op">=</span>(<span class="dv">5</span> <span class="op">*</span> ncols, <span class="dv">5</span> <span class="op">*</span> nrows), squeeze<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, path <span class="kw">in</span> <span class="bu">zip</span>(axes, dfire_paths):</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> predict(dfire_full, path, torch.device(<span class="st">"cpu"</span>))</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    ax.imshow(result[<span class="st">"image"</span>])</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>    ax.set_title(os.path.basename(path), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> box, label, score <span class="kw">in</span> <span class="bu">zip</span>(result[<span class="st">"boxes"</span>], result[<span class="st">"labels"</span>], result[<span class="st">"scores"</span>]):</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>        x1, y1, x2, y2 <span class="op">=</span> box.tolist()</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>        cls   <span class="op">=</span> label.item()</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> CLASS_COLORS.get(cls, <span class="st">"white"</span>)</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>        ax.add_patch(patches.Rectangle(</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>            (x1, y1), x2 <span class="op">-</span> x1, y2 <span class="op">-</span> y1,</span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a>            linewidth<span class="op">=</span><span class="dv">2</span>, edgecolor<span class="op">=</span>color, facecolor<span class="op">=</span><span class="st">"none"</span></span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>        ))</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a>        ax.text(x1, <span class="bu">max</span>(<span class="dv">0</span>, y1 <span class="op">-</span> <span class="dv">6</span>),</span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"</span><span class="sc">{</span>CLASS_NAMES[cls]<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>score<span class="sc">:.2f}</span><span class="ss">"</span>,</span>
+<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>color, fontsize<span class="op">=</span><span class="dv">9</span>,</span>
+<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a>                bbox<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">"black"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, pad<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax <span class="kw">in</span> axes[<span class="bu">len</span>(dfire_paths):]:</span>
+<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">"off"</span>)</span>
+<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Faster R-CNN (D-FIRE, vortrainiert) — Feuer- und Raucherkennung"</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2641,180 +2521,180 @@ Aufgabe 14 — Konfusionsmatrix für Detektion
 </div>
 </div>
 <div id="b8300788" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.ops <span class="im">import</span> box_iou</span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_confusion_matrix(model, loader, device,</span>
-<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>                           iou_thresh<span class="op">=</span><span class="fl">0.5</span>, score_thresh<span class="op">=</span><span class="fl">0.5</span>, num_classes<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>    matrix <span class="op">=</span> np.zeros((num_classes, num_classes), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>    tn_count       <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Bilder: GT leer UND keine Vorhersage</span></span>
-<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a>    empty_gt_count <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Bilder: GT leer (gesamt)</span></span>
-<span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-12"><a href="#cb97-12" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
-<span id="cb97-13"><a href="#cb97-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb97-14"><a href="#cb97-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> images, targets <span class="kw">in</span> tqdm(loader, desc<span class="op">=</span><span class="st">"eval"</span>, leave<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb97-15"><a href="#cb97-15" aria-hidden="true" tabindex="-1"></a>            images <span class="op">=</span> [img.to(device) <span class="cf">for</span> img <span class="kw">in</span> images]</span>
-<span id="cb97-16"><a href="#cb97-16" aria-hidden="true" tabindex="-1"></a>            preds  <span class="op">=</span> model(images)</span>
-<span id="cb97-17"><a href="#cb97-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-18"><a href="#cb97-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pred, target <span class="kw">in</span> <span class="bu">zip</span>(preds, targets):</span>
-<span id="cb97-19"><a href="#cb97-19" aria-hidden="true" tabindex="-1"></a>                gt_boxes  <span class="op">=</span> target[<span class="st">"boxes"</span>].cpu()</span>
-<span id="cb97-20"><a href="#cb97-20" aria-hidden="true" tabindex="-1"></a>                gt_labels <span class="op">=</span> target[<span class="st">"labels"</span>].cpu()</span>
-<span id="cb97-21"><a href="#cb97-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-22"><a href="#cb97-22" aria-hidden="true" tabindex="-1"></a>                keep        <span class="op">=</span> pred[<span class="st">"scores"</span>].cpu() <span class="op">&gt;=</span> score_thresh</span>
-<span id="cb97-23"><a href="#cb97-23" aria-hidden="true" tabindex="-1"></a>                pred_boxes  <span class="op">=</span> pred[<span class="st">"boxes"</span>].cpu()[keep]</span>
-<span id="cb97-24"><a href="#cb97-24" aria-hidden="true" tabindex="-1"></a>                pred_labels <span class="op">=</span> pred[<span class="st">"labels"</span>].cpu()[keep]</span>
-<span id="cb97-25"><a href="#cb97-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-26"><a href="#cb97-26" aria-hidden="true" tabindex="-1"></a>                <span class="co"># True-Negative-Tracking auf Bildebene</span></span>
-<span id="cb97-27"><a href="#cb97-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(gt_boxes) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb97-28"><a href="#cb97-28" aria-hidden="true" tabindex="-1"></a>                    empty_gt_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb97-29"><a href="#cb97-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">len</span>(pred_boxes) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb97-30"><a href="#cb97-30" aria-hidden="true" tabindex="-1"></a>                        tn_count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb97-31"><a href="#cb97-31" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Kein Eintrag in die Matrix — kein GT-Objekt vorhanden</span></span>
-<span id="cb97-32"><a href="#cb97-32" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
-<span id="cb97-33"><a href="#cb97-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-34"><a href="#cb97-34" aria-hidden="true" tabindex="-1"></a>                matched_pred <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb97-35"><a href="#cb97-35" aria-hidden="true" tabindex="-1"></a>                matched_gt   <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb97-36"><a href="#cb97-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-37"><a href="#cb97-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(pred_boxes) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb97-38"><a href="#cb97-38" aria-hidden="true" tabindex="-1"></a>                    ious <span class="op">=</span> box_iou(pred_boxes, gt_boxes)   <span class="co"># [n_pred, n_gt]</span></span>
-<span id="cb97-39"><a href="#cb97-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-40"><a href="#cb97-40" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Alle Paare nach IoU absteigend sortieren, dann zuordnen</span></span>
-<span id="cb97-41"><a href="#cb97-41" aria-hidden="true" tabindex="-1"></a>                    pairs <span class="op">=</span> <span class="bu">sorted</span>(</span>
-<span id="cb97-42"><a href="#cb97-42" aria-hidden="true" tabindex="-1"></a>                        [(i, j) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(pred_boxes))</span>
-<span id="cb97-43"><a href="#cb97-43" aria-hidden="true" tabindex="-1"></a>                                 <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(gt_boxes))],</span>
-<span id="cb97-44"><a href="#cb97-44" aria-hidden="true" tabindex="-1"></a>                        key<span class="op">=</span><span class="kw">lambda</span> x: <span class="op">-</span>ious[x[<span class="dv">0</span>], x[<span class="dv">1</span>]].item()</span>
-<span id="cb97-45"><a href="#cb97-45" aria-hidden="true" tabindex="-1"></a>                    )</span>
-<span id="cb97-46"><a href="#cb97-46" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> pi, gi <span class="kw">in</span> pairs:</span>
-<span id="cb97-47"><a href="#cb97-47" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> pi <span class="kw">in</span> matched_pred <span class="kw">or</span> gi <span class="kw">in</span> matched_gt:</span>
-<span id="cb97-48"><a href="#cb97-48" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">continue</span></span>
-<span id="cb97-49"><a href="#cb97-49" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> ious[pi, gi] <span class="op">&gt;=</span> iou_thresh:</span>
-<span id="cb97-50"><a href="#cb97-50" aria-hidden="true" tabindex="-1"></a>                            matrix[gt_labels[gi].item(),</span>
-<span id="cb97-51"><a href="#cb97-51" aria-hidden="true" tabindex="-1"></a>                                   pred_labels[pi].item()] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb97-52"><a href="#cb97-52" aria-hidden="true" tabindex="-1"></a>                            matched_pred.add(pi)</span>
-<span id="cb97-53"><a href="#cb97-53" aria-hidden="true" tabindex="-1"></a>                            matched_gt.add(gi)</span>
-<span id="cb97-54"><a href="#cb97-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-55"><a href="#cb97-55" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Nicht zugeordnete Vorhersagen → falsch positiv (Zeile = Hintergrund = 0)</span></span>
-<span id="cb97-56"><a href="#cb97-56" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> pi <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(pred_boxes)):</span>
-<span id="cb97-57"><a href="#cb97-57" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> pi <span class="kw">not</span> <span class="kw">in</span> matched_pred:</span>
-<span id="cb97-58"><a href="#cb97-58" aria-hidden="true" tabindex="-1"></a>                        matrix[<span class="dv">0</span>, pred_labels[pi].item()] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb97-59"><a href="#cb97-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-60"><a href="#cb97-60" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Nicht zugeordnete Ground Truths → falsch negativ (Spalte = Hintergrund = 0)</span></span>
-<span id="cb97-61"><a href="#cb97-61" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> gi <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(gt_boxes)):</span>
-<span id="cb97-62"><a href="#cb97-62" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> gi <span class="kw">not</span> <span class="kw">in</span> matched_gt:</span>
-<span id="cb97-63"><a href="#cb97-63" aria-hidden="true" tabindex="-1"></a>                        matrix[gt_labels[gi].item(), <span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb97-64"><a href="#cb97-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb97-65"><a href="#cb97-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"True Negatives: </span><span class="sc">{</span>tn_count<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span>empty_gt_count<span class="sc">}</span><span class="ss"> "</span></span>
-<span id="cb97-66"><a href="#cb97-66" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"Bilder ohne Objekte korrekt als leer erkannt "</span></span>
-<span id="cb97-67"><a href="#cb97-67" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"(</span><span class="sc">{</span><span class="dv">100</span> <span class="op">*</span> tn_count <span class="op">/</span> <span class="bu">max</span>(empty_gt_count, <span class="dv">1</span>)<span class="sc">:.1f}</span><span class="ss"> %)"</span>)</span>
-<span id="cb97-68"><a href="#cb97-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.ops <span class="im">import</span> box_iou</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_confusion_matrix(model, loader, device,</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>                           iou_thresh<span class="op">=</span><span class="fl">0.5</span>, score_thresh<span class="op">=</span><span class="fl">0.5</span>, num_classes<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    matrix <span class="op">=</span> np.zeros((num_classes, num_classes), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    tn_count       <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Bilder: GT leer UND keine Vorhersage</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    empty_gt_count <span class="op">=</span> <span class="dv">0</span>  <span class="co"># Bilder: GT leer (gesamt)</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> images, targets <span class="kw">in</span> tqdm(loader, desc<span class="op">=</span><span class="st">"eval"</span>, leave<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>            images <span class="op">=</span> [img.to(device) <span class="cf">for</span> img <span class="kw">in</span> images]</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>            preds  <span class="op">=</span> model(images)</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pred, target <span class="kw">in</span> <span class="bu">zip</span>(preds, targets):</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>                gt_boxes  <span class="op">=</span> target[<span class="st">"boxes"</span>].cpu()</span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>                gt_labels <span class="op">=</span> target[<span class="st">"labels"</span>].cpu()</span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>                keep        <span class="op">=</span> pred[<span class="st">"scores"</span>].cpu() <span class="op">&gt;=</span> score_thresh</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>                pred_boxes  <span class="op">=</span> pred[<span class="st">"boxes"</span>].cpu()[keep]</span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>                pred_labels <span class="op">=</span> pred[<span class="st">"labels"</span>].cpu()[keep]</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>                <span class="co"># True-Negative-Tracking auf Bildebene</span></span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(gt_boxes) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>                    empty_gt_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="bu">len</span>(pred_boxes) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a>                        tn_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Kein Eintrag in die Matrix — kein GT-Objekt vorhanden</span></span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>                matched_pred <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb57-35"><a href="#cb57-35" aria-hidden="true" tabindex="-1"></a>                matched_gt   <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb57-36"><a href="#cb57-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-37"><a href="#cb57-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(pred_boxes) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb57-38"><a href="#cb57-38" aria-hidden="true" tabindex="-1"></a>                    ious <span class="op">=</span> box_iou(pred_boxes, gt_boxes)   <span class="co"># [n_pred, n_gt]</span></span>
+<span id="cb57-39"><a href="#cb57-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-40"><a href="#cb57-40" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Alle Paare nach IoU absteigend sortieren, dann zuordnen</span></span>
+<span id="cb57-41"><a href="#cb57-41" aria-hidden="true" tabindex="-1"></a>                    pairs <span class="op">=</span> <span class="bu">sorted</span>(</span>
+<span id="cb57-42"><a href="#cb57-42" aria-hidden="true" tabindex="-1"></a>                        [(i, j) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(pred_boxes))</span>
+<span id="cb57-43"><a href="#cb57-43" aria-hidden="true" tabindex="-1"></a>                                 <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(gt_boxes))],</span>
+<span id="cb57-44"><a href="#cb57-44" aria-hidden="true" tabindex="-1"></a>                        key<span class="op">=</span><span class="kw">lambda</span> x: <span class="op">-</span>ious[x[<span class="dv">0</span>], x[<span class="dv">1</span>]].item()</span>
+<span id="cb57-45"><a href="#cb57-45" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb57-46"><a href="#cb57-46" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> pi, gi <span class="kw">in</span> pairs:</span>
+<span id="cb57-47"><a href="#cb57-47" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> pi <span class="kw">in</span> matched_pred <span class="kw">or</span> gi <span class="kw">in</span> matched_gt:</span>
+<span id="cb57-48"><a href="#cb57-48" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">continue</span></span>
+<span id="cb57-49"><a href="#cb57-49" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> ious[pi, gi] <span class="op">&gt;=</span> iou_thresh:</span>
+<span id="cb57-50"><a href="#cb57-50" aria-hidden="true" tabindex="-1"></a>                            matrix[gt_labels[gi].item(),</span>
+<span id="cb57-51"><a href="#cb57-51" aria-hidden="true" tabindex="-1"></a>                                   pred_labels[pi].item()] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-52"><a href="#cb57-52" aria-hidden="true" tabindex="-1"></a>                            matched_pred.add(pi)</span>
+<span id="cb57-53"><a href="#cb57-53" aria-hidden="true" tabindex="-1"></a>                            matched_gt.add(gi)</span>
+<span id="cb57-54"><a href="#cb57-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-55"><a href="#cb57-55" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Nicht zugeordnete Vorhersagen → falsch positiv (Zeile = Hintergrund = 0)</span></span>
+<span id="cb57-56"><a href="#cb57-56" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> pi <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(pred_boxes)):</span>
+<span id="cb57-57"><a href="#cb57-57" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> pi <span class="kw">not</span> <span class="kw">in</span> matched_pred:</span>
+<span id="cb57-58"><a href="#cb57-58" aria-hidden="true" tabindex="-1"></a>                        matrix[<span class="dv">0</span>, pred_labels[pi].item()] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-59"><a href="#cb57-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-60"><a href="#cb57-60" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Nicht zugeordnete Ground Truths → falsch negativ (Spalte = Hintergrund = 0)</span></span>
+<span id="cb57-61"><a href="#cb57-61" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> gi <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(gt_boxes)):</span>
+<span id="cb57-62"><a href="#cb57-62" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> gi <span class="kw">not</span> <span class="kw">in</span> matched_gt:</span>
+<span id="cb57-63"><a href="#cb57-63" aria-hidden="true" tabindex="-1"></a>                        matrix[gt_labels[gi].item(), <span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb57-64"><a href="#cb57-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-65"><a href="#cb57-65" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"True Negatives: </span><span class="sc">{</span>tn_count<span class="sc">}</span><span class="ss"> / </span><span class="sc">{</span>empty_gt_count<span class="sc">}</span><span class="ss"> "</span></span>
+<span id="cb57-66"><a href="#cb57-66" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"Bilder ohne Objekte korrekt als leer erkannt "</span></span>
+<span id="cb57-67"><a href="#cb57-67" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"(</span><span class="sc">{</span><span class="dv">100</span> <span class="op">*</span> tn_count <span class="op">/</span> <span class="bu">max</span>(empty_gt_count, <span class="dv">1</span>)<span class="sc">:.1f}</span><span class="ss"> %)"</span>)</span>
+<span id="cb57-68"><a href="#cb57-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="c728bc42" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_confusion_matrix(matrix, title<span class="op">=</span><span class="st">""</span>, class_names<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> class_names <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>        class_names <span class="op">=</span> [<span class="st">"Hintergrund"</span>, <span class="st">"Rauch"</span>, <span class="st">"Feuer"</span>]</span>
-<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>    row_sums  <span class="op">=</span> matrix.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>    norm      <span class="op">=</span> matrix <span class="op">/</span> np.where(row_sums <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, row_sums)</span>
-<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">5</span>))</span>
-<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(title, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
-<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax, data, fmt, subtitle <span class="kw">in</span> <span class="bu">zip</span>(</span>
-<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a>        axes,</span>
-<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a>        [matrix, norm],</span>
-<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"d"</span>, <span class="st">".2f"</span>],</span>
-<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"Anzahl"</span>, <span class="st">"Zeilen-normalisiert (Recall je Klasse)"</span>],</span>
-<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a>    ):</span>
-<span id="cb98-17"><a href="#cb98-17" aria-hidden="true" tabindex="-1"></a>        im <span class="op">=</span> ax.imshow(data, cmap<span class="op">=</span><span class="st">"Blues"</span>, vmin<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb98-18"><a href="#cb98-18" aria-hidden="true" tabindex="-1"></a>        ax.set_xticks(<span class="bu">range</span>(<span class="bu">len</span>(class_names)))</span>
-<span id="cb98-19"><a href="#cb98-19" aria-hidden="true" tabindex="-1"></a>        ax.set_yticks(<span class="bu">range</span>(<span class="bu">len</span>(class_names)))</span>
-<span id="cb98-20"><a href="#cb98-20" aria-hidden="true" tabindex="-1"></a>        ax.set_xticklabels(class_names, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
-<span id="cb98-21"><a href="#cb98-21" aria-hidden="true" tabindex="-1"></a>        ax.set_yticklabels(class_names)</span>
-<span id="cb98-22"><a href="#cb98-22" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">"Vorhergesagt"</span>)</span>
-<span id="cb98-23"><a href="#cb98-23" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">"Ground Truth"</span>)</span>
-<span id="cb98-24"><a href="#cb98-24" aria-hidden="true" tabindex="-1"></a>        ax.set_title(subtitle)</span>
-<span id="cb98-25"><a href="#cb98-25" aria-hidden="true" tabindex="-1"></a>        plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>)</span>
-<span id="cb98-26"><a href="#cb98-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-27"><a href="#cb98-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(class_names)):</span>
-<span id="cb98-28"><a href="#cb98-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(class_names)):</span>
-<span id="cb98-29"><a href="#cb98-29" aria-hidden="true" tabindex="-1"></a>                val <span class="op">=</span> data[r, c]</span>
-<span id="cb98-30"><a href="#cb98-30" aria-hidden="true" tabindex="-1"></a>                txt <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>val<span class="sc">:</span>{fmt}<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb98-31"><a href="#cb98-31" aria-hidden="true" tabindex="-1"></a>                color <span class="op">=</span> <span class="st">"white"</span> <span class="cf">if</span> val <span class="op">&gt;</span> data.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">0.6</span> <span class="cf">else</span> <span class="st">"black"</span></span>
-<span id="cb98-32"><a href="#cb98-32" aria-hidden="true" tabindex="-1"></a>                ax.text(c, r, txt, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb98-33"><a href="#cb98-33" aria-hidden="true" tabindex="-1"></a>                        fontsize<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span>color)</span>
-<span id="cb98-34"><a href="#cb98-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-35"><a href="#cb98-35" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb98-36"><a href="#cb98-36" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_confusion_matrix(matrix, title<span class="op">=</span><span class="st">""</span>, class_names<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> class_names <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>        class_names <span class="op">=</span> [<span class="st">"Hintergrund"</span>, <span class="st">"Rauch"</span>, <span class="st">"Feuer"</span>]</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    row_sums  <span class="op">=</span> matrix.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>    norm      <span class="op">=</span> matrix <span class="op">/</span> np.where(row_sums <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, row_sums)</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">5</span>))</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(title, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax, data, fmt, subtitle <span class="kw">in</span> <span class="bu">zip</span>(</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>        axes,</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>        [matrix, norm],</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"d"</span>, <span class="st">".2f"</span>],</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"Anzahl"</span>, <span class="st">"Zeilen-normalisiert (Recall je Klasse)"</span>],</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>        im <span class="op">=</span> ax.imshow(data, cmap<span class="op">=</span><span class="st">"Blues"</span>, vmin<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a>        ax.set_xticks(<span class="bu">range</span>(<span class="bu">len</span>(class_names)))</span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>        ax.set_yticks(<span class="bu">range</span>(<span class="bu">len</span>(class_names)))</span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>        ax.set_xticklabels(class_names, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a>        ax.set_yticklabels(class_names)</span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">"Vorhergesagt"</span>)</span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">"Ground Truth"</span>)</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>        ax.set_title(subtitle)</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a>        plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>)</span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(class_names)):</span>
+<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(class_names)):</span>
+<span id="cb58-29"><a href="#cb58-29" aria-hidden="true" tabindex="-1"></a>                val <span class="op">=</span> data[r, c]</span>
+<span id="cb58-30"><a href="#cb58-30" aria-hidden="true" tabindex="-1"></a>                txt <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>val<span class="sc">:</span>{fmt}<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb58-31"><a href="#cb58-31" aria-hidden="true" tabindex="-1"></a>                color <span class="op">=</span> <span class="st">"white"</span> <span class="cf">if</span> val <span class="op">&gt;</span> data.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">0.6</span> <span class="cf">else</span> <span class="st">"black"</span></span>
+<span id="cb58-32"><a href="#cb58-32" aria-hidden="true" tabindex="-1"></a>                ax.text(c, r, txt, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb58-33"><a href="#cb58-33" aria-hidden="true" tabindex="-1"></a>                        fontsize<span class="op">=</span><span class="dv">9</span>, color<span class="op">=</span>color)</span>
+<span id="cb58-34"><a href="#cb58-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-35"><a href="#cb58-35" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb58-36"><a href="#cb58-36" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="a1b2c3d4" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_per_image_confusion(model, loader, device,</span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>                              score_thresh<span class="op">=</span><span class="fl">0.5</span>, num_classes<span class="op">=</span><span class="dv">3</span>):</span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Binary 2×2 confusion matrix per foreground class, counted at image level.</span></span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="co">    matrices[c] has rows = GT (absent / present) and cols = pred (absent / present).</span></span>
-<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a>    fg <span class="op">=</span> num_classes <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a>    matrices <span class="op">=</span> np.zeros((fg, <span class="dv">2</span>, <span class="dv">2</span>), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb99-9"><a href="#cb99-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
-<span id="cb99-11"><a href="#cb99-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb99-12"><a href="#cb99-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> images, targets <span class="kw">in</span> tqdm(loader, desc<span class="op">=</span><span class="st">"eval (per-Bild)"</span>, leave<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb99-13"><a href="#cb99-13" aria-hidden="true" tabindex="-1"></a>            images <span class="op">=</span> [img.to(device) <span class="cf">for</span> img <span class="kw">in</span> images]</span>
-<span id="cb99-14"><a href="#cb99-14" aria-hidden="true" tabindex="-1"></a>            preds  <span class="op">=</span> model(images)</span>
-<span id="cb99-15"><a href="#cb99-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-16"><a href="#cb99-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pred, target <span class="kw">in</span> <span class="bu">zip</span>(preds, targets):</span>
-<span id="cb99-17"><a href="#cb99-17" aria-hidden="true" tabindex="-1"></a>                gt_labels   <span class="op">=</span> target[<span class="st">"labels"</span>].cpu()</span>
-<span id="cb99-18"><a href="#cb99-18" aria-hidden="true" tabindex="-1"></a>                keep        <span class="op">=</span> pred[<span class="st">"scores"</span>].cpu() <span class="op">&gt;=</span> score_thresh</span>
-<span id="cb99-19"><a href="#cb99-19" aria-hidden="true" tabindex="-1"></a>                pred_labels <span class="op">=</span> pred[<span class="st">"labels"</span>].cpu()[keep]</span>
-<span id="cb99-20"><a href="#cb99-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-21"><a href="#cb99-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> c_idx, c <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, num_classes)):</span>
-<span id="cb99-22"><a href="#cb99-22" aria-hidden="true" tabindex="-1"></a>                    gt_present   <span class="op">=</span> <span class="bu">int</span>((gt_labels <span class="op">==</span> c).<span class="bu">any</span>())</span>
-<span id="cb99-23"><a href="#cb99-23" aria-hidden="true" tabindex="-1"></a>                    pred_present <span class="op">=</span> <span class="bu">int</span>((pred_labels <span class="op">==</span> c).<span class="bu">any</span>())</span>
-<span id="cb99-24"><a href="#cb99-24" aria-hidden="true" tabindex="-1"></a>                    matrices[c_idx, gt_present, pred_present] <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb99-25"><a href="#cb99-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-26"><a href="#cb99-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> matrices</span>
-<span id="cb99-27"><a href="#cb99-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-28"><a href="#cb99-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-29"><a href="#cb99-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_per_image_confusion(matrices, title<span class="op">=</span><span class="st">""</span>, class_names<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb99-30"><a href="#cb99-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> class_names <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb99-31"><a href="#cb99-31" aria-hidden="true" tabindex="-1"></a>        class_names <span class="op">=</span> [<span class="st">"Rauch"</span>, <span class="st">"Feuer"</span>]</span>
-<span id="cb99-32"><a href="#cb99-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-33"><a href="#cb99-33" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> [<span class="st">"kein Objekt"</span>, <span class="st">"vorhanden"</span>]</span>
-<span id="cb99-34"><a href="#cb99-34" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(class_names)</span>
-<span id="cb99-35"><a href="#cb99-35" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, n, figsize<span class="op">=</span>(<span class="dv">5</span> <span class="op">*</span> n, <span class="dv">9</span>), squeeze<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb99-36"><a href="#cb99-36" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(<span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> — Konfusionsmatrix pro Bild"</span>, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
-<span id="cb99-37"><a href="#cb99-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-38"><a href="#cb99-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c_idx, cname <span class="kw">in</span> <span class="bu">enumerate</span>(class_names):</span>
-<span id="cb99-39"><a href="#cb99-39" aria-hidden="true" tabindex="-1"></a>        mat      <span class="op">=</span> matrices[c_idx]</span>
-<span id="cb99-40"><a href="#cb99-40" aria-hidden="true" tabindex="-1"></a>        row_sums <span class="op">=</span> mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb99-41"><a href="#cb99-41" aria-hidden="true" tabindex="-1"></a>        norm     <span class="op">=</span> mat <span class="op">/</span> np.where(row_sums <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, row_sums)</span>
-<span id="cb99-42"><a href="#cb99-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-43"><a href="#cb99-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row, (data, fmt, subtitle) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(</span>
-<span id="cb99-44"><a href="#cb99-44" aria-hidden="true" tabindex="-1"></a>            [mat, norm],</span>
-<span id="cb99-45"><a href="#cb99-45" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"d"</span>, <span class="st">".2f"</span>],</span>
-<span id="cb99-46"><a href="#cb99-46" aria-hidden="true" tabindex="-1"></a>            [<span class="ss">f"</span><span class="sc">{</span>cname<span class="sc">}</span><span class="ss"> — Anzahl"</span>, <span class="ss">f"</span><span class="sc">{</span>cname<span class="sc">}</span><span class="ss"> — Zeilen-normalisiert"</span>],</span>
-<span id="cb99-47"><a href="#cb99-47" aria-hidden="true" tabindex="-1"></a>        )):</span>
-<span id="cb99-48"><a href="#cb99-48" aria-hidden="true" tabindex="-1"></a>            ax <span class="op">=</span> axes[row, c_idx]</span>
-<span id="cb99-49"><a href="#cb99-49" aria-hidden="true" tabindex="-1"></a>            im <span class="op">=</span> ax.imshow(data, cmap<span class="op">=</span><span class="st">"Greens"</span>, vmin<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb99-50"><a href="#cb99-50" aria-hidden="true" tabindex="-1"></a>            ax.set_xticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb99-51"><a href="#cb99-51" aria-hidden="true" tabindex="-1"></a>            ax.set_yticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb99-52"><a href="#cb99-52" aria-hidden="true" tabindex="-1"></a>            ax.set_xticklabels(labels, rotation<span class="op">=</span><span class="dv">20</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
-<span id="cb99-53"><a href="#cb99-53" aria-hidden="true" tabindex="-1"></a>            ax.set_yticklabels(labels)</span>
-<span id="cb99-54"><a href="#cb99-54" aria-hidden="true" tabindex="-1"></a>            ax.set_xlabel(<span class="st">"Vorhergesagt"</span>)</span>
-<span id="cb99-55"><a href="#cb99-55" aria-hidden="true" tabindex="-1"></a>            ax.set_ylabel(<span class="st">"Ground Truth"</span>)</span>
-<span id="cb99-56"><a href="#cb99-56" aria-hidden="true" tabindex="-1"></a>            ax.set_title(subtitle)</span>
-<span id="cb99-57"><a href="#cb99-57" aria-hidden="true" tabindex="-1"></a>            plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>)</span>
-<span id="cb99-58"><a href="#cb99-58" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
-<span id="cb99-59"><a href="#cb99-59" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
-<span id="cb99-60"><a href="#cb99-60" aria-hidden="true" tabindex="-1"></a>                    val   <span class="op">=</span> data[r, c]</span>
-<span id="cb99-61"><a href="#cb99-61" aria-hidden="true" tabindex="-1"></a>                    color <span class="op">=</span> <span class="st">"white"</span> <span class="cf">if</span> val <span class="op">&gt;</span> data.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">0.6</span> <span class="cf">else</span> <span class="st">"black"</span></span>
-<span id="cb99-62"><a href="#cb99-62" aria-hidden="true" tabindex="-1"></a>                    ax.text(c, r, <span class="ss">f"</span><span class="sc">{</span>val<span class="sc">:</span>{fmt}<span class="sc">}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb99-63"><a href="#cb99-63" aria-hidden="true" tabindex="-1"></a>                            fontsize<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span>color)</span>
-<span id="cb99-64"><a href="#cb99-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-65"><a href="#cb99-65" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb99-66"><a href="#cb99-66" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_per_image_confusion(model, loader, device,</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>                              score_thresh<span class="op">=</span><span class="fl">0.5</span>, num_classes<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Binary 2×2 confusion matrix per foreground class, counted at image level.</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co">    matrices[c] has rows = GT (absent / present) and cols = pred (absent / present).</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    fg <span class="op">=</span> num_classes <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    matrices <span class="op">=</span> np.zeros((fg, <span class="dv">2</span>, <span class="dv">2</span>), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>    model.<span class="bu">eval</span>()</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> images, targets <span class="kw">in</span> tqdm(loader, desc<span class="op">=</span><span class="st">"eval (per-Bild)"</span>, leave<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>            images <span class="op">=</span> [img.to(device) <span class="cf">for</span> img <span class="kw">in</span> images]</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>            preds  <span class="op">=</span> model(images)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pred, target <span class="kw">in</span> <span class="bu">zip</span>(preds, targets):</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>                gt_labels   <span class="op">=</span> target[<span class="st">"labels"</span>].cpu()</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>                keep        <span class="op">=</span> pred[<span class="st">"scores"</span>].cpu() <span class="op">&gt;=</span> score_thresh</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a>                pred_labels <span class="op">=</span> pred[<span class="st">"labels"</span>].cpu()[keep]</span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> c_idx, c <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(<span class="dv">1</span>, num_classes)):</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>                    gt_present   <span class="op">=</span> <span class="bu">int</span>((gt_labels <span class="op">==</span> c).<span class="bu">any</span>())</span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a>                    pred_present <span class="op">=</span> <span class="bu">int</span>((pred_labels <span class="op">==</span> c).<span class="bu">any</span>())</span>
+<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>                    matrices[c_idx, gt_present, pred_present] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> matrices</span>
+<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_per_image_confusion(matrices, title<span class="op">=</span><span class="st">""</span>, class_names<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb59-30"><a href="#cb59-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> class_names <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb59-31"><a href="#cb59-31" aria-hidden="true" tabindex="-1"></a>        class_names <span class="op">=</span> [<span class="st">"Rauch"</span>, <span class="st">"Feuer"</span>]</span>
+<span id="cb59-32"><a href="#cb59-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-33"><a href="#cb59-33" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> [<span class="st">"kein Objekt"</span>, <span class="st">"vorhanden"</span>]</span>
+<span id="cb59-34"><a href="#cb59-34" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(class_names)</span>
+<span id="cb59-35"><a href="#cb59-35" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, n, figsize<span class="op">=</span>(<span class="dv">5</span> <span class="op">*</span> n, <span class="dv">9</span>), squeeze<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb59-36"><a href="#cb59-36" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(<span class="ss">f"</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss"> — Konfusionsmatrix pro Bild"</span>, fontsize<span class="op">=</span><span class="dv">13</span>, fontweight<span class="op">=</span><span class="st">"bold"</span>)</span>
+<span id="cb59-37"><a href="#cb59-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-38"><a href="#cb59-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c_idx, cname <span class="kw">in</span> <span class="bu">enumerate</span>(class_names):</span>
+<span id="cb59-39"><a href="#cb59-39" aria-hidden="true" tabindex="-1"></a>        mat      <span class="op">=</span> matrices[c_idx]</span>
+<span id="cb59-40"><a href="#cb59-40" aria-hidden="true" tabindex="-1"></a>        row_sums <span class="op">=</span> mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb59-41"><a href="#cb59-41" aria-hidden="true" tabindex="-1"></a>        norm     <span class="op">=</span> mat <span class="op">/</span> np.where(row_sums <span class="op">==</span> <span class="dv">0</span>, <span class="dv">1</span>, row_sums)</span>
+<span id="cb59-42"><a href="#cb59-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-43"><a href="#cb59-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row, (data, fmt, subtitle) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(</span>
+<span id="cb59-44"><a href="#cb59-44" aria-hidden="true" tabindex="-1"></a>            [mat, norm],</span>
+<span id="cb59-45"><a href="#cb59-45" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"d"</span>, <span class="st">".2f"</span>],</span>
+<span id="cb59-46"><a href="#cb59-46" aria-hidden="true" tabindex="-1"></a>            [<span class="ss">f"</span><span class="sc">{</span>cname<span class="sc">}</span><span class="ss"> — Anzahl"</span>, <span class="ss">f"</span><span class="sc">{</span>cname<span class="sc">}</span><span class="ss"> — Zeilen-normalisiert"</span>],</span>
+<span id="cb59-47"><a href="#cb59-47" aria-hidden="true" tabindex="-1"></a>        )):</span>
+<span id="cb59-48"><a href="#cb59-48" aria-hidden="true" tabindex="-1"></a>            ax <span class="op">=</span> axes[row, c_idx]</span>
+<span id="cb59-49"><a href="#cb59-49" aria-hidden="true" tabindex="-1"></a>            im <span class="op">=</span> ax.imshow(data, cmap<span class="op">=</span><span class="st">"Greens"</span>, vmin<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb59-50"><a href="#cb59-50" aria-hidden="true" tabindex="-1"></a>            ax.set_xticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb59-51"><a href="#cb59-51" aria-hidden="true" tabindex="-1"></a>            ax.set_yticks([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb59-52"><a href="#cb59-52" aria-hidden="true" tabindex="-1"></a>            ax.set_xticklabels(labels, rotation<span class="op">=</span><span class="dv">20</span>, ha<span class="op">=</span><span class="st">"right"</span>)</span>
+<span id="cb59-53"><a href="#cb59-53" aria-hidden="true" tabindex="-1"></a>            ax.set_yticklabels(labels)</span>
+<span id="cb59-54"><a href="#cb59-54" aria-hidden="true" tabindex="-1"></a>            ax.set_xlabel(<span class="st">"Vorhergesagt"</span>)</span>
+<span id="cb59-55"><a href="#cb59-55" aria-hidden="true" tabindex="-1"></a>            ax.set_ylabel(<span class="st">"Ground Truth"</span>)</span>
+<span id="cb59-56"><a href="#cb59-56" aria-hidden="true" tabindex="-1"></a>            ax.set_title(subtitle)</span>
+<span id="cb59-57"><a href="#cb59-57" aria-hidden="true" tabindex="-1"></a>            plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>)</span>
+<span id="cb59-58"><a href="#cb59-58" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb59-59"><a href="#cb59-59" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb59-60"><a href="#cb59-60" aria-hidden="true" tabindex="-1"></a>                    val   <span class="op">=</span> data[r, c]</span>
+<span id="cb59-61"><a href="#cb59-61" aria-hidden="true" tabindex="-1"></a>                    color <span class="op">=</span> <span class="st">"white"</span> <span class="cf">if</span> val <span class="op">&gt;</span> data.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">0.6</span> <span class="cf">else</span> <span class="st">"black"</span></span>
+<span id="cb59-62"><a href="#cb59-62" aria-hidden="true" tabindex="-1"></a>                    ax.text(c, r, <span class="ss">f"</span><span class="sc">{</span>val<span class="sc">:</span>{fmt}<span class="sc">}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
+<span id="cb59-63"><a href="#cb59-63" aria-hidden="true" tabindex="-1"></a>                            fontsize<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span>color)</span>
+<span id="cb59-64"><a href="#cb59-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-65"><a href="#cb59-65" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb59-66"><a href="#cb59-66" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="aufgabe-15-mehrere-checkpoints-vergleichen" class="level2" data-number="11.5">
@@ -2839,31 +2719,31 @@ Aufgabe 15 — Modellvergleich nebeneinander
 </div>
 </div>
 <div id="6014df0a" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate_checkpoint(pth_path, val_loader, device, <span class="op">**</span>kwargs):</span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> make_detector(num_classes<span class="op">=</span><span class="dv">3</span>).to(device)</span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>    m.load_state_dict(torch.load(pth_path, map_location<span class="op">=</span>device))</span>
-<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>    box_matrix <span class="op">=</span> build_confusion_matrix(m, val_loader, device, <span class="op">**</span>kwargs)</span>
-<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>    img_matrix <span class="op">=</span> build_per_image_confusion(m, val_loader, device,</span>
-<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>                                           score_thresh<span class="op">=</span>kwargs.get(<span class="st">"score_thresh"</span>, <span class="fl">0.5</span>))</span>
-<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> box_matrix, img_matrix</span>
-<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-11"><a href="#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Eigene .pth-Dateien hier eintragen ---</span></span>
-<span id="cb100-12"><a href="#cb100-12" aria-hidden="true" tabindex="-1"></a>checkpoints <span class="op">=</span> {</span>
-<span id="cb100-13"><a href="#cb100-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Einfaches Modell"</span>: <span class="st">"Daten/ResNet/models/dfire_fasterrcnn_small.pth"</span>,</span>
-<span id="cb100-14"><a href="#cb100-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Volles Modell"</span>:    <span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>,</span>
-<span id="cb100-15"><a href="#cb100-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Student A": "student_a.pth",</span></span>
-<span id="cb100-16"><a href="#cb100-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Referenz (vollständig feinabgestimmt)": "reference.pth",</span></span>
-<span id="cb100-17"><a href="#cb100-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb100-18"><a href="#cb100-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-19"><a href="#cb100-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, path <span class="kw">in</span> checkpoints.items():</span>
-<span id="cb100-20"><a href="#cb100-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(path):</span>
-<span id="cb100-21"><a href="#cb100-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Überspringe '</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">': Datei nicht gefunden (</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb100-22"><a href="#cb100-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb100-23"><a href="#cb100-23" aria-hidden="true" tabindex="-1"></a>    box_matrix, img_matrix <span class="op">=</span> evaluate_checkpoint(path, val_loader, device)</span>
-<span id="cb100-24"><a href="#cb100-24" aria-hidden="true" tabindex="-1"></a>    plot_confusion_matrix(box_matrix, title<span class="op">=</span>name)</span>
-<span id="cb100-25"><a href="#cb100-25" aria-hidden="true" tabindex="-1"></a>    plot_per_image_confusion(img_matrix, title<span class="op">=</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate_checkpoint(pth_path, val_loader, device, <span class="op">**</span>kwargs):</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> make_detector(num_classes<span class="op">=</span><span class="dv">3</span>).to(device)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    m.load_state_dict(torch.load(pth_path, map_location<span class="op">=</span>device))</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    box_matrix <span class="op">=</span> build_confusion_matrix(m, val_loader, device, <span class="op">**</span>kwargs)</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    img_matrix <span class="op">=</span> build_per_image_confusion(m, val_loader, device,</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>                                           score_thresh<span class="op">=</span>kwargs.get(<span class="st">"score_thresh"</span>, <span class="fl">0.5</span>))</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> box_matrix, img_matrix</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Eigene .pth-Dateien hier eintragen ---</span></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>checkpoints <span class="op">=</span> {</span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Einfaches Modell"</span>: <span class="st">"Daten/ResNet/models/dfire_fasterrcnn_small.pth"</span>,</span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Volles Modell"</span>:    <span class="st">"Daten/ResNet/models/dfire_fasterrcnn_full.pth"</span>,</span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Student A": "student_a.pth",</span></span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># "Referenz (vollständig feinabgestimmt)": "reference.pth",</span></span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb60-18"><a href="#cb60-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-19"><a href="#cb60-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, path <span class="kw">in</span> checkpoints.items():</span>
+<span id="cb60-20"><a href="#cb60-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(path):</span>
+<span id="cb60-21"><a href="#cb60-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Überspringe '</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">': Datei nicht gefunden (</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb60-22"><a href="#cb60-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb60-23"><a href="#cb60-23" aria-hidden="true" tabindex="-1"></a>    box_matrix, img_matrix <span class="op">=</span> evaluate_checkpoint(path, val_loader, device)</span>
+<span id="cb60-24"><a href="#cb60-24" aria-hidden="true" tabindex="-1"></a>    plot_confusion_matrix(box_matrix, title<span class="op">=</span>name)</span>
+<span id="cb60-25"><a href="#cb60-25" aria-hidden="true" tabindex="-1"></a>    plot_per_image_confusion(img_matrix, title<span class="op">=</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True Negatives: 64 / 94 Bilder ohne Objekte korrekt als leer erkannt (68.1 %)</code></pre>
 </div>
