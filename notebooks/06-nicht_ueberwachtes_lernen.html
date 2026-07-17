@@ -520,8 +520,6 @@ window.Quarto = {
   <li><a href="#aufgabe-3" id="toc-aufgabe-3" class="nav-link" data-scroll-target="#aufgabe-3"><span class="header-section-number">5.1.3</span> Aufgabe 3</a></li>
   <li><a href="#aufgabe-4" id="toc-aufgabe-4" class="nav-link" data-scroll-target="#aufgabe-4"><span class="header-section-number">5.1.4</span> Aufgabe 4</a></li>
   <li><a href="#aufgabe-5" id="toc-aufgabe-5" class="nav-link" data-scroll-target="#aufgabe-5"><span class="header-section-number">5.1.5</span> Aufgabe 5</a></li>
-  <li><a href="#aufgabe-6" id="toc-aufgabe-6" class="nav-link" data-scroll-target="#aufgabe-6"><span class="header-section-number">5.1.6</span> Aufgabe 6</a></li>
-  <li><a href="#aufgabe-7" id="toc-aufgabe-7" class="nav-link" data-scroll-target="#aufgabe-7"><span class="header-section-number">5.1.7</span> Aufgabe 7</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -1790,64 +1788,8 @@ Daten/NichtUeberwachtesLernen/Zahlen/Zahlen_Handschrift_sortiert02.png
 </div>
 </div>
 </div>
-<div id="cd656ffc" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># X: (n_samples, n_features) z.B. (n,784)</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="co"># y_data: (n,) mit Labels 0..9</span></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) t-SNE auf 2D</span></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>digits_tsne <span class="op">=</span> tsne.fit_transform(X)   <span class="co"># (n,2)</span></span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) KMeans auf den 2D t-SNE Punkten</span></span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">12</span> </span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">0</span>, n_init<span class="op">=</span><span class="st">"auto"</span>)</span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>cluster_id <span class="op">=</span> kmeans.fit_predict(digits_tsne)</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>centers <span class="op">=</span> kmeans.cluster_centers_</span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Cluster -&gt; Ziffer (Mehrheitsvotum)</span></span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>cluster_to_digit <span class="op">=</span> {}</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> y_data[cluster_id <span class="op">==</span> c]</span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>    cluster_to_digit[c] <span class="op">=</span> <span class="st">"?"</span> <span class="cf">if</span> <span class="bu">len</span>(labels) <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">int</span>(np.bincount(labels).argmax())</span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 4) Plot</span></span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Punkte: Farbe = echtes Label</span></span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>plt.scatter(digits_tsne[:,<span class="dv">0</span>], digits_tsne[:,<span class="dv">1</span>], c<span class="op">=</span>y_data, cmap<span class="op">=</span><span class="st">"tab10"</span>, s<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Clusterzentren</span></span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>plt.scatter(centers[:,<span class="dv">0</span>], centers[:,<span class="dv">1</span>], c<span class="op">=</span><span class="st">"black"</span>, s<span class="op">=</span><span class="dv">120</span>, marker<span class="op">=</span><span class="st">"x"</span>)</span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Text im Zentrum</span></span>
-<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>    plt.text(</span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>        centers[c,<span class="dv">0</span>], centers[c,<span class="dv">1</span>], <span class="bu">str</span>(cluster_to_digit[c]),</span>
-<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>        fontsize<span class="op">=</span><span class="dv">18</span>, weight<span class="op">=</span><span class="st">"bold"</span>,</span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">"center"</span>, va<span class="op">=</span><span class="st">"center"</span>,</span>
-<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>        bbox<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">"white"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, edgecolor<span class="op">=</span><span class="st">"none"</span>)</span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Legende (0..9 Farben)</span></span>
-<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> plt.cm.get_cmap(<span class="st">"tab10"</span>)</span>
-<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>legend_handles <span class="op">=</span> [mpatches.Patch(color<span class="op">=</span>cmap(i), label<span class="op">=</span><span class="bu">str</span>(i)) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
-<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a>plt.legend(handles<span class="op">=</span>legend_handles, title<span class="op">=</span><span class="st">"Digit"</span>)</span>
-<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"KMeans-Cluster (t-SNE) + Mehrheitslabel (k=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="06-nicht_ueberwachtes_lernen_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="cd656ffc" class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> npimport matplotlib.pyplot <span class="im">as</span> pltimport matplotlib.patches <span class="im">as</span> mpatchesfrom sklearn.manifold <span class="im">import</span> TSNEfrom sklearn.cluster <span class="im">import</span> KMeans<span class="co"># X: (n_samples, n_features) z.B. (n,784)# y_data: (n,) mit Labels 0..9# 1) t-SNE auf 2Dtsne = TSNE(random_state=42)digits_tsne = tsne.fit_transform(X)   # (n,2)# 2) KMeans auf den 2D t-SNE Punktenk = 12 kmeans = KMeans(n_clusters=k, random_state=0, n_init="auto")cluster_id = kmeans.fit_predict(digits_tsne)centers = kmeans.cluster_centers_# 3) Cluster -&gt; Ziffer (Mehrheitsvotum)cluster_to_digit = {}for c in range(k):    labels = y_data[cluster_id == c]    cluster_to_digit[c] = "?" if len(labels) == 0 else int(np.bincount(labels).argmax())# 4) Plotplt.figure(figsize=(8, 8))# Punkte: Farbe = echtes Labelplt.scatter(digits_tsne[:,0], digits_tsne[:,1], c=y_data, cmap="tab10", s=5)# Clusterzentrenplt.scatter(centers[:,0], centers[:,1], c="black", s=120, marker="x")# Text im Zentrumfor c in range(k):    plt.text(        centers[c,0], centers[c,1], str(cluster_to_digit[c]),        fontsize=18, weight="bold",        ha="center", va="center",        bbox=dict(facecolor="white", alpha=0.7, edgecolor="none")    )# Legende (0..9 Farben)cmap = plt.colormaps["tab10"]legend_handles = [mpatches.Patch(color=cmap(i), label=str(i)) for i in range(10)]plt.legend(handles=legend_handles, title="Digit")plt.title(f"KMeans-Cluster (t-SNE) + Mehrheitslabel (k={k})")plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -2179,18 +2121,10 @@ Epoch 10/10
 </section>
 <section id="aufgabe-4" class="level3" data-number="5.1.4">
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="aufgabe-4"><span class="header-section-number">5.1.4</span> Aufgabe 4</h3>
-<p>Schreiben Sie einen undercomplete Autoencoder, der die Zahlen codiert und decodiert</p>
+<p>Schreiben Sie einen Autoencoder der die Ziffern von 0-9 rekonstruieren kann!</p>
 </section>
 <section id="aufgabe-5" class="level3" data-number="5.1.5">
 <h3 data-number="5.1.5" class="anchored" data-anchor-id="aufgabe-5"><span class="header-section-number">5.1.5</span> Aufgabe 5</h3>
-<p>Was könnte man noch verbessern?</p>
-</section>
-<section id="aufgabe-6" class="level3" data-number="5.1.6">
-<h3 data-number="5.1.6" class="anchored" data-anchor-id="aufgabe-6"><span class="header-section-number">5.1.6</span> Aufgabe 6</h3>
-<p>Schreiben Sie einen Autoencoder der die Ziffern von 0-0 rekonstruieren kann!</p>
-</section>
-<section id="aufgabe-7" class="level3" data-number="5.1.7">
-<h3 data-number="5.1.7" class="anchored" data-anchor-id="aufgabe-7"><span class="header-section-number">5.1.7</span> Aufgabe 7</h3>
 <p>Verwenden Sie folgenden <a href="Daten/NichtUeberwachtesLernen/Zahlen/Zahlen_Gemischt.png">Testdatensatz</a>. Können Sie die Zeichen identifizieren, die keine Ziffern sind?</p>
 
 
