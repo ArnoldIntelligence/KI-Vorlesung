@@ -22,7 +22,7 @@
 # Diese reduzierte und abstrahierte Darstellung dient schließlich als Eingabe für ein neuronales Netz, das mithilfe der zugehörigen Klassenlabels trainiert wird.
 #
 # <figure  style="text-align: center;">
-#     <img src="data/supervised-learning/Zahlen_Handschrift_sortiert02.png" alt="Neuron" width = 300>
+#     <img src="data/numbers/Zahlen_Handschrift_sortiert02.png" alt="Neuron" width = 300>
 #     <figcaption>Beispiel einer Handschriftprobe von sortierten Zahlen im Raum 0 bis 9</figcaption>
 # </figure>
 #
@@ -56,7 +56,7 @@ def extract_number(filename):
     return int(re.search(r"_sortiert(\d+)", filename).group(1))
 
 # Alle Files einleden, die mit Zahlen_Handschrift_sortiert beginnen und direkt darauf folgend eine Zahl im Namen haben.
-liste_daten = glob('data/supervised-learning/Zahlen_Handschrift_sortiert*[0-9].png')
+liste_daten = glob('data/numbers/Zahlen_Handschrift_sortiert*[0-9].png')
 
 # Liste numerisch sortieren und sortierte Liste ausgeben
 liste_daten = sorted(liste_daten, key=extract_number)
@@ -391,7 +391,7 @@ print(confusion_df)
 print(type(x_test), x_test.shape)
 
 #now save the trained model for later use
-model.save("output/my_model.keras")
+model.save("data/output/my_model.keras")
 # -
 
 # # Abschlussprojekt Überwachtes Lernen: Zahlenerkennung einer digitalen Waage

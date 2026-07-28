@@ -596,7 +596,7 @@ colors = []
 colors_values = []
 iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
 
-with open('data/perceptron/iris.csv', 'r') as fobj:
+with open('data/iris.csv', 'r') as fobj:
     for line in fobj:
         words = line.rstrip().split(',')
         if len(words) != 5:
@@ -652,7 +652,7 @@ colors_values = []
 iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
 iris_colors_values = {'Iris-setosa' : '0', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Anmerkung: rot und blau/gruen lassen sich linear trennen, blau und gruen nicht
 
-with open('data/perceptron/iris.csv', 'r') as fobj:
+with open('data/iris.csv', 'r') as fobj:
     for line in fobj:
         words = line.rstrip().split(',')
         if len(words) != 5:
@@ -793,7 +793,7 @@ island_colors_values = {'Torgersen' : '0', 'Biscoe' : '1' , 'Dream' : '0'}
 
 skiprow = 0
 
-with open('data/perceptron/penguins.csv', 'r') as fobj:
+with open('data/penguins.csv', 'r') as fobj:
     print(fobj.readline())
     for line in fobj:
         #print(line)
@@ -1115,7 +1115,7 @@ colors_values = []
 iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
 iris_colors_values = {'Iris-setosa' : '-1', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Klassen symmetrisch erstellen
 
-with open('data/perceptron/iris.csv', 'r') as fobj:
+with open('data/iris.csv', 'r') as fobj:
     for line in fobj:
         words = line.rstrip().split(',')
         if len(words) != 5:
@@ -1232,7 +1232,7 @@ island_colors_values = {'Torgersen' : '-1', 'Biscoe' : '1' , 'Dream' : '-1'}
 
 skiprow = 0
 
-with open('data/perceptron/penguins.csv', 'r') as fobj:
+with open('data/penguins.csv', 'r') as fobj:
     print(fobj.readline())
     for line in fobj:
         #print(line)
@@ -1391,7 +1391,7 @@ colors_values = []
 iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
 iris_colors_values = {'Iris-setosa' : '-1', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Anmerkung: rot und blau/gruen lassen sich linear trennen, blau und gruen nicht
 
-with open('data/perceptron/iris.csv', 'r') as fobj:
+with open('data/iris.csv', 'r') as fobj:
     for line in fobj:
         words = line.rstrip().split(',')
         if len(words) != 5:
@@ -1826,7 +1826,7 @@ strom = []
 labels = []      # -1 / +1 fürs Training 0/1 bei klassischem Perzeptron
 classes = []     # '1'..'4' fürs Einfärben
 
-with open('data/perceptron/motor_daten.csv', 'r') as fobj:
+with open('data/motor_daten.csv', 'r') as fobj:
     for line in fobj:
         if not line.lstrip().startswith('#'):
             words = line.rstrip().split(',')
@@ -1905,7 +1905,7 @@ strom = []
 labels = []      # -1 / +1 fürs Training 0/1 bei klassischem Perzeptron
 classes = []     # '1'..'4' fürs Einfärben
 
-with open('data/perceptron/motor_daten.csv', 'r') as fobj:
+with open('data/motor_daten.csv', 'r') as fobj:
     for line in fobj:
         if not line.lstrip().startswith('#'):
             words = line.rstrip().split(',')
@@ -2020,4 +2020,3 @@ ax3.plot(x_range_data, y_pred_range, '-', c = 'purple', label = 'linear regressi
 ax3.set_title('result')
 ax3.legend()
 ax3.grid()
-

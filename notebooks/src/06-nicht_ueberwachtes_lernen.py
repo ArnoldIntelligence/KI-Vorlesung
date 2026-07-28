@@ -137,7 +137,7 @@ import pandas as pd
 # Der Datensatz enthält 114 Einträge von Kriegsschiffen aus dem 2. Weltkrieg mit verschiedenen Parametern. 
 
 # +
-data = pd.read_csv('data/non-supervised-learning/warships.csv', sep=',')
+data = pd.read_csv('data/warships.csv', sep=',')
 
 print(data.info())
 #print(data['ART'])
@@ -352,7 +352,7 @@ plt.show()
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('Daten/NichtUeberwachtesLernen/iris.csv', sep = ',')
+data = pd.read_csv('data/iris.csv', sep = ',')
 
 mapping = {
     "Iris-setosa": 1,
@@ -436,7 +436,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
-data = pd.read_csv('Daten/NichtUeberwachtesLernen/penguins.csv', sep = ',')
+data = pd.read_csv('data/penguins.csv', sep = ',')
 
 mapping = {
     "Adelie": 1,
@@ -1676,4 +1676,3 @@ plt.title('Autoencoder-Rekonstruktionsfehler')
 plt.legend()
 plt.tight_layout()
 plt.show()
-

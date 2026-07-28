@@ -220,7 +220,7 @@ def extract_number(filename):
     return int(re.search(r"_sortiert(\d+)", filename).group(1))
 
 # Alle Files einlesen, die mit Zahlen_Handschrift_sortiert beginnen und direkt darauf folgend eine Zahl im Namen haben.
-liste_daten = glob('data/supervised-learning/Zahlen_Handschrift_sortiert*[0-9].png')
+liste_daten = glob('data/numbers/Zahlen_Handschrift_sortiert*[0-9].png')
 
 # Liste numerisch sortieren und sortierte Liste ausgeben
 liste_daten = sorted(liste_daten, key=extract_number)

@@ -746,7 +746,7 @@ def fit(X, y, WIH, WHO, n_iter, alpha=0.001):
 
     return WIH, WHO, losses
     
-    
+
 
 # +
 #| code-fold: true
@@ -900,7 +900,7 @@ def fit(X, y, WIH, WHO, n_iter, alpha=0.001):
 
     return WIH, WHO, losses
     
-    
+
 
 # +
 #| code-fold: true
@@ -1573,7 +1573,7 @@ Y_pred = y_scaler.inverse_transform(Y_pred_scaled)
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.loadtxt('data/supervised-learning/messwerte.txt')
+data = np.loadtxt('data/messwerte.txt')
 data_x = data[:, 0]
 data_y = data[:, 1]
 
@@ -1704,7 +1704,7 @@ rng = np.random.default_rng(42)
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.loadtxt('data/supervised-learning/messwerte2.txt')
+data = np.loadtxt('data/messwerte2.txt')
 X = data[:, 0]
 Y = data[:, 1]
 
@@ -2031,7 +2031,7 @@ rng = np.random.default_rng(42)
 import matplotlib.pyplot as plt
 import numpy as np
 
-data = np.loadtxt('data/supervised-learning/messwerte2.txt')
+data = np.loadtxt('data/messwerte2.txt')
 X = data[:, 0]
 Y = data[:, 1]
 
@@ -2208,6 +2208,3 @@ for ax, p in zip(axes, dropout_values):
     ax.grid()
 
 fig.tight_layout()
-# -
-
-
