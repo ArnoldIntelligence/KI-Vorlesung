@@ -7,7 +7,7 @@
 #       format_version: '1.5'
 #       jupytext_version: 1.19.5
 #   kernelspec:
-#     display_name: .venv
+#     display_name: .venv (3.10.12)
 #     language: python
 #     name: python3
 # ---
@@ -183,12 +183,12 @@ ACTIONS = np.array([
     (0, -1),
 ], dtype=np.int32)
 
-# Wandelt zweidimensioalen Index in einen eindimensionalen Index um
+# Wandelt zweidimensionalen Index in einen eindimensionalen Index um
 def state_to_idx(s):
     """(r,c) -> state index"""
     return s[0] * W + s[1]
 
-# Wandelt eindimenstionale Index wieder in zweidimensionalen Index um
+# Wandelt eindimensionalen Index wieder in zweidimensionalen Index um
 def idx_to_state(i):
     """state index -> (r,c)"""
     return (i // W, i % W)
@@ -518,7 +518,6 @@ plt.imshow(img, interpolation="nearest")
 plt.xticks(range(W))
 plt.yticks(range(H))
 plt.grid(True, linewidth=0.5)
-
 
 
 

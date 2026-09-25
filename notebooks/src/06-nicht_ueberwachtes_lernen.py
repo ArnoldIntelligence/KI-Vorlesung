@@ -48,9 +48,9 @@
 #
 # --------------------------------------
 #
-# **Mathematisch gesehen bedeitet dies:**
+# **Mathematisch gesehen bedeutet dies:**
 #
-# Ein Datensatz habe $m$ Feature und $n$ Messungen. Dann ist der i-te Datenpunkt ein Vektor  $ \in \mathbb{R}^m$
+# Ein Datensatz habe $m$ Features und $n$ Messungen. Dann ist der i-te Datenpunkt ein Vektor  $ \in \mathbb{R}^m$
 #
 # Sei $\vec{X}_i \in \mathbb{R}^{m}$ der Vektor aus den Werten der bestimmten Parametern (= eine Zeile im Datensatz)
 #
@@ -250,7 +250,7 @@ plt.axhline(0, color='black', linewidth=0.8)
 plt.axvline(0, color='black', linewidth=0.8)
 # -
 
-# Jetzt mit Scikid Learn!
+# Jetzt mit scikit-learn!
 
 # +
 # PCA mit sklearn

@@ -112,7 +112,7 @@
 
 # # Machine Learning
 #
-# Der Fokus dieser Vorlesung bezieht sich auf ein Teilgebiet der KI, dem Machine Learning. Machine Learning bezeichnet Methoden und Algorithmen, die es einem System ermöglichen, Muster in Daten zu erkennen und daraus Vorhersagen oder Entscheidungen zu treffen – und sich dabei mit mehr Daten selbst zu verbessern. Maschine Learning kann für verschiedene Aufgaben eingesetzt werden. Grundsätzlich unterscheidet man zwischen Aufgaben der Regression und Klassifikation.
+# Der Fokus dieser Vorlesung bezieht sich auf ein Teilgebiet der KI, dem Machine Learning. Machine Learning bezeichnet Methoden und Algorithmen, die es einem System ermöglichen, Muster in Daten zu erkennen und daraus Vorhersagen oder Entscheidungen zu treffen – und sich dabei mit mehr Daten selbst zu verbessern. Machine Learning kann für verschiedene Aufgaben eingesetzt werden. Grundsätzlich unterscheidet man zwischen Aufgaben der Regression und Klassifikation.
 #
 # ## Regression
 #

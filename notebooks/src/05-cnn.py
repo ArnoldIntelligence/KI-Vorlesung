@@ -7,7 +7,7 @@
 #       format_version: '1.5'
 #       jupytext_version: 1.19.5
 #   kernelspec:
-#     display_name: .venv (3.10.12.final.0)
+#     display_name: .venv (3.10.12)
 #     language: python
 #     name: python3
 # ---

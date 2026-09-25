@@ -49,7 +49,7 @@
 # Das Perzeptron ist ein vereinfachtes künstliches neuronales Netz, das zuerst von Frank Rosenblatt 1958 (**F.Rosenblatt** The perceptron: a probabilistic model for information storage and organization in the brain, *doi: 10.1037/H0042519*) vorgestellt wurde. Es besteht in der Grundversion aus einem einzelnen künstlichen Neuron mit anpassbaren Gewichtungen und einem Schwellenwert. 
 #
 # Das biologische Neuron ist das Vorbild für das künstliche Neuron. Das künstliche Neuron besteht aus folgenden Bestandteilen:
-# Einem Eingangsvektor, der die Eingangsdaten enthält, einem Gewichtungsvektor, der die Eingangsdaten wichtet und gewichtet weitergibt und einer Entscheidungsfunktion $\phi$, die das Ergebnis der gewichten Summe verarbeitet. Dabei wird eine Eins von der Entscheidungsfunktion weitergegeben (das Neuron aktiviert), wenn die gewichtete Summe einen Schwellenwert überschreitet und eine Null, wenn der Schwellenwert unterschritten wird. Das Ergebnis der Entscheidungsfunktion ist die Ausgabe $o$ des Perzetrons.
+# Einem Eingangsvektor, der die Eingangsdaten enthält, einem Gewichtungsvektor, der die Eingangsdaten wichtet und gewichtet weitergibt und einer Entscheidungsfunktion $\phi$, die das Ergebnis der gewichteten Summe verarbeitet. Dabei wird eine Eins von der Entscheidungsfunktion weitergegeben (das Neuron aktiviert), wenn die gewichtete Summe einen Schwellenwert $b$ überschreitet und eine Null, wenn der Schwellenwert unterschritten wird. Das Ergebnis der Entscheidungsfunktion ist die Ausgabe $o$ des Perzetrons.
 #
 # Die gewichtete Summe berechnet sich über
 #
@@ -57,13 +57,13 @@
 #
 # Überschreitet die gewichtete Summe den Schwellenwert, wird das Neuron aktiviert.
 #
-# $z > b \Leftrightarrow o - z > 0\longrightarrow o = \phi(z) = 1$ 
+# $z > b \Leftrightarrow z - b > 0\longrightarrow o = \phi(z) = 1$ 
 #
-# $z < b \Leftrightarrow o - z < 0\longrightarrow o = \phi(z) = 0$
+# $z < b \Leftrightarrow z - b < 0\longrightarrow o = \phi(z) = 0$
 #
 # Um eine kompaktere mathematische Darstellung zu erhalten, wird oft folgende Vorgehensweise gewählt: Der Schwellenwert $b$ wird in $-w_0$ umbenannt und in den Gewichtsvektor integriert. Damit ist
 #
-# $$ z =   \begin{pmatrix} x_0 = 1 \\ x_1 \\ x_2 \\ .. \\ x_n \end{pmatrix}^T \begin{pmatrix} w_0 \\ w_1 \\ w_2 \\ .. \\ w_n \end{pmatrix}  = \boldsymbol{w}\cdot \boldsymbol{x}$$
+# $$ z - b =   \begin{pmatrix} x_0 = 1 \\ x_1 \\ x_2 \\ .. \\ x_n \end{pmatrix}^T \begin{pmatrix} w_0 \\ w_1 \\ w_2 \\ .. \\ w_n \end{pmatrix}  = \boldsymbol{w}\cdot \boldsymbol{x} - b$$
 #
 # $x_0$ ist dabei immer gleich 1. 
 #
@@ -197,7 +197,7 @@ def perceptron_eval(X,y):
     # Der Gesamtfehler
     gesamtfehler = 0;
     # Die Gewichte so wählen, dass das Roboter-Problem gelöst werden kann
-    w = np.array([-2,1,1])
+    w = np.array([-1.7,1.2,0.9])
     # Index i und Element x Ermittlung vom Array X
     for i, x in enumerate(X):
         # x = Zeile für Zeile verwenden
@@ -258,7 +258,7 @@ plt.plot(xwerte, ywerte, label='Trennlinie')
 plt.xlim([-0.1,1.1])
 plt.ylim([-0.1,1.1])
 plt.legend()
-plt.savefig('Bilder/roboter.png', dpi = 300)
+plt.savefig('img/roboter.png', dpi = 300)
 # -
 
 # ## Beispiel 2: Basilikum
@@ -329,9 +329,9 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.colors import ListedColormap
 
 # Werte für die Achsen
-x = np.array([0,0,0,0,1,1,1,1])
-y = np.array([0,0,1,1,0,0,1,1])
-z = np.array([0,1,0,1,0,1,0,1])
+x = X[:,1]
+y = X[:,2]
+z = X[:,3]
 
 # Farben für die Punkte
 c = np.array([0,0,0,1,0,1,1,1])
@@ -373,7 +373,7 @@ ax.plot_surface(xx, yy, zz, color='gray', alpha=0.5)  # Halbtransparente Trenneb
 #
 # <figure style="text-align: center;">
 #     <img src="Bilder/perceptron_lernen.svg" alt="Neuron" width = 500>
-#     <figcaption>Lernen beim klassischen Perzeptrons</figcaption>
+#     <figcaption>Lernen beim klassischen Perzeptron</figcaption>
 # </figure>
 #
 #
@@ -611,12 +611,12 @@ with open('data/iris.csv', 'r') as fobj:
 plt.style.use('seaborn-v0_8')
 plt.figure(figsize=(12,5))
 ax1 = plt.subplot(1,2,1)
-ax1.set_xlabel('Sepal Lengh')
+ax1.set_xlabel('Sepal Length')
 ax1.set_ylabel('Sepal Width')
 ax1.set_title('Iris Sepal Length vs. Width')
 ax1.scatter(np.array(sepal_lengh), np.array(sepal_width), color = colors)
 ax2 = plt.subplot(1,2,2)
-ax2.set_xlabel('Petal Lengh')
+ax2.set_xlabel('Petal Length')
 ax2.set_ylabel('Petal Width')
 ax2.set_title('Iris Petal Length vs. Width')
 ax2.scatter(np.array(petal_length), np.array(petal_width), color = colors)
@@ -627,10 +627,10 @@ plt.show()
 # Die Iris-Art Iris-setosa unterscheidet sich jedoch deutlich. 
 #
 # Im nächsten Schritt soll daher ein Perzeptron trainiert werden, welches Iris-setosa von den anderen beiden Iris-Arten unterscheiden kann. 
-# Daher werden den Iris-Arten nun Werte zur Klassenzugehörigkeit zugeortnet:
+# Daher werden den Iris-Arten nun Werte zur Klassenzugehörigkeit zugeordnet:
 #
-# Iris-setosa --> 0
-# Iris-versicolor --> 1
+# Iris-setosa --> 0  
+# Iris-versicolor --> 1  
 # Iris-virginica --> 1
 #
 #
@@ -643,7 +643,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import choice  ##The choice() method returns a randomly selected element from the specified sequence.
 
-sepal_lengh = []
+sepal_length = []
 sepal_width = []
 petal_length = []
 petal_width = []
@@ -658,7 +658,7 @@ with open('data/iris.csv', 'r') as fobj:
         if len(words) != 5:
             continue
         #print(words)
-        sepal_lengh.append(float(words[0]))
+        sepal_length.append(float(words[0]))
         sepal_width.append(float(words[1]))
         petal_length.append(float(words[2]))
         petal_width.append(float(words[3]))
@@ -711,10 +711,10 @@ def fit(iterations, training_data_set, w):
 
 # Trainingsdatensatz erstellen
 
-bias = np.ones(len(sepal_lengh))
-input_data = [np.array((bias[i], sepal_lengh[i], sepal_width[i])) for i in range(len(sepal_lengh))]
+bias = np.ones(len(sepal_length))
+input_data = [np.array((bias[i], sepal_length[i], sepal_width[i])) for i in range(len(sepal_length))]
 
-training_data_set = [(input_data[i], colors_values[i]) for i in range(len(sepal_lengh))]
+training_data_set = [(input_data[i], colors_values[i]) for i in range(len(sepal_length))]
 
 # Gewichte mit Trainingsdatensatz ermitteln
 
@@ -736,18 +736,19 @@ print('Gewichte nach Training: ', weights[len(weights)-1])
 #| code-fold: true
 #| code-summary: "Code anzeigen"
 
-x_vals = np.linspace(min(sepal_lengh), max(sepal_lengh), 100)
+x_vals = np.linspace(min(sepal_length), max(sepal_length), 100)
 w0, w1, w2 = weights[-1]
 y_vals = -(w0 + w1 * x_vals) / w2
 
 plt.style.use('seaborn-v0_8')
 plt.figure(figsize=(6,5))
-plt.xlabel('Sepal Lengh')
+plt.xlabel('Sepal Length')
 plt.ylabel('Sepal Width')
 plt.title('Iris Sepal Length vs. Width')
-plt.scatter(np.array(sepal_lengh), np.array(sepal_width), color = colors, label = "Iris Messungen")
+plt.scatter(np.array(sepal_length), np.array(sepal_width), color = colors, label = "Iris Messungen")
 plt.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 plt.legend()
+# TODO: make legend markers black, not the text
 # -
 
 # ### Aufgabe 2b: Iris-Arten 2
@@ -950,7 +951,7 @@ ax2.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 # # Das Adaline Perzeptron 
 #
 # Bislang ist das Perzeptron sehr einfach aufgebaut und es kann nur Klassen unterscheiden, die sich nicht überlappen. Die Klassen werden dann durch eine Gerade voneinander getrennt. 
-# Um auch Klassen trennen zu können, die sich nicht exakt trennen lassen, weil es Überlappungen zwischen den Klassen gibt, muss das Perzeptron verändert werden. Eine Möglichkeit das Adaline Perceptron (ADAptive Linear Element). Dazu wird das klassische Perzeptron un zwei Aspekte verändert:
+# Um auch Klassen trennen zu können, die sich nicht exakt trennen lassen, weil es Überlappungen zwischen den Klassen gibt, muss das Perzeptron verändert werden. Eine Möglichkeit das Adaline Perceptron (ADAptive Linear Element). Dazu wird das klassische Perzeptron um zwei Aspekte verändert:
 #
 # **1. Veränderung:** Lernrate variieren
 #
@@ -987,11 +988,11 @@ ax2.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 #
 # $$E = \frac{1}{2} \left( y-o \right)^2$$
 #
-# Die Korrektur der Gewichte erfolgt dann immer in Richtung des negativen Gradienten der Kostenfunktion (- wegen dem negativen Gradienten)
+# Die Korrektur der Gewichte erfolgt dann immer in Richtung des negativen Gradienten der Kostenfunktion (- wegen des negativen Gradienten)
 #
 # $$\Delta w = -\frac{\partial E}{\partial w}$$
 #
-# Nun kann die Stufenfunktion nicht meht als Aktivierungsfunktion verwendet werden, da sie nicht differenzierbar ist. Stattdessen wird beim Adaline Perzeptron ist die Aktivierungsfunktion einfach die Identität der linaren gewichteten Summe, also
+# Nun kann die Stufenfunktion nicht mehr als Aktivierungsfunktion verwendet werden, da sie nicht differenzierbar ist. Stattdessen wird beim Adaline Perzeptron ist die Aktivierungsfunktion einfach die Identität der linaren gewichteten Summe, also
 #
 # $$z = \boldsymbol{w}\cdot\boldsymbol{x}$$
 # $$o = \phi(z) = id(z)$$
