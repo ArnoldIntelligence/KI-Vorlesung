@@ -3,3 +3,5 @@ _site
 **/*.quarto_ipynb
 .venv
 **/output/
+**/logs/
+.DS_Store

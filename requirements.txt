@@ -1,4 +1,12 @@
 jupyter
 numpy
+scipy
 pandas
 matplotlib
+scikit-learn
+mglearn
+tensorflow
+tensorboard
+opencv-python
+jupytext
+nbformat
