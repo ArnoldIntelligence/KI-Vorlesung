@@ -289,7 +289,7 @@ np.savez('data/output/handwrittendigits.npz', array1=x_train, array2=x_test, arr
 # Das Model hat folgenden Aufbau
 #
 # <figure  style="text-align: center;">
-#     <img src="Bilder/Skizze_NN.png" alt="NN" width = 500>
+#     <img src="img/Skizze_NN.png" alt="NN" width = 500>
 #     <figcaption>Aufbau des Neuronalen Netzes zu Handschrifterkennung</figcaption>
 # </figure>
 #
@@ -366,7 +366,7 @@ print(confusion_df)
 # Die blaue, durchgezogene Kurve zeigt die Training Accuracy, also den Anteil korrekt klassifizierter Trainingsbeispiele. Bereits nach wenigen Epochen steigt die Genauigkeit stark an und erreicht nahezu 100 %. Anschließend bleibt sie über den restlichen Trainingsverlauf hinweg auf einem konstant hohen Niveau, was darauf hinweist, dass das Modell die Trainingsdaten sehr zuverlässig erkennt.
 #
 # <figure  style="text-align: center;">
-#     <img src="Bilder/ConfusionMatrix_Numbers.png" alt="Konfusionsmatrix" width = 500>
+#     <img src="img/ConfusionMatrix_Numbers.png" alt="Konfusionsmatrix" width = 500>
 #     <figcaption>Konfusionsmatrix des trainierten Models zur Erkennung von Handgeschriebenen Zahlen.</figcaption>
 # </figure>
 #

@@ -34,19 +34,21 @@
 #
 # Dabei ist $z = \boldsymbol{x}\cdot \boldsymbol{w}$.
 #
-# Das Ziel des überwachten Lernens ist die Modellparameter so zu bestimmen, dass die Modellfunktion die vorgegebenen Daten \(Trainingsdaten $\boldsymbol{\hat{x}}, \hat{y}$ \) möglichst gut repräsentiert.
-#
+# Das Ziel des überwachten Lernens ist, die Modellparameter so zu bestimmen, dass die Modellfunktion die vorgegebenen Daten \(Trainingsdaten $\boldsymbol{\hat{x}}, \hat{y}$ \) möglichst gut repräsentiert. 
 #
 
 # ### Abstandsfunktion
 #
-# Um die Abweichung bzw. Abstand zwischen zwei Punktmengen, z.B. die Vorhersagen eines Modells $\left(o = f \left( \boldsymbol{x} \right) \right)$ und der Trainingszieldaten $\left( \hat{y} \right)$, zu bestimmen, kann beispielsweise folgende Fehlerfunktion $E$ mit der Loss-Funktion $J$ genutzt werden:
+# Um die Abweichung bzw. den Abstand zwischen zwei Punktmengen, z.B. die Vorhersagen eines Modells $\left(o = f \left( \boldsymbol{x} \right) \right)$ und der Trainingszieldaten $\left( \hat{y} \right)$, zu bestimmen, kann beispielsweise folgende Fehlerfunktion $E$ mit der Loss-Funktion $J$ genutzt werden:
 #
 # $$
 # E = \sum_i J(o,\hat{y}) \quad \text{mit} \quad J(o,\hat{y}) = \frac{1}{2}\left(o - \hat{y}\right)^2
 # $$
 #
-# Das Ziel ist also die Werte der Modellparameter zu finden, welche die Fehlerfunktion $E = (\boldsymbol{w}; \boldsymbol{\hat{x}}, \hat{y})$ bei gegebenen Trainingsdatensatz minimieren. 
+# Das Ziel ist also die Werte der Modellparameter zu finden, welche die Fehlerfunktion $E = (\boldsymbol{w}; \boldsymbol{\hat{x}}, \hat{y})$ bei gegebenen Trainingsdatensatz minimieren.
+#
+#
+# # TODO: Bislang haben wir $y$ für die Funktionswerte verwendet, warum jetzt $o$?
 
 # ### Minimierung
 #
@@ -162,7 +164,8 @@ plt.legend()
 
 # ## Backpropagation -- Einzelnes Perzeptron
 #
-# Bei dem Lernverfahren Backpropagation wird der Gradient der Fehlerfunktion (als Funktion der Gewichte und Schwellwerte) genutzt um die Minimierung durchzuführen. Dafür muss der Gradient für das Netzwerk bestimmt werden, welcher sich im allgemeinen aus einer Verschachtelung der Kettenregel für Ableitungen zusammensetzt. Bei der Verbindung von mehreren Perzeptronen / Neuronen zu einem Netzwerk, wird so effektiv bei diesem Verfahren das Netz rückwärts durchlaufen wodurch die Ausbreitung der Fehlerkorrektur von der Ausgabeschicht in die Eingabeschicht bewegt -- deshalb der Name 'Backpropagation'.
+# Bei dem Lernverfahren Backpropagation wird der Gradient der Fehlerfunktion (als Funktion der Gewichte und Schwellwerte) genutzt um die Minimierung durchzuführen. Dafür muss der Gradient für das Netzwerk bestimmt werden, welcher sich im allgemeinen aus einer Verschachtelung der Kettenregel für Ableitungen zusammensetzt. 
+# Bei der Verknüpfung mehrerer Perzeptronen bzw. Neuronen zu einem Netzwerk wird der Fehler dabei rückwärts durch das Netz propagiert: Von der Ausgabeschicht aus wird die Korrektur schrittweise in Richtung Eingabeschicht weitergegeben. Daher der Name "Backpropagation".
 #
 # Für ein einzelnes Perzeptron mit einer linearen Aktivierungsfunktion $\phi(z) = z$ gilt für die Modellfunktion:
 #
@@ -409,8 +412,8 @@ import numpy as np
 # Eingaben: 4 Punkte
 X = np.array([
     [0, 0],
-    [0, 1],
     [1, 0],
+    [0, 1],
     [1, 1]
 ], dtype=float)
 
@@ -428,7 +431,7 @@ print ('y:', y)
 # Die beiden ersten Neuronen werden als _hidden layer_ bezeichnet, das dritte Neuron ist das Output Layer. Ein Netz, welches von links nach rechts durchgearbeitet wird, wird als Feed-Forward Netz bezeichnet. 
 #
 # <figure style="text-align: center;">
-#     <img src="Bilder/XOR_Netz.svg" alt="Roboter" width = 500>
+#     <img src="img/XOR_Netz.svg" alt="Roboter" width = 500>
 #     <figcaption>Netzwerkarchitektur des Netzes, welches XOR lernen kann.</figcaption>
 #   </figure>
 #
@@ -930,7 +933,7 @@ print(losses[-1])
 # Berechnen Sie die die Gewichtsänderungen für folgendes einfaches neuronales Netz
 #
 # <figure  style="text-align: center;">
-#     <img src="Bilder/einfaches_Netz.svg" alt="einfaches Netz" width = 300>
+#     <img src="img/einfaches_Netz.svg" alt="einfaches Netz" width = 300>
 #     <figcaption>Ein sehr einfaches Netz</figcaption>
 # </figure>
 #
@@ -1567,7 +1570,7 @@ Y_pred = y_scaler.inverse_transform(Y_pred_scaled)
 #
 # ## Aufgabe 8: Polynom fitten
 #
-# In der Datei [messwerte.txt](data/supervised-learning/messwerte.txt) finden Sie 15 Messwerte entsprechend einer leicht verrauschten Normalverteilung. Nutzen Sie `numpy.polyfit`, um Polynome an die Messwerte zu fitten. Erstellen Sie Fits von Grad 1 bis zur Interpolation bei Grad 14 und plotten Sie diese. 
+# In der Datei [messwerte.txt](data/messwerte.txt) finden Sie 15 Messwerte entsprechend einer leicht verrauschten Normalverteilung. Nutzen Sie `numpy.polyfit`, um Polynome an die Messwerte zu fitten. Erstellen Sie Fits von Grad 1 bis zur Interpolation bei Grad 14 und plotten Sie diese. 
 
 # +
 import matplotlib.pyplot as plt
@@ -1606,11 +1609,11 @@ for i in range(1, 15):
 #
 # Im vorigen Abschnitt wurde Overfitting anhand von Polynomen unterschiedlicher Ordnung gezeigt. Das gleiche Phänomen tritt auch bei neuronalen Netzen auf: Ein zu komplexes Netz mit zu vielen Epochen lernt die Trainingsdaten auswendig – und verliert dabei die Fähigkeit, neue Daten korrekt vorherzusagen.
 #
-# In dieser Aufgabe 9 wird  Overfitting zunächst absichtlich provoziert, um dann mit verschiedenen Gegenmaßnahmen bekämpfen.
+# In dieser Aufgabe 9 wird  Overfitting zunächst absichtlich provoziert, und dann mit verschiedenen Gegenmaßnahmen bekämpft.
 
 # ### Aufgabe 9 (a): Overfitting provozieren
 #
-# Trainieren Sie das bekannte Netz (`NN` mit `h1=20, h2=20`) auf einem **sehr kleinen Trainingsdatensatz** (nur 15 zufällig gewählte Punkte aus dem Datensatz [messwerte2.txt](Daten/UeberwachtesLernen/messwerte2.txt)) für viele Epochen (z.B. 2000).
+# Trainieren Sie das bekannte Netz (`NN` mit `h1=20, h2=20`) auf einem **sehr kleinen Trainingsdatensatz** (nur 15 zufällig gewählte Punkte aus dem Datensatz [messwerte2.txt](data/messwerte2.txt)) für viele Epochen (z.B. 2000).
 #
 # Plotten Sie anschließend den Training- und Test-Loss über die Epochen.
 #

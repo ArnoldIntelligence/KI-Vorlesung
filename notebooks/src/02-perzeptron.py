@@ -17,7 +17,7 @@
 # # Das künstliche Neuron - das Perzeptron
 #
 # <figure  style="text-align: center;">
-#     <img src="Bilder/Neuron_Hand-tuned2.svg" alt="Neuron" width = 300>
+#     <img src="img/Neuron_Hand-tuned2.svg" alt="Neuron" width = 300>
 #     <figcaption>Aufbau einer Nervenzelle. (CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=151245917)</figcaption>
 # </figure>
 #
@@ -42,7 +42,7 @@
 # * endet an Synapsen, wo das Signal an andere Neuronen oder Muskeln übertragen wird
 
 #   <figure  style="text-align: center;">
-#     <img src="Bilder/perceptron.svg" alt="Ein Perceptron" width = 500>
+#     <img src="img/perceptron.svg" alt="Ein Perceptron" width = 500>
 #     <figcaption>Einfaches einlagiges Perceptron. </figcaption>
 #   </figure>
 #
@@ -124,7 +124,7 @@ plt.title("Aktivierungsfunktion $\phi$");
 # Dazu sollen die Gewichte so bestimmt werden, dass der Roboter erkennt, dass ein Problem vorliegt, wenn beide Sensoren einen zu geringen Abstand erkennen. 
 #
 #  <figure style="text-align: center;">
-#     <img src="Bilder/roboter.png" alt="Roboter" width = 500>
+#     <img src="img/roboter.png" alt="Roboter" width = 500>
 #     <figcaption>Roboter mit zwei Sensoren</figcaption>
 #   </figure>
 
@@ -372,7 +372,7 @@ ax.plot_surface(xx, yy, zz, color='gray', alpha=0.5)  # Halbtransparente Trenneb
 
 #
 # <figure style="text-align: center;">
-#     <img src="Bilder/perceptron_lernen.svg" alt="Neuron" width = 500>
+#     <img src="img/perceptron_lernen.svg" alt="Neuron" width = 500>
 #     <figcaption>Lernen beim klassischen Perzeptron</figcaption>
 # </figure>
 #
@@ -965,7 +965,7 @@ ax2.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 
 #
 # <figure style="text-align: center;">
-#     <img src="Bilder/perceptron_adaline.svg" alt="Neuron" width = 500>
+#     <img src="img/perceptron_adaline.svg" alt="Neuron" width = 500>
 #     <figcaption>Aufbau des Adaline-Perzeptrons</figcaption>
 # </figure>
 #
@@ -1312,7 +1312,7 @@ file.close()
 # # Das moderne Perzeptron
 
 # <figure style="text-align: center;">
-#     <img src="Bilder/perceptron_modern.svg" alt="Neuron" width = 500>
+#     <img src="img/perceptron_modern.svg" alt="Neuron" width = 500>
 #     <figcaption>Aufbau des modernen Perzeptrons</figcaption>
 # </figure>
 #
