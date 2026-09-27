@@ -1,3 +1,7 @@
+## files
+*.bkp
+
+## directories
 _site
 /.quarto/
 **/*.quarto_ipynb
