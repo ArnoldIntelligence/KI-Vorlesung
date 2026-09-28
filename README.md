@@ -63,3 +63,7 @@
   
 6. Vorlesung
   
+----
+
+Setup instructions are in [setup.md](./docs/setup.md).
+For environment, and running examples see that file.
