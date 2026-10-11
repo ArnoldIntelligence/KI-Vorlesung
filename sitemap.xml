@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/docs/schedule.html</loc>
+    <lastmod>2026-10-11T20:12:58.958Z</lastmod>
+  </url>
+  <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/index.html</loc>
-    <lastmod>2026-07-17T09:53:28.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/05B-resnet.html</loc>
-    <lastmod>2026-07-17T09:53:28.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/05-cnn.html</loc>
-    <lastmod>2026-07-17T09:53:28.551Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/07-reinforced_learning.html</loc>
-    <lastmod>2026-07-17T09:53:28.627Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/02-perzeptron.html</loc>
-    <lastmod>2026-07-17T09:53:28.513Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/09-zusammenfassung.html</loc>
-    <lastmod>2026-07-17T09:53:28.627Z</lastmod>
+    <lastmod>2026-10-11T20:12:58.958Z</lastmod>
   </url>
   <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/01-einleitung.html</loc>
-    <lastmod>2026-07-17T09:53:28.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/autoencoder.html</loc>
-    <lastmod>2026-07-17T09:53:29.226Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/08-zeitreihen.html</loc>
-    <lastmod>2026-07-17T09:53:28.627Z</lastmod>
+    <lastmod>2026-10-11T20:12:58.958Z</lastmod>
   </url>
   <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/06-nicht_ueberwachtes_lernen.html</loc>
-    <lastmod>2026-07-17T09:53:28.624Z</lastmod>
+    <lastmod>2026-10-11T20:12:59.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/05B-resnet.html</loc>
+    <lastmod>2026-10-11T20:12:59.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/08-zeitreihen.html</loc>
+    <lastmod>2026-10-11T20:12:59.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/05-cnn.html</loc>
+    <lastmod>2026-10-11T20:12:58.991Z</lastmod>
   </url>
   <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/03-ueberwachtes_lernen.html</loc>
-    <lastmod>2026-07-17T09:53:28.522Z</lastmod>
+    <lastmod>2026-10-11T20:12:58.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/07-reinforced_learning.html</loc>
+    <lastmod>2026-10-11T20:12:59.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/09-zusammenfassung.html</loc>
+    <lastmod>2026-10-11T20:12:59.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/autoencoder.html</loc>
+    <lastmod>2026-10-11T20:12:59.502Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/02-perzeptron.html</loc>
+    <lastmod>2026-10-11T20:12:58.963Z</lastmod>
   </url>
   <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/notebooks/04-zahlen_erkennen.html</loc>
-    <lastmod>2026-07-17T09:53:28.535Z</lastmod>
+    <lastmod>2026-10-11T20:12:58.979Z</lastmod>
   </url>
   <url>
     <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/includes/callout-tip.html</loc>
-    <lastmod>2026-07-17T09:53:28.507Z</lastmod>
+    <lastmod>2026-10-11T20:12:58.958Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ArnoldIntelligence.github.io/KI-Vorlesung/docs/setup.html</loc>
+    <lastmod>2026-10-11T20:12:58.958Z</lastmod>
   </url>
 </urlset>
