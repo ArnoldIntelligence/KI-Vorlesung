@@ -1,7 +1,12 @@
+## files
+*.bkp
+*.ipynb
+
+## directories
 _site
 /.quarto/
 **/*.quarto_ipynb
 .venv
 **/output/
-notebooks/Daten/ResNet/D-Fire
-notebooks/Daten/ResNet/models
+**/logs/
+.DS_Store

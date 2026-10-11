@@ -1,8 +1,15 @@
 jupyter
 numpy
+scipy
+jupytext
+nbformat
 pandas
 matplotlib
 tqdm
+scikit-learn
+mglearn
+tensorflow
+tensorboard
 
 torch
 # for CUDA see: https://pytorch.org/get-started/locally/
