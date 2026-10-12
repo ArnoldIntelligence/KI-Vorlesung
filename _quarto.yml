@@ -74,6 +74,7 @@ format:
     number-sections: true
     fig-cap-location: bottom
     tbl-cap-location: top
+    format-links: [ipynb]
 
 execute:
   freeze: true
