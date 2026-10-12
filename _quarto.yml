@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: _site
 
-site-url: https://lu-kas.github.io/Test_KI_Vorlesung/
+site-url: https://arnoldintelligence.github.io/KI-Vorlesung/
 
 website:
   title: "Vorlesung KI"
