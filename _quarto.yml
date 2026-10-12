@@ -75,6 +75,7 @@ format:
     fig-cap-location: bottom
     tbl-cap-location: top
     format-links: [ipynb]
+  ipynb: default
 
 execute:
   freeze: true
