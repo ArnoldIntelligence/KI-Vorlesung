@@ -623,16 +623,16 @@ symbols = ['o', '^', '*']
 
 plt.figure(figsize=(12,5))
 ax1 = plt.subplot(1,2,1)
-ax1.set_xlabel('Sepal Length')
-ax1.set_ylabel('Sepal Width')
-ax1.set_title('Iris Sepal Length vs. Width')
+ax1.set_xlabel(feature_names[0])
+ax1.set_ylabel(feature_names[1])
+ax1.set_title('Iris ' + feature_names[0] + ' vs. ' + feature_names[1])
 for i, c, s in zip(range(n_class), colors, symbols):
     plt.scatter(X[y == i, 0], X[y == i, 1], color=c, marker=s, s=60, label=target_names[i])
 plt.legend()
 ax2 = plt.subplot(1,2,2)
-ax2.set_xlabel('Petal Length')
-ax2.set_ylabel('Petal Width')
-ax2.set_title('Iris Petal Length vs. Width')
+ax2.set_xlabel(feature_names[2])
+ax2.set_ylabel(feature_names[3])
+ax2.set_title('Iris ' + feature_names[2] + ' vs. ' + feature_names[3])
 for i, c, s in zip(range(n_class), colors, symbols):
     plt.scatter(X[y == i, 2], X[y == i, 3], color=c, marker=s, s=60, label=target_names[i])
 plt.legend()
@@ -644,37 +644,6 @@ plt.show()
 #
 # Im nächsten Schritt soll daher ein Perzeptron trainiert werden, welches Iris-setosa von den anderen beiden Iris-Arten unterscheiden kann. 
 # Die Klassenzugehörigkeit der Iris-Arten ist in `iris-target` kodiert:
-
-# +
-#| code-fold: true
-#| code-summary: "Code anzeigen"
-
-import numpy as np
-import matplotlib.pyplot as plt
-from random import choice  ##The choice() method returns a randomly selected element from the specified sequence.
-
-sepal_length = []
-sepal_width = []
-petal_length = []
-petal_width = []
-colors = []
-colors_values = []
-iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
-iris_colors_values = {'Iris-setosa' : '0', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Anmerkung: rot und blau/gruen lassen sich linear trennen, blau und gruen nicht
-
-with open('data/iris.csv', 'r') as fobj:
-    for line in fobj:
-        words = line.rstrip().split(',')
-        if len(words) != 5:
-            continue
-        #print(words)
-        sepal_length.append(float(words[0]))
-        sepal_width.append(float(words[1]))
-        petal_length.append(float(words[2]))
-        petal_width.append(float(words[3]))
-        colors.append(iris_colors[words[4]])
-        colors_values.append(int(iris_colors_values[words[4]]))
-# -
 
 # ### Aufgabe 2a: Iris-Arten
 # Trainieren Sie ein Perzeptron, welches anhand von Sepal-Daten zwischen Iris-Arten unterscheiden kann! Nutzen Sie das Perzeptron aus Beispiel 3!
@@ -695,8 +664,8 @@ def fit(iterations, training_data_set, w):
     
     for i in range(iterations):
         training_data = choice(training_data_set) ## zufällige Trainingsdaten (entspricht einer Zeile) aus dem Trainingsdatensatz herauspicken 
-        x = training_data[0]
-        y = training_data[1]
+        x = training_data[0:3]
+        y = training_data[3]
                 
         #ergebnis berechnen
         o = heaviside(np.dot(w,x))
@@ -710,7 +679,7 @@ def fit(iterations, training_data_set, w):
         
         # Anpassung der Gewichte, immer in Schritten +- 1
         w += error*x
-    return errors,weights
+    return errors, weights
 
 
 # -
@@ -726,7 +695,8 @@ def fit(iterations, training_data_set, w):
 bias = np.ones(len(iris.data))
 input_data = np.concatenate([bias.reshape(-1, 1), iris.data[:, 0:2]], axis=1)
 
-training_data_set = np.concatenate([input_data, iris.target.reshape(-1, 1)], axis=1)
+target_values = np.where(iris.target == 2, 1, iris.target) # versicolor und virginica werden zu 1, setosa bleibt 0
+training_data_set = np.concatenate([input_data, target_values.reshape(-1, 1)], axis=1)
 
 # Gewichte mit Trainingsdatensatz ermitteln
 
@@ -752,15 +722,20 @@ x_vals = np.linspace(min(sepal_length), max(sepal_length), 100)
 w0, w1, w2 = weights[-1]
 y_vals = -(w0 + w1 * x_vals) / w2
 
-plt.style.use('seaborn-v0_8')
+n_class = len(target_names)
+
+colors = ['b', 'g', 'r']
+symbols = ['o', '^', '*']
+
 plt.figure(figsize=(6,5))
-plt.xlabel('Sepal Length')
-plt.ylabel('Sepal Width')
-plt.title('Iris Sepal Length vs. Width')
-plt.scatter(np.array(sepal_length), np.array(sepal_width), color = colors, label = "Iris Messungen")
+plt.xlabel(feature_names[0])
+plt.ylabel(feature_names[1])
+plt.title('Iris ' + feature_names[0] + ' vs. ' + feature_names[1])
+for i, c, s in zip(range(n_class), colors, symbols):
+    plt.scatter(X[y == i, 0], X[y == i, 1], color=c, marker=s, s=60, label=target_names[i])
 plt.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 plt.legend()
-# TODO: make legend markers black, not the text
+plt.show()
 # -
 
 # ### Aufgabe 2b: Iris-Arten 2
@@ -1004,7 +979,7 @@ ax2.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 #
 # $$\Delta w = -\frac{\partial E}{\partial w}$$
 #
-# Nun kann die Stufenfunktion nicht mehr als Aktivierungsfunktion verwendet werden, da sie nicht differenzierbar ist. Stattdessen wird beim Adaline Perzeptron ist die Aktivierungsfunktion einfach die Identität der linaren gewichteten Summe, also
+# Nun kann die Stufenfunktion nicht mehr als Aktivierungsfunktion verwendet werden, da sie nicht differenzierbar ist. Stattdessen wird beim Adaline Perzeptron ist die Aktivierungsfunktion einfach die Identität der linearen gewichteten Summe, also
 #
 # $$z = \boldsymbol{w}\cdot\boldsymbol{x}$$
 # $$o = \phi(z) = id(z)$$
