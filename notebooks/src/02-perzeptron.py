@@ -568,58 +568,74 @@ print("Der Gesamtfehler nach Training ist: ", errors[len(errors)-1])
 
 # ## Der Iris-Datensatz
 #
-# In dieser Aufgabe wird der Iris-Datensatz verwendet. Der Iris-Datensatz ([https://de.wikipedia.org/wiki/Schwertlilien-Datensatz](https://de.wikipedia.org/wiki/Schwertlilien-Datensatz)) beinhaltet Messwerte der Länge und Breite der Kelchblätter von drei verschiedenen Iris-Arten und gehört zu den Klassikern von Übungsdatensätzen. 
+# In dieser Aufgabe wird der Iris-Datensatz verwendet. Der Iris-Datensatz ([https://de.wikipedia.org/wiki/Schwertlilien-Datensatz](https://de.wikipedia.org/wiki/Schwertlilien-Datensatz)) beinhaltet Messwerte der Länge und Breite der Kelch- und Kronblätter von drei verschiedenen Iris-Arten und gehört zu den Klassikern von Übungsdatensätzen. 
 #
-# Der Datensatz ist [hier](Daten/Perzeptron/iris.csv) zu finden. Der Datensatz enthält 150 Messungen von Iris-Pflanzen von fünf Attributen: 
+# Der Datensatz ist in `scikit-learn` enthalten. Der Datensatz enthält 150 Messungen von Iris-Pflanzen von fünf Attributen: 
 #
-# * Länge des Kelchblatts (sepal lengh)
+# * Länge des Kelchblatts (sepal length)
 # * Breite des Kelchblatts (sepal width)
 # * Länge des Kronblatts (petal length)
 # * Breite des Kronblatts (petal width)
 # * Spezies
-#
+
+# +
+from sklearn import datasets
+import numpy as np
+import pandas as pd
+
+iris = datasets.load_iris()
+
+print("type of iris.data:", type(iris.data))
+print("shape of iris.data:", iris.data.shape)
+print("first 5 rows:")
+print(iris.data[:5])
+
+print("\nfeature names:")
+print(iris.feature_names)
+
+print("\ntarget names:")
+print(iris.target_names)
+
+print("\ntarget values:")
+print("shape of iris.target:", iris.target.shape)
+print(np.unique(iris.target))
+
+# convert to DataFrame for easy exploration
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df["species"] = iris.target_names[iris.target]
+
+print("\nhead of dataframe:")
+print(df.head())
+# -
+
 # Zunächst bietet es sich immer an, einen Datensatz zu visualisieren, beispielsweise mit Scatter-Plots.
 
 # +
-#| code-fold: true
-#| code-summary: "Code anzeigen"
+X = iris.data
+y = iris.target
+target_names = iris.target_names
+feature_names = iris.feature_names
+n_class = len(np.unique(y))
 
-import numpy as np
-import matplotlib.pyplot as plt
-from random import choice  ##The choice() method returns a randomly selected element from the specified sequence.
+# Plot original clusters based on ground truth
+colors = ['b', 'g', 'r']
+symbols = ['o', '^', '*']
 
-sepal_lengh = []
-sepal_width = []
-petal_length = []
-petal_width = []
-colors = []
-colors_values = []
-iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
-
-with open('data/iris.csv', 'r') as fobj:
-    for line in fobj:
-        words = line.rstrip().split(',')
-        if len(words) != 5:
-            continue
-        #print(words)
-        sepal_lengh.append(float(words[0]))
-        sepal_width.append(float(words[1]))
-        petal_length.append(float(words[2]))
-        petal_width.append(float(words[3]))
-        colors.append(iris_colors[words[4]])
-
-plt.style.use('seaborn-v0_8')
 plt.figure(figsize=(12,5))
 ax1 = plt.subplot(1,2,1)
 ax1.set_xlabel('Sepal Length')
 ax1.set_ylabel('Sepal Width')
 ax1.set_title('Iris Sepal Length vs. Width')
-ax1.scatter(np.array(sepal_lengh), np.array(sepal_width), color = colors)
+for i, c, s in zip(range(n_class), colors, symbols):
+    plt.scatter(X[y == i, 0], X[y == i, 1], color=c, marker=s, s=60, label=target_names[i])
+plt.legend()
 ax2 = plt.subplot(1,2,2)
 ax2.set_xlabel('Petal Length')
 ax2.set_ylabel('Petal Width')
 ax2.set_title('Iris Petal Length vs. Width')
-ax2.scatter(np.array(petal_length), np.array(petal_width), color = colors)
+for i, c, s in zip(range(n_class), colors, symbols):
+    plt.scatter(X[y == i, 2], X[y == i, 3], color=c, marker=s, s=60, label=target_names[i])
+plt.legend()
 plt.show()
 # -
 
@@ -627,13 +643,7 @@ plt.show()
 # Die Iris-Art Iris-setosa unterscheidet sich jedoch deutlich. 
 #
 # Im nächsten Schritt soll daher ein Perzeptron trainiert werden, welches Iris-setosa von den anderen beiden Iris-Arten unterscheiden kann. 
-# Daher werden den Iris-Arten nun Werte zur Klassenzugehörigkeit zugeordnet:
-#
-# Iris-setosa --> 0  
-# Iris-versicolor --> 1  
-# Iris-virginica --> 1
-#
-#
+# Die Klassenzugehörigkeit der Iris-Arten ist in `iris-target` kodiert:
 
 # +
 #| code-fold: true
@@ -667,13 +677,15 @@ with open('data/iris.csv', 'r') as fobj:
 # -
 
 # ### Aufgabe 2a: Iris-Arten
-# Trainieren Sie ein Perzeptron, welches zwischen Iris-Arten unterscheiden kann! Nutzen Sie das Perzeptron aus Beispiel 3!
+# Trainieren Sie ein Perzeptron, welches anhand von Sepal-Daten zwischen Iris-Arten unterscheiden kann! Nutzen Sie das Perzeptron aus Beispiel 3!
 
 # Perzeptron lernen
 
 # +
 #| code-fold: true
 #| code-summary: "Code anzeigen"
+
+from random import choice  ##The choice() method returns a randomly selected element from the specified sequence.
 
 heaviside = lambda x:0 if x<0 else 1
 
@@ -711,10 +723,10 @@ def fit(iterations, training_data_set, w):
 
 # Trainingsdatensatz erstellen
 
-bias = np.ones(len(sepal_length))
-input_data = [np.array((bias[i], sepal_length[i], sepal_width[i])) for i in range(len(sepal_length))]
+bias = np.ones(len(iris.data))
+input_data = np.concatenate([bias.reshape(-1, 1), iris.data[:, 0:2]], axis=1)
 
-training_data_set = [(input_data[i], colors_values[i]) for i in range(len(sepal_length))]
+training_data_set = np.concatenate([input_data, iris.target.reshape(-1, 1)], axis=1)
 
 # Gewichte mit Trainingsdatensatz ermitteln
 
@@ -824,22 +836,22 @@ plt.style.use('seaborn-v0_8')
 fig,((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2, figsize = (15,10))
 ax1.set_xlabel('bill_length_mm')
 ax1.set_ylabel('bill_depth_mm')
-ax1.set_title('Bill lengh vs. flipper length in Palmer Penguins, color = species')
+ax1.set_title('Bill length vs. flipper length in Palmer Penguins, color = species')
 ax1.scatter(np.array(bill_length_mm), np.array(bill_depth_mm), color = species)
 
 ax2.set_xlabel('bill_length_mm')
 ax2.set_ylabel('bill_depth_mm')
-ax2.set_title('Bill lengh vs. bill depth in Palmer Penguins, color = islands')
+ax2.set_title('Bill length vs. bill depth in Palmer Penguins, color = islands')
 ax2.scatter(np.array(bill_length_mm), np.array(bill_depth_mm), color = island)
 
 ax3.set_xlabel('bill_length_mm')
 ax3.set_ylabel('flipper_length_mm')
-ax3.set_title('Bill lengh vs. flipper length in Palmer Penguins, color = species')
+ax3.set_title('Bill length vs. flipper length in Palmer Penguins, color = species')
 ax3.scatter(np.array(bill_length_mm), np.array(flipper_length_mm), color = species)
 
 ax4.set_xlabel('bill_length_mm')
 ax4.set_ylabel('flipper_length_mm')
-ax4.set_title('Bill lengh vs. flipper length in Palmer Penguins, color = islands')
+ax4.set_title('Bill length vs. flipper length in Palmer Penguins, color = islands')
 ax4.scatter(np.array(bill_length_mm), np.array(flipper_length_mm), color = island)
 # -
 
@@ -1107,7 +1119,7 @@ def fit(iterations, training_data_set, w):
     return errors,weights
 
 
-sepal_lengh = []
+sepal_length = []
 sepal_width = []
 petal_length = []
 petal_width = []
@@ -1122,7 +1134,7 @@ with open('data/iris.csv', 'r') as fobj:
         if len(words) != 5:
             continue
         #print(words)
-        sepal_lengh.append(float(words[0]))
+        sepal_length.append(float(words[0]))
         sepal_width.append(float(words[1]))
         petal_length.append(float(words[2]))
         petal_width.append(float(words[3]))
@@ -1426,7 +1438,7 @@ ax1.set_ylabel('Sepal Width')
 ax1.set_title('Iris Sepal Length vs. Width')
 ax1.scatter(np.array(sepal_length), np.array(sepal_width), color = colors)
 ax2 = plt.subplot(1,2,2)
-ax2.set_xlabel('Petal Lengh')
+ax2.set_xlabel('Petal length')
 ax2.set_ylabel('Petal Width')
 ax2.set_title('Iris Petal Length vs. Width')
 ax2.scatter(np.array(petal_length), np.array(petal_width), color = colors)
