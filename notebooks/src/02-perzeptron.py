@@ -419,7 +419,7 @@ ax.plot_surface(xx, yy, zz, color='gray', alpha=0.5)  # Halbtransparente Trenneb
 #
 # Dies bedeutet, um zu Lernen, müssen die Gewichte $w_i$ bestimmt werden, so dass, wenn das Ergebnis nicht ok ist, das Ergebnis der gewichteten Summe kleiner als der Schwellenwert der Stufenfunktion, beziehungsweise kleiner Null, wenn der Schwellenwert als $-w_0$ integriert wird. 
 
-# Das Lernen besteht aus dem Ändern der Gewichte. Um zu wissen, wir die Gewichte geändert werden, muss der Abstand des Perzeptron-Outputs mit dem gewünschten Output berechnet werden. Der gewünschte Output ist über die Wertetabelle bekannt.
+# Das Lernen besteht aus dem Ändern der Gewichte. Um zu wissen, wie die Gewichte geändert werden, muss der Abstand des Perzeptron-Outputs mit dem gewünschten Output berechnet werden. Der gewünschte Output ist über die Wertetabelle bekannt.
 #
 # Dies bedeutet für das Perzeptron:
 #
