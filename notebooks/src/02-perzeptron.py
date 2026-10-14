@@ -376,6 +376,7 @@ ax.plot_surface(xx, yy, zz, color='gray', alpha=0.5)  # Halbtransparente Trenneb
 #     <figcaption>Lernen beim klassischen Perzeptron</figcaption>
 # </figure>
 #
+# TODO: alpha aus svg raus
 #
 # Bislang hat das Perzeptron nichts gelernt, sondern nur mit gegebenen Gewichten die Vorhersage berechnet. Im folgenden Beispiel wird erklärt, wie das Perzeptron lernt.
 # Ziel des Lernes ist es, aus den Daten eine mögliche Trennlinie zu bestimmen, welche die Daten richtig klassifiziert. Als Aktivierungsfunktion wird wieder eine einfache Stufenfunktion verwendet.
