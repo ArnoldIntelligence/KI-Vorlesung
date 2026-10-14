@@ -38,14 +38,21 @@ plt.imshow(my_function(X, Y), extent=[-5, 5, -5, 5], origin='lower')
 plt.colorbar()
 
 iterations = 1000
-x = 4
-y = 0
+x = -3
+y = 2
 alpha = 0.1
 
 x_list = []
 y_list = []
 
-for i in range(iterations):
+dfdx = 1e4
+dfdy = 1e4
+
+ctr = 0
+
+while (np.abs(np.dot(dfdx, dfdy)) > 1e-4) & (ctr < 1e6):
+
+# for i in range(iterations):
 
     x_list.append(x)
     y_list.append(y)
@@ -53,6 +60,9 @@ for i in range(iterations):
     dfdx, dfdy = my_derivative(x, y)
     x = x - alpha*dfdx
     y = y - alpha*dfdy 
+    ctr += 1
+
+print("Number of iterations: ", ctr)
 
 plt.plot(x_list, y_list, 'x')
 plt.show()

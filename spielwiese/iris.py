@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from perceptron_learn import perceptron_learn
+import spielwiese.perceptrons as prcptrn
 
 sepal_length = []
 sepal_width = []
@@ -9,7 +9,7 @@ petal_width = []
 colors = []
 colors_values = []
 iris_colors = {'Iris-setosa' : 'red', 'Iris-versicolor' : 'green' , 'Iris-virginica' : 'blue'}
-iris_colors_values = {'Iris-setosa' : '0', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Anmerkung: rot und blau/gruen lassen sich linear trennen, blau und gruen nicht
+iris_colors_values = {'Iris-setosa' : '-1', 'Iris-versicolor' : '1' , 'Iris-virginica' : '1'}  ## Anmerkung: rot und blau/gruen lassen sich linear trennen, blau und gruen nicht
 
 with open('../notebooks/data/iris.csv', 'r') as fobj:
     for line in fobj:
@@ -38,25 +38,26 @@ with open('../notebooks/data/iris.csv', 'r') as fobj:
 # ax2.scatter(np.array(petal_length), np.array(petal_width), color = colors)
 # plt.show()
 
-X = np.transpose(np.array([np.ones(len(sepal_length)), petal_length, petal_width]))
+X = np.transpose(np.array([np.ones(len(sepal_length)), sepal_length, sepal_width]))
 y = colors_values
-# weights_initial = np.ones(3)/5
-weights_initial = np.array([0.2, 0.5, 0.4])
+weights_initial = np.ones(3)/10
+# weights_initial = np.array([0.2, 0.5, 0.4])
 
 np.random.seed(42)
 
-# print(np.shape(X))
-# print(y)
+iterations = 1000000
 
-iterations = 100000
-
-errors, weights = perceptron_learn(X, y, weights_initial, iterations)
+# errors, weights = prcptrn.perceptron_learn(X, y, weights_initial, iterations)
+# errors, weights = prcptrn.adaline(X, y, weights_initial, iterations, 0.01)
+errors, weights = prcptrn.perceptron_modern(X, y, weights_initial, iterations, 0.05)
 
 print("Gewichte nach Training:", weights[-1])
+plt.figure(figsize=(6,5))
 plt.plot(errors)
-# plt.show()
+plt.xlabel('# Iterations')
+plt.ylabel('Error')
 
-x_vals = np.linspace(min(petal_length), max(petal_length), 100)
+x_vals = np.linspace(min(sepal_length), max(sepal_length), 100)
 w0, w1, w2 = weights[-1]
 y_vals = -(w0 + w1 * x_vals) / w2
 
@@ -64,8 +65,9 @@ plt.style.use('seaborn-v0_8')
 plt.figure(figsize=(6,5))
 plt.xlabel('Sepal Length')
 plt.ylabel('Sepal Width')
+plt.ylim([1.5, 5])
 plt.title('Iris Sepal Length vs. Width')
-plt.scatter(np.array(petal_length), np.array(petal_width), color = colors, label = "Iris Messungen")
+plt.scatter(np.array(sepal_length), np.array(sepal_width), color = colors, label = "Iris Messungen")
 plt.plot(x_vals, y_vals, color='black', linewidth=2, label="Trennlinie")
 plt.show()
 plt.legend()
